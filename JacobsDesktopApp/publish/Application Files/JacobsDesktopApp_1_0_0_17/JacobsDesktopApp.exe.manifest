@@ -1,0 +1,2138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="JacobsDesktopApp.exe" version="1.0.0.17" publicKeyToken="421340d46d2f798f" language="neutral" processorArchitecture="msil" type="win32" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="JacobsDesktopApp" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="JacobsDesktopApp.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          UAC Manifest Options
+          If you want to change the Windows User Account Control level replace the
+          requestedExecutionLevel node with one of the following.
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+         If you want to utilize File and Registry Virtualization for backward
+         compatibility then delete the requestedExecutionLevel node.
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AxInterop.WMPLib.dll" size="53760">
+      <assemblyIdentity name="AxInterop.WMPLib" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>GJWwRvW2qquAyxYNMiyM1fe+wVm0VNYWA1O53NjR0eI=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="BouncyCastle.Crypto.dll" size="2609152">
+      <assemblyIdentity name="BouncyCastle.Crypto" version="1.8.9.0" publicKeyToken="0E99375E54769942" language="neutral" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>MzkDx9IqJwmORfxkt3omSqIgYFz70+MpwgDX5LQsiBw=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="BouncyCastle.Cryptography.dll" size="6867224">
+      <assemblyIdentity name="BouncyCastle.Cryptography" version="2.0.0.0" publicKeyToken="072EDCF4A5328938" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>rsInFU/FSXOf9aB5IHI2QfdzzmXQXcpwshUYPJPpZB0=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Interop.WMPLib.dll" size="330752">
+      <assemblyIdentity name="Interop.WMPLib" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>DpBzsBIeb+9H/gnfyL+QAxBAlZZPTPBeAtgl4/sST+w=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="itext.barcodes.dll" size="155648">
+      <assemblyIdentity name="itext.barcodes" version="9.0.0.0" publicKeyToken="8354AE6D2174DDCA" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>I3Qx+gU3ieLwh0lHIAsXgegDiWO5JjC4OpTGrkGvDGg=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="itext.bouncy-castle-adapter.dll" size="81408">
+      <assemblyIdentity name="itext.bouncy-castle-adapter" version="9.0.0.0" publicKeyToken="8354AE6D2174DDCA" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>f/b7gSXm1B/ElfeXN4wOAvYquLiy8YxSIqeO5eKrGy0=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="itext.bouncy-castle-connector.dll" size="23040">
+      <assemblyIdentity name="itext.bouncy-castle-connector" version="9.0.0.0" publicKeyToken="8354AE6D2174DDCA" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>t4qG9ESlbeqDTzF4BlnJmyFTNagZgsGX8EZF62Qp4h4=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="itext.commons.dll" size="278016">
+      <assemblyIdentity name="itext.commons" version="9.0.0.0" publicKeyToken="8354AE6D2174DDCA" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>ITfCoCgDb+tUR9MPGgPB76D7DCSBeyR/ex+y5j12+XU=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="itext.forms.dll" size="196096">
+      <assemblyIdentity name="itext.forms" version="9.0.0.0" publicKeyToken="8354AE6D2174DDCA" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>661A9SIAV8Bv+7ygT91uUFgxLL0KTGdpmhw3qDPssIY=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="itext.io.dll" size="1551360">
+      <assemblyIdentity name="itext.io" version="9.0.0.0" publicKeyToken="8354AE6D2174DDCA" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>xikjLMgZrDCkAB28sbMpXUuF3kKfyfxKZblBYDUO21w=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="itext.kernel.dll" size="1042944">
+      <assemblyIdentity name="itext.kernel" version="9.0.0.0" publicKeyToken="8354AE6D2174DDCA" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>R8z5WI9Yt6e+mPfr03X9qYiwAR6erVuhbdMZlnFYUl0=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="itext.layout.dll" size="435200">
+      <assemblyIdentity name="itext.layout" version="9.0.0.0" publicKeyToken="8354AE6D2174DDCA" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>hzhtONYuxN1Rr4qQx0Z4N84U133Ye2KzL5CjGlro4pk=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="itext.pdfa.dll" size="114176">
+      <assemblyIdentity name="itext.pdfa" version="9.0.0.0" publicKeyToken="8354AE6D2174DDCA" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>izIz/H9FIFyp+u7AbqIiv84ECitUqbHyJ7nmOQj60y0=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="itext.pdfua.dll" size="57344">
+      <assemblyIdentity name="itext.pdfua" version="9.0.0.0" publicKeyToken="8354AE6D2174DDCA" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>euT1H9zCo9sS3a1Dk/eXGYOtTLg0hnxQxZIz/PFPCqE=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="itext.sign.dll" size="264704">
+      <assemblyIdentity name="itext.sign" version="9.0.0.0" publicKeyToken="8354AE6D2174DDCA" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>K9K8CJL9A1E8AyzLG0jCZqBYfgE6LBI5VS7JwrqJCHA=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="itext.styledxmlparser.dll" size="395264">
+      <assemblyIdentity name="itext.styledxmlparser" version="9.0.0.0" publicKeyToken="8354AE6D2174DDCA" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>z/JKvvgfWHysL3Z5SeFUyEJyy7zxvSnL1MqSLcNzXyo=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="itext.svg.dll" size="128000">
+      <assemblyIdentity name="itext.svg" version="9.0.0.0" publicKeyToken="8354AE6D2174DDCA" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>X5icN2p64sIXO4wCrIVtYSyFMsVxnu7sxjfUCJpRDa0=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="itextsharp.dll" size="2592768">
+      <assemblyIdentity name="itextsharp" version="5.5.13.4" publicKeyToken="8354AE6D2174DDCA" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>K31q/P+F9Sm5aL/s2KHzVhIoG5E8m0UEaTMe3SBRwQk=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="JacobsDesktopApp.exe" size="52696">
+      <assemblyIdentity name="JacobsDesktopApp" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>CeoWNeMRUzbdiB1D19M5/oIopCU8HDYgNAMGv4UTcpo=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.Bcl.AsyncInterfaces.dll" size="20872">
+      <assemblyIdentity name="Microsoft.Bcl.AsyncInterfaces" version="5.0.0.0" publicKeyToken="CC7B13FFCD2DDD51" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>B1znnoQEETfHiIWzc4wbWgNUfQrip5kW6EQZap0Owds=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.Extensions.DependencyInjection.dll" size="76168">
+      <assemblyIdentity name="Microsoft.Extensions.DependencyInjection" version="5.0.0.0" publicKeyToken="ADB9793829DDAE60" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>yFz4V4MyKr6mUywQ9j991nRTmP+HVIarhp7lQu5zH+o=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.Extensions.DependencyInjection.Abstractions.dll" size="44416">
+      <assemblyIdentity name="Microsoft.Extensions.DependencyInjection.Abstractions" version="5.0.0.0" publicKeyToken="ADB9793829DDAE60" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>IAq6eFns+wRdQ6jiv5q85MkpUHNkt3FDiPWa/+cI+wY=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.Extensions.Logging.dll" size="42888">
+      <assemblyIdentity name="Microsoft.Extensions.Logging" version="5.0.0.0" publicKeyToken="ADB9793829DDAE60" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>xLK5jCGyS4hkC8C+Xc0zXYLfEp3KoNzHeNkadZoDdSQ=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.Extensions.Logging.Abstractions.dll" size="52616">
+      <assemblyIdentity name="Microsoft.Extensions.Logging.Abstractions" version="5.0.0.0" publicKeyToken="ADB9793829DDAE60" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>zooxKUMLkuIG1Zcgrf+R664K98ioCLqBsuz5zmgCYOE=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.Extensions.Options.dll" size="55176">
+      <assemblyIdentity name="Microsoft.Extensions.Options" version="5.0.0.0" publicKeyToken="ADB9793829DDAE60" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>xGc8YABgLnaES61j/uy+QtiPxyY5sf1k0qzeSJVb6XA=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.Extensions.Primitives.dll" size="42376">
+      <assemblyIdentity name="Microsoft.Extensions.Primitives" version="5.0.0.0" publicKeyToken="ADB9793829DDAE60" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>dhUud0sr2cWg0wHpLiU9i/VfqQ4ZHQFV39hrK4R2aug=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.mshtml.dll" size="8027776">
+      <assemblyIdentity name="Microsoft.mshtml" version="7.0.3300.0" publicKeyToken="B03F5F7F11D50A3A" language="neutral" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>QkYZ79KXpqsuKd7tJPPGMgSS1L9uLPVk73ilSkKBy6c=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Newtonsoft.Json.dll" size="701992">
+      <assemblyIdentity name="Newtonsoft.Json" version="13.0.0.0" publicKeyToken="30AD4FE6B2A6AEED" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>tiSUnfiw46YVP9+3MKfG9JkLZZLuDZIuF4hDPSdmEPM=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Spire.Pdf.dll" size="23301088">
+      <assemblyIdentity name="Spire.Pdf" version="10.7.21.0" publicKeyToken="663F351905198CB3" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>Fii+Mh6RxiRmUsTiQRtzKrajVU0XG1bQVd/0/fMUouw=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Spire.PdfViewer.Asp.dll" size="2870240">
+      <assemblyIdentity name="Spire.PdfViewer.Asp" version="7.12.23.0" publicKeyToken="663F351905198CB3" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>27hx649XO+PVRApGSNcYKeKjTo4TgEFx5BeMmXCcfu4=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Spire.PdfViewer.Forms.dll" size="2784224">
+      <assemblyIdentity name="Spire.PdfViewer.Forms" version="7.12.23.0" publicKeyToken="663F351905198CB3" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>wmKAnWUlWkMTsnnIg+cV0tVX6qAxLZ7waE2ZnCBKt1A=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="System.Buffers.dll" size="20856">
+      <assemblyIdentity name="System.Buffers" version="4.0.3.0" publicKeyToken="CC7B13FFCD2DDD51" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>rMzPvkXZ8I/+7ZkW43sz6YxlvgEs//bn+ntnIQzh/vs=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="System.Diagnostics.DiagnosticSource.dll" size="98184">
+      <assemblyIdentity name="System.Diagnostics.DiagnosticSource" version="5.0.0.0" publicKeyToken="CC7B13FFCD2DDD51" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>WZp50llY6uZV3a5zN0d9FuvE8BO2iWu9YHGchbN9uIw=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="System.Memory.dll" size="141184">
+      <assemblyIdentity name="System.Memory" version="4.0.1.1" publicKeyToken="CC7B13FFCD2DDD51" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>jnYxjosGaSq/fasRadJ9FVV/fwo002r2Rj7/D+ISE8c=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="System.Numerics.Vectors.dll" size="115856">
+      <assemblyIdentity name="System.Numerics.Vectors" version="4.1.4.0" publicKeyToken="B03F5F7F11D50A3A" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>HT74aYKB589zcdFVSv71hys5+Wwm2nciEKM9oEG6EYM=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="System.Runtime.CompilerServices.Unsafe.dll" size="16768">
+      <assemblyIdentity name="System.Runtime.CompilerServices.Unsafe" version="5.0.0.0" publicKeyToken="B03F5F7F11D50A3A" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>PK3La4pzNRQcfDV6HXevH/SbWbhy30lPUCVYAZHRwNU=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="System.Threading.Tasks.Extensions.dll" size="25984">
+      <assemblyIdentity name="System.Threading.Tasks.Extensions" version="4.2.0.1" publicKeyToken="CC7B13FFCD2DDD51" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>T4H/0NxyBNt1r8NepCkXabB8RAWS8oiUJg7qdmJqI8Y=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="System.ValueTuple.dll" size="25232">
+      <assemblyIdentity name="System.ValueTuple" version="4.0.3.0" publicKeyToken="CC7B13FFCD2DDD51" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>6QXRAlhbIsbfBPIZr1y9v6e8Fll56XiLYt9tzBZeEPQ=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="Files\English_Class1.mp4" size="6836174">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>n/vEkHLTvVFUslBVlKQ8V1VIDITdjEpNEu48QD2UNcU=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\English_Class1.pdf" size="4089">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>du7pGu4Kigp+9Ks4xeJWuJ7t4kUNq6A6lPoQtZkv6cI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\English_Class1.pptx" size="413895">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>SiKO+Kwabbi2kFNNzAUBuV6EmyaUuFBNB+VgmWQHU+4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\English_Class10.mp4" size="126853">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>01ACqiXSPCOF3No9G9Vv4oeHnzVlqoxYq7zGjmYGRm8=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\English_Class10.pdf" size="4089">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>du7pGu4Kigp+9Ks4xeJWuJ7t4kUNq6A6lPoQtZkv6cI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\English_Class10.pptx" size="413895">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>SiKO+Kwabbi2kFNNzAUBuV6EmyaUuFBNB+VgmWQHU+4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\English_Class2.mp4" size="6836174">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>n/vEkHLTvVFUslBVlKQ8V1VIDITdjEpNEu48QD2UNcU=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\English_Class2.pdf" size="4089">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>du7pGu4Kigp+9Ks4xeJWuJ7t4kUNq6A6lPoQtZkv6cI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\English_Class2.pptx" size="413895">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>SiKO+Kwabbi2kFNNzAUBuV6EmyaUuFBNB+VgmWQHU+4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\English_Class3.mp4" size="6836174">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>n/vEkHLTvVFUslBVlKQ8V1VIDITdjEpNEu48QD2UNcU=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\English_Class3.pdf" size="4089">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>du7pGu4Kigp+9Ks4xeJWuJ7t4kUNq6A6lPoQtZkv6cI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\English_Class3.pptx" size="413895">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>SiKO+Kwabbi2kFNNzAUBuV6EmyaUuFBNB+VgmWQHU+4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\English_Class4.mp4" size="126853">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>01ACqiXSPCOF3No9G9Vv4oeHnzVlqoxYq7zGjmYGRm8=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\English_Class4.pdf" size="4089">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>du7pGu4Kigp+9Ks4xeJWuJ7t4kUNq6A6lPoQtZkv6cI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\English_Class4.pptx" size="413895">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>SiKO+Kwabbi2kFNNzAUBuV6EmyaUuFBNB+VgmWQHU+4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\English_Class5.mp4" size="126869">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>Yrox+YkVwSTwlBGK+vVrlI4flwmz28EhspxjrV/Nq6Q=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\English_Class5.pdf" size="4089">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>du7pGu4Kigp+9Ks4xeJWuJ7t4kUNq6A6lPoQtZkv6cI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\English_Class5.pptx" size="413895">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>SiKO+Kwabbi2kFNNzAUBuV6EmyaUuFBNB+VgmWQHU+4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\English_Class6.mp4" size="126853">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>01ACqiXSPCOF3No9G9Vv4oeHnzVlqoxYq7zGjmYGRm8=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\English_Class6.pdf" size="4089">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>du7pGu4Kigp+9Ks4xeJWuJ7t4kUNq6A6lPoQtZkv6cI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\English_Class6.pptx" size="413895">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>SiKO+Kwabbi2kFNNzAUBuV6EmyaUuFBNB+VgmWQHU+4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\English_Class7.mp4" size="126853">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>01ACqiXSPCOF3No9G9Vv4oeHnzVlqoxYq7zGjmYGRm8=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\English_Class7.pdf" size="4089">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>du7pGu4Kigp+9Ks4xeJWuJ7t4kUNq6A6lPoQtZkv6cI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\English_Class7.pptx" size="413895">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>SiKO+Kwabbi2kFNNzAUBuV6EmyaUuFBNB+VgmWQHU+4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\English_Class8.mp4" size="126869">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>Yrox+YkVwSTwlBGK+vVrlI4flwmz28EhspxjrV/Nq6Q=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\English_Class8.pdf" size="4089">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>du7pGu4Kigp+9Ks4xeJWuJ7t4kUNq6A6lPoQtZkv6cI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\English_Class8.pptx" size="413895">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>SiKO+Kwabbi2kFNNzAUBuV6EmyaUuFBNB+VgmWQHU+4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\English_Class9.mp4" size="126869">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>Yrox+YkVwSTwlBGK+vVrlI4flwmz28EhspxjrV/Nq6Q=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\English_Class9.pdf" size="4089">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>du7pGu4Kigp+9Ks4xeJWuJ7t4kUNq6A6lPoQtZkv6cI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\English_Class9.pptx" size="413895">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>SiKO+Kwabbi2kFNNzAUBuV6EmyaUuFBNB+VgmWQHU+4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Hindi_Class1.mp4" size="126853">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>01ACqiXSPCOF3No9G9Vv4oeHnzVlqoxYq7zGjmYGRm8=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Hindi_Class1.pdf" size="4089">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>du7pGu4Kigp+9Ks4xeJWuJ7t4kUNq6A6lPoQtZkv6cI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Hindi_Class1.pptx" size="413895">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>SiKO+Kwabbi2kFNNzAUBuV6EmyaUuFBNB+VgmWQHU+4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Hindi_Class10.mp4" size="326339">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>fHxK4ivuVlfqCJxH16+MAE5uOzSx3EzgFH4impyptAc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Hindi_Class10.pdf" size="4089">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>du7pGu4Kigp+9Ks4xeJWuJ7t4kUNq6A6lPoQtZkv6cI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Hindi_Class10.pptx" size="413895">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>SiKO+Kwabbi2kFNNzAUBuV6EmyaUuFBNB+VgmWQHU+4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Hindi_Class2.mp4" size="126853">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>01ACqiXSPCOF3No9G9Vv4oeHnzVlqoxYq7zGjmYGRm8=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Hindi_Class2.pdf" size="4089">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>du7pGu4Kigp+9Ks4xeJWuJ7t4kUNq6A6lPoQtZkv6cI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Hindi_Class2.pptx" size="413895">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>SiKO+Kwabbi2kFNNzAUBuV6EmyaUuFBNB+VgmWQHU+4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Hindi_Class3.mp4" size="126869">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>Yrox+YkVwSTwlBGK+vVrlI4flwmz28EhspxjrV/Nq6Q=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Hindi_Class3.pdf" size="4089">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>du7pGu4Kigp+9Ks4xeJWuJ7t4kUNq6A6lPoQtZkv6cI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Hindi_Class3.pptx" size="413895">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>SiKO+Kwabbi2kFNNzAUBuV6EmyaUuFBNB+VgmWQHU+4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Hindi_Class4.mp4" size="126853">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>01ACqiXSPCOF3No9G9Vv4oeHnzVlqoxYq7zGjmYGRm8=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Hindi_Class4.pdf" size="4089">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>du7pGu4Kigp+9Ks4xeJWuJ7t4kUNq6A6lPoQtZkv6cI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Hindi_Class4.pptx" size="413895">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>SiKO+Kwabbi2kFNNzAUBuV6EmyaUuFBNB+VgmWQHU+4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Hindi_Class5.mp4" size="126853">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>01ACqiXSPCOF3No9G9Vv4oeHnzVlqoxYq7zGjmYGRm8=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Hindi_Class5.pdf" size="4089">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>du7pGu4Kigp+9Ks4xeJWuJ7t4kUNq6A6lPoQtZkv6cI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Hindi_Class5.pptx" size="413895">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>SiKO+Kwabbi2kFNNzAUBuV6EmyaUuFBNB+VgmWQHU+4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Hindi_Class6.mp4" size="126853">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>01ACqiXSPCOF3No9G9Vv4oeHnzVlqoxYq7zGjmYGRm8=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Hindi_Class6.pdf" size="4089">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>du7pGu4Kigp+9Ks4xeJWuJ7t4kUNq6A6lPoQtZkv6cI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Hindi_Class6.pptx" size="413895">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>SiKO+Kwabbi2kFNNzAUBuV6EmyaUuFBNB+VgmWQHU+4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Hindi_Class7.mp4" size="126869">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>Yrox+YkVwSTwlBGK+vVrlI4flwmz28EhspxjrV/Nq6Q=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Hindi_Class7.pdf" size="4089">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>du7pGu4Kigp+9Ks4xeJWuJ7t4kUNq6A6lPoQtZkv6cI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Hindi_Class7.pptx" size="413895">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>SiKO+Kwabbi2kFNNzAUBuV6EmyaUuFBNB+VgmWQHU+4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Hindi_Class8.mp4" size="126869">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>Yrox+YkVwSTwlBGK+vVrlI4flwmz28EhspxjrV/Nq6Q=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Hindi_Class8.pdf" size="4089">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>du7pGu4Kigp+9Ks4xeJWuJ7t4kUNq6A6lPoQtZkv6cI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Hindi_Class8.pptx" size="413895">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>SiKO+Kwabbi2kFNNzAUBuV6EmyaUuFBNB+VgmWQHU+4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Hindi_Class9.mp4" size="126853">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>01ACqiXSPCOF3No9G9Vv4oeHnzVlqoxYq7zGjmYGRm8=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Hindi_Class9.pdf" size="4089">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>du7pGu4Kigp+9Ks4xeJWuJ7t4kUNq6A6lPoQtZkv6cI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Hindi_Class9.pptx" size="413895">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>SiKO+Kwabbi2kFNNzAUBuV6EmyaUuFBNB+VgmWQHU+4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Kannada_Class1.mp4" size="326339">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>fHxK4ivuVlfqCJxH16+MAE5uOzSx3EzgFH4impyptAc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Kannada_Class1.pdf" size="4089">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>du7pGu4Kigp+9Ks4xeJWuJ7t4kUNq6A6lPoQtZkv6cI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Kannada_Class1.pptx" size="413895">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>SiKO+Kwabbi2kFNNzAUBuV6EmyaUuFBNB+VgmWQHU+4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Kannada_Class10.mp4" size="326339">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>fHxK4ivuVlfqCJxH16+MAE5uOzSx3EzgFH4impyptAc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Kannada_Class10.pdf" size="4089">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>du7pGu4Kigp+9Ks4xeJWuJ7t4kUNq6A6lPoQtZkv6cI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Kannada_Class10.pptx" size="413895">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>SiKO+Kwabbi2kFNNzAUBuV6EmyaUuFBNB+VgmWQHU+4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Kannada_Class2.mp4" size="326339">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>fHxK4ivuVlfqCJxH16+MAE5uOzSx3EzgFH4impyptAc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Kannada_Class2.pdf" size="4089">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>du7pGu4Kigp+9Ks4xeJWuJ7t4kUNq6A6lPoQtZkv6cI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Kannada_Class2.pptx" size="413895">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>SiKO+Kwabbi2kFNNzAUBuV6EmyaUuFBNB+VgmWQHU+4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Kannada_Class3.mp4" size="326339">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>fHxK4ivuVlfqCJxH16+MAE5uOzSx3EzgFH4impyptAc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Kannada_Class3.pdf" size="4089">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>du7pGu4Kigp+9Ks4xeJWuJ7t4kUNq6A6lPoQtZkv6cI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Kannada_Class3.pptx" size="413895">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>SiKO+Kwabbi2kFNNzAUBuV6EmyaUuFBNB+VgmWQHU+4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Kannada_Class4.mp4" size="326339">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>fHxK4ivuVlfqCJxH16+MAE5uOzSx3EzgFH4impyptAc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Kannada_Class4.pdf" size="4089">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>du7pGu4Kigp+9Ks4xeJWuJ7t4kUNq6A6lPoQtZkv6cI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Kannada_Class4.pptx" size="413895">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>SiKO+Kwabbi2kFNNzAUBuV6EmyaUuFBNB+VgmWQHU+4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Kannada_Class5.mp4" size="326339">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>fHxK4ivuVlfqCJxH16+MAE5uOzSx3EzgFH4impyptAc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Kannada_Class5.pdf" size="4089">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>du7pGu4Kigp+9Ks4xeJWuJ7t4kUNq6A6lPoQtZkv6cI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Kannada_Class5.pptx" size="413895">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>SiKO+Kwabbi2kFNNzAUBuV6EmyaUuFBNB+VgmWQHU+4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Kannada_Class6.mp4" size="326339">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>fHxK4ivuVlfqCJxH16+MAE5uOzSx3EzgFH4impyptAc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Kannada_Class6.pdf" size="4089">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>du7pGu4Kigp+9Ks4xeJWuJ7t4kUNq6A6lPoQtZkv6cI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Kannada_Class6.pptx" size="413895">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>SiKO+Kwabbi2kFNNzAUBuV6EmyaUuFBNB+VgmWQHU+4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Kannada_Class7.mp4" size="326339">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>fHxK4ivuVlfqCJxH16+MAE5uOzSx3EzgFH4impyptAc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Kannada_Class7.pdf" size="4089">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>du7pGu4Kigp+9Ks4xeJWuJ7t4kUNq6A6lPoQtZkv6cI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Kannada_Class7.pptx" size="413895">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>SiKO+Kwabbi2kFNNzAUBuV6EmyaUuFBNB+VgmWQHU+4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Kannada_Class8.mp4" size="326339">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>fHxK4ivuVlfqCJxH16+MAE5uOzSx3EzgFH4impyptAc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Kannada_Class8.pdf" size="4089">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>du7pGu4Kigp+9Ks4xeJWuJ7t4kUNq6A6lPoQtZkv6cI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Kannada_Class8.pptx" size="413895">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>SiKO+Kwabbi2kFNNzAUBuV6EmyaUuFBNB+VgmWQHU+4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Kannada_Class9.mp4" size="326339">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>fHxK4ivuVlfqCJxH16+MAE5uOzSx3EzgFH4impyptAc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Kannada_Class9.pdf" size="4089">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>du7pGu4Kigp+9Ks4xeJWuJ7t4kUNq6A6lPoQtZkv6cI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Kannada_Class9.pptx" size="413895">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>SiKO+Kwabbi2kFNNzAUBuV6EmyaUuFBNB+VgmWQHU+4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Math_Class1.mp4" size="326339">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>fHxK4ivuVlfqCJxH16+MAE5uOzSx3EzgFH4impyptAc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Math_Class1.pdf" size="4089">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>du7pGu4Kigp+9Ks4xeJWuJ7t4kUNq6A6lPoQtZkv6cI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Math_Class1.pptx" size="413895">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>SiKO+Kwabbi2kFNNzAUBuV6EmyaUuFBNB+VgmWQHU+4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Math_Class10.mp4" size="326339">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>fHxK4ivuVlfqCJxH16+MAE5uOzSx3EzgFH4impyptAc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Math_Class10.pdf" size="4089">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>du7pGu4Kigp+9Ks4xeJWuJ7t4kUNq6A6lPoQtZkv6cI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Math_Class10.pptx" size="413895">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>SiKO+Kwabbi2kFNNzAUBuV6EmyaUuFBNB+VgmWQHU+4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Math_Class2.mp4" size="326339">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>fHxK4ivuVlfqCJxH16+MAE5uOzSx3EzgFH4impyptAc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Math_Class2.pdf" size="4089">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>du7pGu4Kigp+9Ks4xeJWuJ7t4kUNq6A6lPoQtZkv6cI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Math_Class2.pptx" size="413895">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>SiKO+Kwabbi2kFNNzAUBuV6EmyaUuFBNB+VgmWQHU+4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Math_Class3.mp4" size="326339">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>fHxK4ivuVlfqCJxH16+MAE5uOzSx3EzgFH4impyptAc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Math_Class3.pdf" size="4089">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>du7pGu4Kigp+9Ks4xeJWuJ7t4kUNq6A6lPoQtZkv6cI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Math_Class3.pptx" size="413895">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>SiKO+Kwabbi2kFNNzAUBuV6EmyaUuFBNB+VgmWQHU+4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Math_Class4.mp4" size="6836174">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>n/vEkHLTvVFUslBVlKQ8V1VIDITdjEpNEu48QD2UNcU=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Math_Class4.pdf" size="4089">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>du7pGu4Kigp+9Ks4xeJWuJ7t4kUNq6A6lPoQtZkv6cI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Math_Class4.pptx" size="413895">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>SiKO+Kwabbi2kFNNzAUBuV6EmyaUuFBNB+VgmWQHU+4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Math_Class5.mp4" size="326339">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>fHxK4ivuVlfqCJxH16+MAE5uOzSx3EzgFH4impyptAc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Math_Class5.pdf" size="4089">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>du7pGu4Kigp+9Ks4xeJWuJ7t4kUNq6A6lPoQtZkv6cI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Math_Class5.pptx" size="413895">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>SiKO+Kwabbi2kFNNzAUBuV6EmyaUuFBNB+VgmWQHU+4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Math_Class6.mp4" size="326339">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>fHxK4ivuVlfqCJxH16+MAE5uOzSx3EzgFH4impyptAc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Math_Class6.pdf" size="4089">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>du7pGu4Kigp+9Ks4xeJWuJ7t4kUNq6A6lPoQtZkv6cI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Math_Class6.pptx" size="413895">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>SiKO+Kwabbi2kFNNzAUBuV6EmyaUuFBNB+VgmWQHU+4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Math_Class7.mp4" size="326339">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>fHxK4ivuVlfqCJxH16+MAE5uOzSx3EzgFH4impyptAc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Math_Class7.pdf" size="4089">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>du7pGu4Kigp+9Ks4xeJWuJ7t4kUNq6A6lPoQtZkv6cI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Math_Class7.pptx" size="413895">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>SiKO+Kwabbi2kFNNzAUBuV6EmyaUuFBNB+VgmWQHU+4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Math_Class8.mp4" size="326339">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>fHxK4ivuVlfqCJxH16+MAE5uOzSx3EzgFH4impyptAc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Math_Class8.pdf" size="4089">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>du7pGu4Kigp+9Ks4xeJWuJ7t4kUNq6A6lPoQtZkv6cI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Math_Class8.pptx" size="413895">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>SiKO+Kwabbi2kFNNzAUBuV6EmyaUuFBNB+VgmWQHU+4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Math_Class9.mp4" size="326339">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>fHxK4ivuVlfqCJxH16+MAE5uOzSx3EzgFH4impyptAc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Math_Class9.pdf" size="4089">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>du7pGu4Kigp+9Ks4xeJWuJ7t4kUNq6A6lPoQtZkv6cI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Math_Class9.pptx" size="413895">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>SiKO+Kwabbi2kFNNzAUBuV6EmyaUuFBNB+VgmWQHU+4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Science_Class1.mp4" size="326339">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>fHxK4ivuVlfqCJxH16+MAE5uOzSx3EzgFH4impyptAc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Science_Class1.pdf" size="4089">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>du7pGu4Kigp+9Ks4xeJWuJ7t4kUNq6A6lPoQtZkv6cI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Science_Class1.pptx" size="413895">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>SiKO+Kwabbi2kFNNzAUBuV6EmyaUuFBNB+VgmWQHU+4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Science_Class10.mp4" size="326339">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>fHxK4ivuVlfqCJxH16+MAE5uOzSx3EzgFH4impyptAc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Science_Class10.pdf" size="4089">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>du7pGu4Kigp+9Ks4xeJWuJ7t4kUNq6A6lPoQtZkv6cI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Science_Class10.pptx" size="413895">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>SiKO+Kwabbi2kFNNzAUBuV6EmyaUuFBNB+VgmWQHU+4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Science_Class2.mp4" size="326339">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>fHxK4ivuVlfqCJxH16+MAE5uOzSx3EzgFH4impyptAc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Science_Class2.pdf" size="4089">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>du7pGu4Kigp+9Ks4xeJWuJ7t4kUNq6A6lPoQtZkv6cI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Science_Class2.pptx" size="413895">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>SiKO+Kwabbi2kFNNzAUBuV6EmyaUuFBNB+VgmWQHU+4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Science_Class3.mp4" size="326339">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>fHxK4ivuVlfqCJxH16+MAE5uOzSx3EzgFH4impyptAc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Science_Class3.pdf" size="4089">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>du7pGu4Kigp+9Ks4xeJWuJ7t4kUNq6A6lPoQtZkv6cI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Science_Class3.pptx" size="413895">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>SiKO+Kwabbi2kFNNzAUBuV6EmyaUuFBNB+VgmWQHU+4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Science_Class4.mp4" size="326339">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>fHxK4ivuVlfqCJxH16+MAE5uOzSx3EzgFH4impyptAc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Science_Class4.pdf" size="4089">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>du7pGu4Kigp+9Ks4xeJWuJ7t4kUNq6A6lPoQtZkv6cI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Science_Class4.pptx" size="413895">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>SiKO+Kwabbi2kFNNzAUBuV6EmyaUuFBNB+VgmWQHU+4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Science_Class5.mp4" size="326339">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>fHxK4ivuVlfqCJxH16+MAE5uOzSx3EzgFH4impyptAc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Science_Class5.pdf" size="4089">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>du7pGu4Kigp+9Ks4xeJWuJ7t4kUNq6A6lPoQtZkv6cI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Science_Class5.pptx" size="413895">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>SiKO+Kwabbi2kFNNzAUBuV6EmyaUuFBNB+VgmWQHU+4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Science_Class6.mp4" size="326339">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>fHxK4ivuVlfqCJxH16+MAE5uOzSx3EzgFH4impyptAc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Science_Class6.pdf" size="4089">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>du7pGu4Kigp+9Ks4xeJWuJ7t4kUNq6A6lPoQtZkv6cI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Science_Class6.pptx" size="413895">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>SiKO+Kwabbi2kFNNzAUBuV6EmyaUuFBNB+VgmWQHU+4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Science_Class7.mp4" size="326339">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>fHxK4ivuVlfqCJxH16+MAE5uOzSx3EzgFH4impyptAc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Science_Class7.pdf" size="4089">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>du7pGu4Kigp+9Ks4xeJWuJ7t4kUNq6A6lPoQtZkv6cI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Science_Class7.pptx" size="413895">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>SiKO+Kwabbi2kFNNzAUBuV6EmyaUuFBNB+VgmWQHU+4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Science_Class8.mp4" size="326339">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>fHxK4ivuVlfqCJxH16+MAE5uOzSx3EzgFH4impyptAc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Science_Class8.pdf" size="4089">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>du7pGu4Kigp+9Ks4xeJWuJ7t4kUNq6A6lPoQtZkv6cI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Science_Class8.pptx" size="413895">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>SiKO+Kwabbi2kFNNzAUBuV6EmyaUuFBNB+VgmWQHU+4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Science_Class9.mp4" size="326339">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>fHxK4ivuVlfqCJxH16+MAE5uOzSx3EzgFH4impyptAc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Science_Class9.pdf" size="4089">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>du7pGu4Kigp+9Ks4xeJWuJ7t4kUNq6A6lPoQtZkv6cI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Science_Class9.pptx" size="413895">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>SiKO+Kwabbi2kFNNzAUBuV6EmyaUuFBNB+VgmWQHU+4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Social_Class1.mp4" size="326339">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>fHxK4ivuVlfqCJxH16+MAE5uOzSx3EzgFH4impyptAc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Social_Class1.pdf" size="4089">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>du7pGu4Kigp+9Ks4xeJWuJ7t4kUNq6A6lPoQtZkv6cI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Social_Class1.pptx" size="413895">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>SiKO+Kwabbi2kFNNzAUBuV6EmyaUuFBNB+VgmWQHU+4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Social_Class10.mp4" size="326339">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>fHxK4ivuVlfqCJxH16+MAE5uOzSx3EzgFH4impyptAc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Social_Class10.pdf" size="4089">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>du7pGu4Kigp+9Ks4xeJWuJ7t4kUNq6A6lPoQtZkv6cI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Social_Class10.pptx" size="413895">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>SiKO+Kwabbi2kFNNzAUBuV6EmyaUuFBNB+VgmWQHU+4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Social_Class2.mp4" size="326339">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>fHxK4ivuVlfqCJxH16+MAE5uOzSx3EzgFH4impyptAc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Social_Class2.pdf" size="4089">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>du7pGu4Kigp+9Ks4xeJWuJ7t4kUNq6A6lPoQtZkv6cI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Social_Class2.pptx" size="413895">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>SiKO+Kwabbi2kFNNzAUBuV6EmyaUuFBNB+VgmWQHU+4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Social_Class3.mp4" size="326339">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>fHxK4ivuVlfqCJxH16+MAE5uOzSx3EzgFH4impyptAc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Social_Class3.pdf" size="4089">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>du7pGu4Kigp+9Ks4xeJWuJ7t4kUNq6A6lPoQtZkv6cI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Social_Class3.pptx" size="413895">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>SiKO+Kwabbi2kFNNzAUBuV6EmyaUuFBNB+VgmWQHU+4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Social_Class4.mp4" size="326339">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>fHxK4ivuVlfqCJxH16+MAE5uOzSx3EzgFH4impyptAc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Social_Class4.pdf" size="4089">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>du7pGu4Kigp+9Ks4xeJWuJ7t4kUNq6A6lPoQtZkv6cI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Social_Class4.pptx" size="413895">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>SiKO+Kwabbi2kFNNzAUBuV6EmyaUuFBNB+VgmWQHU+4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Social_Class5.mp4" size="326339">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>fHxK4ivuVlfqCJxH16+MAE5uOzSx3EzgFH4impyptAc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Social_Class5.pdf" size="4089">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>du7pGu4Kigp+9Ks4xeJWuJ7t4kUNq6A6lPoQtZkv6cI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Social_Class5.pptx" size="413895">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>SiKO+Kwabbi2kFNNzAUBuV6EmyaUuFBNB+VgmWQHU+4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Social_Class6.mp4" size="326339">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>fHxK4ivuVlfqCJxH16+MAE5uOzSx3EzgFH4impyptAc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Social_Class6.pdf" size="4089">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>du7pGu4Kigp+9Ks4xeJWuJ7t4kUNq6A6lPoQtZkv6cI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Social_Class6.pptx" size="413895">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>SiKO+Kwabbi2kFNNzAUBuV6EmyaUuFBNB+VgmWQHU+4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Social_Class7.mp4" size="326339">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>fHxK4ivuVlfqCJxH16+MAE5uOzSx3EzgFH4impyptAc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Social_Class7.pdf" size="4089">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>du7pGu4Kigp+9Ks4xeJWuJ7t4kUNq6A6lPoQtZkv6cI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Social_Class7.pptx" size="413895">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>SiKO+Kwabbi2kFNNzAUBuV6EmyaUuFBNB+VgmWQHU+4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Social_Class8.mp4" size="326339">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>fHxK4ivuVlfqCJxH16+MAE5uOzSx3EzgFH4impyptAc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Social_Class8.pdf" size="4089">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>du7pGu4Kigp+9Ks4xeJWuJ7t4kUNq6A6lPoQtZkv6cI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Social_Class8.pptx" size="413895">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>SiKO+Kwabbi2kFNNzAUBuV6EmyaUuFBNB+VgmWQHU+4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Social_Class9.mp4" size="326339">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>fHxK4ivuVlfqCJxH16+MAE5uOzSx3EzgFH4impyptAc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Social_Class9.pdf" size="4089">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>du7pGu4Kigp+9Ks4xeJWuJ7t4kUNq6A6lPoQtZkv6cI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Files\Social_Class9.pptx" size="413895">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>SiKO+Kwabbi2kFNNzAUBuV6EmyaUuFBNB+VgmWQHU+4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="JacobsDesktopApp.exe.config" size="565">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>KgVDbvLTnrGqv/bJep8nqNqmI3Qhdr1KgezDEArnBaw=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="LicenseKey\License_protected.pdf" size="7363">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>TJxd0un9+2ZTh8SenVco8spRVZhS+fYbpxumCDfnBQ0=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="CN=DESKTOP-S1737P8\user" issuerKeyHash="6140c14c452703434eec84313ed9cc90ee29fe60" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>DuVIhKgGf2DF3JMtfE8q3AzH6kQ1AdhbFeN/wIySFRU=</DigestValue></Reference></SignedInfo><SignatureValue>q76mi9x8mtiTwj6JLzniDK+NW5EgvRJDglxDSVaT5bB245Lw2Up86sp8rIDwNdmtYhaxSuc3lgdncXZX/4OgjyH+lEIye8mpIZ2zwwU1jqXeV74nk9wjq0tF7VfZseS8MBa7cm2b3XjPIkxBT2Bn5eIl+sxAAzVssmv8JaC8R/Q=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>s0YvDws73MkIrZ1gq2Y4DGWvgrkpp78AXl1rk0HHNPQ1DVtJdbiDlBipd2/XhJWmkZm4GiRXvp67HJ6pwoagtm1mRiP4sCctypiWXN3SHi/UgcFobD3mEDHJ8XlBXnPagMSA4iClROapAykZ5LuSe1qheCJAKgxKrpagfkYWAxU=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="1515928cc07fe3155bd8013544eac70cdc2a4f7c2d93dcc5607f06a88448e50e" Description="" Url=""><as:assemblyIdentity name="JacobsDesktopApp.exe" version="1.0.0.17" publicKeyToken="421340d46d2f798f" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=DESKTOP-S1737P8\user</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>EH0X1oXaTkUeh9TxKpo03szkV1mFW67e62VXv5Kcbqs=</DigestValue></Reference></SignedInfo><SignatureValue>cxD3/utF3i1EYPlK8munLrfCliwmAFmMtPyrVEXiLQSC1l4xYp0jz9IeBHBK3BJOFcj6Bt8Hgmcg4kZj6JQLyWENiyf7wAqjD3zIsbX1BkdRErU3XOuaoRGb3Vz/54Hx3YR8W7T+o/aobmo2DOzDiCqSUgtY01Jh5SlEuIJZ7MI=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>s0YvDws73MkIrZ1gq2Y4DGWvgrkpp78AXl1rk0HHNPQ1DVtJdbiDlBipd2/XhJWmkZm4GiRXvp67HJ6pwoagtm1mRiP4sCctypiWXN3SHi/UgcFobD3mEDHJ8XlBXnPagMSA4iClROapAykZ5LuSe1qheCJAKgxKrpagfkYWAxU=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIB6TCCAVKgAwIBAgIQSveulmDYkKFBfkKcE1P9SzANBgkqhkiG9w0BAQsFADAzMTEwLwYDVQQDHigARABFAFMASwBUAE8AUAAtAFMAMQA3ADMANwBQADgAXAB1AHMAZQByMB4XDTI1MDExNzA5NTAwNloXDTI2MDExNzE1NTAwNlowMzExMC8GA1UEAx4oAEQARQBTAEsAVABPAFAALQBTADEANwAzADcAUAA4AFwAdQBzAGUAcjCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEAs0YvDws73MkIrZ1gq2Y4DGWvgrkpp78AXl1rk0HHNPQ1DVtJdbiDlBipd2/XhJWmkZm4GiRXvp67HJ6pwoagtm1mRiP4sCctypiWXN3SHi/UgcFobD3mEDHJ8XlBXnPagMSA4iClROapAykZ5LuSe1qheCJAKgxKrpagfkYWAxUCAwEAATANBgkqhkiG9w0BAQsFAAOBgQCBJpwe+WplY2HzDNd29OLGeJCQFJKySsPZhDrvEcNLha8mAF4IPpD6qCCDpmu/uhjZM0aw3CUcqGHKL67wh9905MAH/2sC6gdh4bSq97cf8UMr51MF8T7JjSZVV+pTL3kMWW+1JO87Sn1gs9l16kMn0oTPYaeyKA09URPuAHBTVA==</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>
