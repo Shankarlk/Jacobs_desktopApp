@@ -22,6 +22,8 @@ namespace JacobsDesktopApp
         private void LicenseKeyReplacement_Load(object sender, EventArgs e)
         {
             lblSchl.Text = "              " + SchlName + "          ";
+            btnLogout.Visible = false;
+            lblSchl.Visible = false;
 
         }
 

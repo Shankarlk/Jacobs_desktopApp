@@ -10,26 +10,31 @@ using System.Windows.Forms;
 
 namespace JacobsDesktopApp
 {
-    public partial class Form1 : Form
+    public partial class LoginForm : Form
     {
         private readonly string username = "User";
         private readonly string adminuname = "Admin";
         private readonly string password = "user";
         private readonly string admin = "admin";
-        public Form1()
+        public LoginForm()
         {
             InitializeComponent();
             this.Width = 500;
             this.Height = 500;
             this.Size = new Size(500, 500);
-            groupBox6.Margin = new Padding(10, 10, 10, 50);
-            groupBox6.Location = new Point(groupBox6.Location.X, groupBox6.Location.Y - 0);  
+        }
+
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+            this.FormBorderStyle = FormBorderStyle.Sizable;
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+
             string uname = txtUsername.Text;
-            string pwd = txtPwd.Text;
+            string pwd = txtPassword.Text;
             string board = cmbBoard.SelectedItem?.ToString();
             if (uname == "")
             {
@@ -79,18 +84,6 @@ namespace JacobsDesktopApp
                 this.Hide();
             }
 
-        }
-
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Maximized;
-            btnCancel.Visible=false;
-            this.FormBorderStyle = FormBorderStyle.Sizable;
         }
     }
 }

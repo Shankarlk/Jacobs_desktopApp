@@ -7,6 +7,8 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Speech.Recognition;
 using System.Speech.Synthesis;
 using System.Text;
@@ -22,6 +24,8 @@ namespace JacobsDesktopApp
         private int slideIndex = 1;
         private int slideIndexs = 1;
         public string DocName { get; set; }
+        public string SubjectName { get; set; }
+        public string LessonName { get; set; }
         public int ClassNo { get; set; }
         public string SchlName { get; set; }
         private SpeechSynthesizer speechSynthesizer;
@@ -36,50 +40,58 @@ namespace JacobsDesktopApp
         private void OpenPPTFile_Load(object sender, EventArgs e)
         {
             string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            string opf = Path.Combine(baseDirectory, "Files", DocName);
+            string pptFilePath = ExtractEmbeddedResource(DocName, "pptx");
             string playimages = Path.Combine(baseDirectory, "Files", "play.png");
             Image playImage = Image.FromFile(playimages);
             Bitmap resizedPlayImage = new Bitmap(playImage, new Size(22, 22));
             btnPlayPause.Image = resizedPlayImage;
-            pptPresentation = pptApplication.Presentations.Open(opf, MsoTriState.msoFalse, MsoTriState.msoFalse, MsoTriState.msoFalse);
+            pptPresentation = pptApplication.Presentations.Open(pptFilePath, MsoTriState.msoFalse, MsoTriState.msoFalse, MsoTriState.msoFalse);
             
             DisplaySlide();
         }
 
+
+        private string ExtractEmbeddedResource(string resourceName, string extension)
+        {
+            string outputPath = Path.Combine(Path.GetTempPath(), resourceName);
+
+            using (Stream resourceStream = Assembly.GetExecutingAssembly().GetManifestResourceStream($"JacobsDesktopApp.Files.{resourceName}"))
+            {
+                if (resourceStream == null) return null;
+
+                using (FileStream fileStream = new FileStream(outputPath, FileMode.Create, FileAccess.Write))
+                {
+                    resourceStream.CopyTo(fileStream);
+                }
+            }
+            return outputPath;
+        }
         private float zoomFactor = 1.0f;
         private void DisplaySlide()
         {
-            string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            string outputFolder = Path.Combine(baseDirectory, "output_images");
-            if (!Directory.Exists(outputFolder))
-                Directory.CreateDirectory(outputFolder);
-            // Export the slide as an png file
-            string tempHtmlFile = Path.Combine(outputFolder, "temp.png");
+            string tempImagePath = Path.Combine(Path.GetTempPath(), "slide_temp.png");
+
             try
             {
-                pptPresentation.Slides[slideIndexs].Export(tempHtmlFile, "png", 1024, 768);
+                pptPresentation.Slides[slideIndexs].Export(tempImagePath, "png", 1024, 768);
+                RenderZoomedImage(tempImagePath);
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error :" + ex.Message);
             }
-            // Load the HTML file into the picture box control
-            //pictureBox1.ImageLocation = tempHtmlFile;
-            RenderZoomedImage(tempHtmlFile);
         }
+
         private void RenderZoomedImage(string imagePath)
         {
             if (!File.Exists(imagePath)) return;
 
-            // Load the original image
-            using (System.Drawing.Image originalImage = System.Drawing.Image.FromFile(imagePath))
+            using (Image originalImage = Image.FromFile(imagePath))
             {
-                // Calculate the zoomed dimensions
                 int newWidth = (int)(originalImage.Width * zoomFactor);
                 int newHeight = (int)(originalImage.Height * zoomFactor);
-
-                // Create a new bitmap with the zoomed dimensions
                 Bitmap zoomedImage = new Bitmap(newWidth, newHeight);
+
                 using (Graphics graphics = Graphics.FromImage(zoomedImage))
                 {
                     graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
@@ -107,10 +119,21 @@ namespace JacobsDesktopApp
         private void button1_Click_1(object sender, EventArgs e)
         {
             speechSynthesizer.SpeakAsyncCancelAll();
-            EnglishFiles englishFiles = new EnglishFiles();
-            englishFiles.ClassNo = ClassNo;
-            englishFiles.Show();
+            //EnglishFiles englishFiles = new EnglishFiles();
+            speechSynthesizer.SpeakAsyncCancelAll();
+            LessonsList openPPTFile = new LessonsList();
+            openPPTFile.LessonName = LessonName;
+            openPPTFile.SubjectName = SubjectName;
+            openPPTFile.ClassNo = ClassNo;
+            openPPTFile.SchlName = SchlName;
+            openPPTFile.Show();
             this.Hide();
+            if (pptPresentation != null)
+            {
+                pptPresentation.Close();
+                Marshal.ReleaseComObject(pptPresentation);
+                pptPresentation = null;
+            }
 
         }
 
@@ -229,6 +252,16 @@ namespace JacobsDesktopApp
             return slideText;
         }
 
+        private void OpenPPTFile_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            System.Windows.Forms.Application.Exit();
+            if (pptPresentation != null)
+            {
+                pptPresentation.Close();
+                Marshal.ReleaseComObject(pptPresentation);
+                pptPresentation = null;
+            }
+        }
     }
 }
 

@@ -30,13 +30,15 @@
         {
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblExtractedTexts = new System.Windows.Forms.Label();
+            this.button7 = new System.Windows.Forms.Button();
+            this.btnPlayPause = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.btnPlayPause = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -54,6 +56,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lblExtractedTexts);
+            this.groupBox1.Controls.Add(this.button7);
             this.groupBox1.Controls.Add(this.btnPlayPause);
             this.groupBox1.Controls.Add(this.button6);
             this.groupBox1.Controls.Add(this.button5);
@@ -69,6 +73,37 @@
             this.groupBox1.Size = new System.Drawing.Size(1208, 749);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
+            // 
+            // lblExtractedTexts
+            // 
+            this.lblExtractedTexts.AutoSize = true;
+            this.lblExtractedTexts.Location = new System.Drawing.Point(274, 62);
+            this.lblExtractedTexts.Name = "lblExtractedTexts";
+            this.lblExtractedTexts.Size = new System.Drawing.Size(0, 17);
+            this.lblExtractedTexts.TabIndex = 10;
+            // 
+            // button7
+            // 
+            this.button7.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button7.BackColor = System.Drawing.SystemColors.Desktop;
+            this.button7.ForeColor = System.Drawing.SystemColors.Control;
+            this.button7.Location = new System.Drawing.Point(416, 0);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(123, 28);
+            this.button7.TabIndex = 9;
+            this.button7.Text = "Joining Letters";
+            this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // btnPlayPause
+            // 
+            this.btnPlayPause.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnPlayPause.Location = new System.Drawing.Point(545, 0);
+            this.btnPlayPause.Name = "btnPlayPause";
+            this.btnPlayPause.Size = new System.Drawing.Size(49, 28);
+            this.btnPlayPause.TabIndex = 8;
+            this.btnPlayPause.UseVisualStyleBackColor = true;
+            this.btnPlayPause.Click += new System.EventHandler(this.btnPlayPause_Click);
             // 
             // button6
             // 
@@ -94,7 +129,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox1.Location = new System.Drawing.Point(54, 22);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(1091, 723);
@@ -104,13 +139,15 @@
             // button4
             // 
             this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button4.BackColor = System.Drawing.SystemColors.Desktop;
+            this.button4.ForeColor = System.Drawing.SystemColors.Control;
             this.button4.Location = new System.Drawing.Point(1145, 1);
             this.button4.Name = "button4";
             this.button4.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.button4.Size = new System.Drawing.Size(59, 32);
             this.button4.TabIndex = 2;
             this.button4.Text = "Back";
-            this.button4.UseVisualStyleBackColor = true;
+            this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button3
@@ -137,16 +174,6 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // btnPlayPause
-            // 
-            this.btnPlayPause.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnPlayPause.Location = new System.Drawing.Point(545, 0);
-            this.btnPlayPause.Name = "btnPlayPause";
-            this.btnPlayPause.Size = new System.Drawing.Size(49, 28);
-            this.btnPlayPause.TabIndex = 8;
-            this.btnPlayPause.UseVisualStyleBackColor = true;
-            this.btnPlayPause.Click += new System.EventHandler(this.btnPlayPause_Click);
-            // 
             // OpenPdfFile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -163,6 +190,7 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.OpenPdfFile_Load);
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -178,6 +206,8 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button btnPlayPause;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Label lblExtractedTexts;
         //private Spire.PdfViewer.Forms.PdfViewer pdfViewer1;
     }
 }

@@ -29,7 +29,13 @@ namespace JacobsDesktopApp
         public string Board { get; set; }
         private void Home_Load(object sender, EventArgs e)
         {
+            groupBox2.Left = (this.ClientSize.Width - groupBox2.Width) / 2;
+            btnLogout.Visible = false;
+            lblSchl.Visible = false;
+            // Center vertically (optional)
+            groupBox2.Top = (this.ClientSize.Height - groupBox2.Height) / 5;
             lblSchl.Text = "              " + SchoolName + "          ";
+            label1.Left = (this.ClientSize.Width - label1.Width) / 2;
             try
             {
                 string encryptedFilePath = Path.Combine(baseDirectory, "LicenseKey", "License_protected.txt");
@@ -51,7 +57,7 @@ namespace JacobsDesktopApp
                 if (!ValidateLicense(txtContent))
                 {
                     MessageBox.Show("Invalid or expired license. The application will now close.", "License Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    Application.Exit();
+                    //Application.Exit();
                 }
 
                 if (File.Exists(decryptedFilePath))
@@ -337,6 +343,35 @@ namespace JacobsDesktopApp
             subjects.SchlName = SchoolName;
             subjects.ClassNo = 10;
             subjects.Show();
+            this.Hide();
+        }
+
+        private void groupBox6_Enter(object sender, EventArgs e)
+        {
+            btnLogout.Visible = true;
+        }
+
+        private void labelArrow_Click(object sender, EventArgs e)
+        {
+            btnLogout.Visible = true;
+        }
+
+        private void Home_Click(object sender, EventArgs e)
+        {
+            Point mousePos = this.PointToClient(Cursor.Position);
+
+            // Check if the click is outside labelArrow and btnLogout
+            if (!labelArrow.Bounds.Contains(mousePos) && !btnLogout.Bounds.Contains(mousePos))
+            {
+                btnLogout.Visible = false;
+            }
+
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            Form1 home = new Form1();
+            home.Show();
             this.Hide();
         }
     }

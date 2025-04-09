@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace JacobsDesktopApp
 {
@@ -37,6 +38,13 @@ namespace JacobsDesktopApp
         {
             LoadDocumentsForClass(ClassNo);
             lblSchl.Text = "              " + SchlName + "          ";
+            button2.Margin = new Padding(10, 10, 10, 50);
+            button2.Location = new Point(button2.Location.X, button2.Location.Y - 40);
+            btnLogout.Visible = false;
+            lblSchl.Visible = false;
+            lbllesson.Left = (this.ClientSize.Width - lbllesson.Width) / 2;
+            grpLesson.Left = (this.ClientSize.Width - grpLesson.Width) / 2;
+            grpLesson.Top = (this.ClientSize.Height - grpLesson.Height) / 3;
         }
         private void LoadDocumentsForClass(int classNo)
         {
@@ -49,7 +57,7 @@ namespace JacobsDesktopApp
                 int startY = 50;
                 int midIndex = (documents.Count + 1) / 2;
 
-                groupBox2.Controls.Clear();
+                grpLesson.Controls.Clear();
 
                 for (int i = 0; i < documents.Count; i++)
                 {
@@ -62,11 +70,12 @@ namespace JacobsDesktopApp
                         Text = $"• {documents[i]}",
                         AutoSize = true,
                         Location = new System.Drawing.Point(xPosition, yPosition),
-                        Tag = documents[i]
+                        Tag = documents[i],
+                        BackColor = Color.LightGray
                     };
 
                     documentLinkLabel.LinkClicked += DocumentLinkLabel_LinkClicked;
-                    groupBox2.Controls.Add(documentLinkLabel);
+                    grpLesson.Controls.Add(documentLinkLabel);
                 }
             }
             else
@@ -89,13 +98,27 @@ namespace JacobsDesktopApp
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnBack_Click(object sender, EventArgs e)
         {
-                Subjects englishFiles = new Subjects();
-                englishFiles.ClassNo = ClassNo;
-                englishFiles.SchlName = SchlName;
-                englishFiles.Show();
-                this.Hide();
+            Subjects englishFiles = new Subjects();
+            englishFiles.ClassNo = ClassNo;
+            englishFiles.SchlName = SchlName;
+            englishFiles.Show();
+            this.Hide();
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+
+            Form1 home = new Form1();
+            home.Show();
+            this.Hide();
+        }
+
+        private void labelArrow_Click(object sender, EventArgs e)
+        {
+
+            btnLogout.Visible = true;
         }
     }
 }

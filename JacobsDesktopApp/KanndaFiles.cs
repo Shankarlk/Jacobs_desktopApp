@@ -36,7 +36,11 @@ namespace JacobsDesktopApp
 
         private void KanndaFiles_Load(object sender, EventArgs e)
         {
-
+            btnLogout.Visible = false;
+            lblSchl.Visible = false;
+            lbllesson.Left = (this.ClientSize.Width - lbllesson.Width) / 2;
+            grpLesson.Left = (this.ClientSize.Width - grpLesson.Width) / 2;
+            grpLesson.Top = (this.ClientSize.Height - grpLesson.Height) / 3;
             LoadDocumentsForClass(ClassNo);
             lblSchl.Text = "              " + SchlName + "          ";
         }
@@ -51,7 +55,7 @@ namespace JacobsDesktopApp
                 int startY = 50;
                 int midIndex = (documents.Count + 1) / 2;
 
-                groupBox2.Controls.Clear();
+                grpLesson.Controls.Clear();
 
                 for (int i = 0; i < documents.Count; i++)
                 {
@@ -64,11 +68,12 @@ namespace JacobsDesktopApp
                         Text = $"• {documents[i]}",
                         AutoSize = true,
                         Location = new System.Drawing.Point(xPosition, yPosition),
-                        Tag = documents[i]
+                        Tag = documents[i],
+                        BackColor = Color.LightGray
                     };
 
                     documentLinkLabel.LinkClicked += DocumentLinkLabel_LinkClicked;
-                    groupBox2.Controls.Add(documentLinkLabel);
+                    grpLesson.Controls.Add(documentLinkLabel);
                 }
             }
             else
@@ -98,6 +103,29 @@ namespace JacobsDesktopApp
             englishFiles.SchlName = SchlName;
             englishFiles.Show();
             this.Hide();
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            Subjects englishFiles = new Subjects();
+            englishFiles.ClassNo = ClassNo;
+            englishFiles.SchlName = SchlName;
+            englishFiles.Show();
+            this.Hide();
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+
+            Form1 home = new Form1();
+            home.Show();
+            this.Hide();
+        }
+
+        private void labelArrow_Click(object sender, EventArgs e)
+        {
+
+            btnLogout.Visible = true;
         }
     }
 }

@@ -245,7 +245,9 @@ namespace JacobsDesktopApp
                         Text = documents[i],
                         Size = new System.Drawing.Size(buttonWidth, buttonHeight),
                         Location = new System.Drawing.Point(10, startY + (i * (buttonHeight + spacing))),
-                        Tag = documents[i] // Store the document path in the Tag property
+                        Tag = documents[i],
+                        BackColor = Color.LightGray,
+                        ForeColor = Color.Blue
                     };
                     documentButton.Click += DocumentButton_Click;
                     groupBox2.Controls.Add(documentButton);
@@ -269,7 +271,9 @@ namespace JacobsDesktopApp
                         Text = exercises[i],
                         Size = new System.Drawing.Size(buttonWidth, buttonHeight),
                         Location = new System.Drawing.Point(10, startY + (i * (buttonHeight + spacing))),
-                        Tag = exercises[i] 
+                        Tag = exercises[i],
+                        BackColor = Color.LightGray,
+                        ForeColor = Color.Blue
                     };
                     documentButton.Click += DocumentButton_Click;
                     groupBox4.Controls.Add(documentButton);
@@ -295,6 +299,8 @@ namespace JacobsDesktopApp
                     english.DocName = documentPath;
                     english.ClassNo = ClassNo;
                     english.SchlName = SchlName;
+                    english.LessonName = LessonName;
+                    english.SubjectName = SubjectName;
                     english.Show();
                     this.Hide();
                 }
@@ -304,6 +310,8 @@ namespace JacobsDesktopApp
                     openPPTFile.DocName = documentPath;
                     openPPTFile.ClassNo = ClassNo;
                     openPPTFile.SchlName = SchlName;
+                    openPPTFile.LessonName = LessonName;
+                    openPPTFile.SubjectName = SubjectName;
                     openPPTFile.Show();
                     this.Hide();
                 }
@@ -313,6 +321,8 @@ namespace JacobsDesktopApp
                     openPPTFile.DocName = documentPath;
                     openPPTFile.ClassNo = ClassNo;
                     openPPTFile.SchlName = SchlName;
+                    openPPTFile.LessonName = LessonName;
+                    openPPTFile.SubjectName = SubjectName;
                     openPPTFile.Show();
                     this.Hide();
                 }
@@ -323,6 +333,8 @@ namespace JacobsDesktopApp
         {
             lblSchl.Text = "              " + SchlName + "          ";
             lblLesson.Text = "              " + LessonName + "          ";
+            btnLogout.Visible = false;
+            lblSchl.Visible = false;
             LoadDocumentsForClass(ClassNo, LessonName);
         }
 
@@ -376,6 +388,73 @@ namespace JacobsDesktopApp
                 englishFiles.Show();
                 this.Hide();
             }
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+
+            Form1 home = new Form1();
+            home.Show();
+            this.Hide();
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+
+            if (SubjectName == "English")
+            {
+                EnglishFiles englishFiles = new EnglishFiles();
+                englishFiles.ClassNo = ClassNo;
+                englishFiles.SchlName = SchlName;
+                englishFiles.Show();
+                this.Hide();
+            }
+            else if (SubjectName == "Hindi")
+            {
+                HindiFiles englishFiles = new HindiFiles();
+                englishFiles.ClassNo = ClassNo;
+                englishFiles.SchlName = SchlName;
+                englishFiles.Show();
+                this.Hide();
+            }
+            else if (SubjectName == "Kannada")
+            {
+                KanndaFiles englishFiles = new KanndaFiles();
+                englishFiles.ClassNo = ClassNo;
+                englishFiles.SchlName = SchlName;
+                englishFiles.Show();
+                this.Hide();
+            }
+            else if (SubjectName == "Math")
+            {
+                MathFiles englishFiles = new MathFiles();
+                englishFiles.ClassNo = ClassNo;
+                englishFiles.SchlName = SchlName;
+                englishFiles.Show();
+                this.Hide();
+            }
+            else if (SubjectName == "Science")
+            {
+                ScienceFile englishFiles = new ScienceFile();
+                englishFiles.ClassNo = ClassNo;
+                englishFiles.SchlName = SchlName;
+                englishFiles.Show();
+                this.Hide();
+            }
+            else if (SubjectName == "Social")
+            {
+                SocialFiles englishFiles = new SocialFiles();
+                englishFiles.ClassNo = ClassNo;
+                englishFiles.SchlName = SchlName;
+                englishFiles.Show();
+                this.Hide();
+            }
+        }
+
+        private void labelArrow_Click(object sender, EventArgs e)
+        {
+
+            btnLogout.Visible = true;
         }
     }
 }
