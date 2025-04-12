@@ -46,52 +46,76 @@ namespace JacobsDesktopApp
         {
             if (lessons.TryGetValue(classNo, out List<string> documents))
             {
-                int linkLabelHeight = 30;
-                int spacing = 20;
-                int startX1 = 50;
-                int startX2 = 280;
-                int startY = 50;
-                int midIndex = (documents.Count + 1) / 2;
-
                 grpLesson.Controls.Clear();
 
-                for (int i = 0; i < documents.Count; i++)
+                FlowLayoutPanel flowPanel = new FlowLayoutPanel
                 {
-                    int column = i < midIndex ? 0 : 1;
-                    int xPosition = column == 0 ? startX1 : startX2;
-                    int yPosition = startY + ((i % midIndex) * (linkLabelHeight + spacing));
+                    Dock = DockStyle.Fill,
+                    AutoScroll = true,
+                    WrapContents = true,
+                    FlowDirection = FlowDirection.LeftToRight,
+                    Padding = new Padding(20),
+                };
 
-                    LinkLabel documentLinkLabel = new LinkLabel
+                foreach (var doc in documents)
+                {
+                    Panel folderItem = new Panel
                     {
-                        Text = $"• {documents[i]}",
-                        AutoSize = true,
-                        Location = new System.Drawing.Point(xPosition, yPosition),
-                        Tag = documents[i],
-                        BackColor = Color.LightGray
+                        Width = 100,
+                        Height = 100,
+                        Margin = new Padding(10)
                     };
 
-                    documentLinkLabel.LinkClicked += DocumentLinkLabel_LinkClicked;
-                    grpLesson.Controls.Add(documentLinkLabel);
+                    PictureBox folderIcon = new PictureBox
+                    {
+                        Image = Properties.Resources.folder, // Replace with your folder image in Resources
+                        Size = new Size(64, 64),
+                        SizeMode = PictureBoxSizeMode.StretchImage,
+                        Location = new Point(18, 0),
+                        Cursor = Cursors.Hand,
+                        Tag = doc
+                    };
+                    folderIcon.Click += FolderIcon_Click;
+
+                    Label folderLabel = new Label
+                    {
+                        Text = doc,
+                        AutoSize = false,
+                        Width = 100,
+                        Height = 30,
+                        TextAlign = ContentAlignment.MiddleCenter,
+                        Location = new Point(0, 70)
+                    };
+
+                    folderItem.Controls.Add(folderIcon);
+                    folderItem.Controls.Add(folderLabel);
+                    flowPanel.Controls.Add(folderItem);
                 }
+
+                grpLesson.Controls.Add(flowPanel); // Add the flow layout to your GroupBox
             }
             else
             {
                 MessageBox.Show($"No documents found for this subject of class {classNo}.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-        private void DocumentLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void FolderIcon_Click(object sender, EventArgs e)
         {
-            if (sender is LinkLabel linkLabel)
+            if (sender is PictureBox pic)
             {
-                LessonsList openPPTFile = new LessonsList();
-                openPPTFile.LessonName = linkLabel.Text.Substring(2);
-                openPPTFile.SubjectName = "Hindi";
-                openPPTFile.ClassNo = ClassNo;
-                openPPTFile.SchlName = SchlName;
+                string lessonName = pic.Tag.ToString();
+
+                LessonsList openPPTFile = new LessonsList
+                {
+                    LessonName = lessonName,
+                    SubjectName = "Hindi",
+                    ClassNo = ClassNo,
+                    SchlName = SchlName
+                };
+
                 openPPTFile.Show();
                 this.Hide();
             }
-
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -115,6 +139,16 @@ namespace JacobsDesktopApp
         {
 
             btnLogout.Visible = true;
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+
+            Subjects englishFiles = new Subjects();
+            englishFiles.ClassNo = ClassNo;
+            englishFiles.SchlName = SchlName;
+            englishFiles.Show();
+            this.Hide();
         }
     }
 }

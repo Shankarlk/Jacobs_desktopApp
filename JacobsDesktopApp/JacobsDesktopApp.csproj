@@ -291,6 +291,7 @@
     <Compile Include="Subjects.Designer.cs">
       <DependentUpon>Subjects.cs</DependentUpon>
     </Compile>
+    <None Include="Resources\folder.png" />
     <EmbeddedResource Include="EnglishFiles.resx">
       <DependentUpon>EnglishFiles.cs</DependentUpon>
     </EmbeddedResource>
