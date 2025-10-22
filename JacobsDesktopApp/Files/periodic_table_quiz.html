@@ -1,0 +1,366 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sowjybook Periodic Table Quiz</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+            padding: 20px;
+        }
+
+        .quiz-container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .wavy-text {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #ff6b6b;
+            margin-bottom: 20px;
+        }
+
+        .wavy-text span {
+            display: inline-block;
+            animation: wave 1.5s infinite;
+            animation-delay: calc(0.1s * var(--i));
+        }
+
+        @keyframes wave {
+            0%, 40%, 100% { transform: translateY(0); }
+            20% { transform: translateY(-10px); }
+        }
+
+        .question {
+            margin: 20px 0;
+            font-size: 1.2em;
+            color: #333;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .option {
+            background: #f0f0f0;
+            padding: 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-size: 1em;
+        }
+
+        .option:hover {
+            background: #4ecdc4;
+            color: white;
+        }
+
+        .option.selected {
+            background: #ff6b6b;
+            color: white;
+        }
+
+        #submit-btn, #next-btn, #restart-btn {
+            background: #ff6b6b;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            margin: 10px;
+            transition: background 0.3s;
+        }
+
+        #submit-btn:hover, #next-btn:hover, #restart-btn:hover {
+            background: #e55a5a;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #333;
+        }
+
+        @media (max-width: 500px) {
+            .quiz-container {
+                padding: 20px;
+            }
+            .wavy-text {
+                font-size: 2em;
+            }
+            .question {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1 class="wavy-text">
+            <span style="--i:1">P</span>
+            <span style="--i:2">e</span>
+            <span style="--i:3">r</span>
+            <span style="--i:4">i</span>
+            <span style="--i:5">o</span>
+            <span style="--i:6">d</span>
+            <span style="--i:7">i</span>
+            <span style="--i:8">c</span>
+            <span style="--i:9"> </span>
+            <span style="--i:10">T</span>
+            <span style="--i:11">a</span>
+            <span style="--i:12">b</span>
+            <span style="--i:13">l</span>
+            <span style="--i:14">e</span>
+            <span style="--i:15"> </span>
+            <span style="--i:16">Q</span>
+            <span style="--i:17">u</span>
+            <span style="--i:18">i</span>
+            <span style="--i:19">z</span>
+        </h1>
+        <div id="question"></div>
+        <div id="options" class="options"></div>
+        <button id="submit-btn" style="display: none;">Submit</button>
+        <button id="next-btn">Next</button>
+        <button id="restart-btn" style="display: none;">Restart Quiz</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                question: "What is the chemical symbol for Gold?",
+                options: ["Au", "Ag", "Fe", "Cu"],
+                answer: "Au"
+            },
+            {
+                question: "Which element is a noble gas with the symbol He?",
+                options: ["Hydrogen", "Helium", "Hafnium", "Holmium"],
+                answer: "Helium"
+            },
+            {
+                question: "What is the atomic number of Carbon?",
+                options: ["6", "8", "12", "14"],
+                answer: "6"
+            },
+            {
+                question: "Which element is essential for life and found in water?",
+                options: ["Oxygen", "Nitrogen", "Sulfur", "Phosphorus"],
+                answer: "Oxygen"
+            },
+            {
+                question: "What is the symbol for Iron?",
+                options: ["Ir", "Fe", "In", "I"],
+                answer: "Fe"
+            },
+            {
+                question: "Which element is a liquid at room temperature?",
+                options: ["Mercury", "Iron", "Gold", "Silver"],
+                answer: "Mercury"
+            },
+            {
+                question: "What is the chemical symbol for Sodium?",
+                options: ["Na", "So", "Sd", "Sn"],
+                answer: "Na"
+            },
+            {
+                question: "Which element has the highest atomic number naturally occurring?",
+                options: ["Uranium", "Plutonium", "Neptunium", "Thorium"],
+                answer: "Uranium"
+            },
+            {
+                question: "What is the symbol for Potassium?",
+                options: ["Po", "K", "Pt", "P"],
+                answer: "K"
+            },
+            {
+                question: "Which element is used in light bulbs as a filament?",
+                options: ["Tungsten", "Copper", "Aluminum", "Zinc"],
+                answer: "Tungsten"
+            },
+            {
+                question: "What is the chemical symbol for Silver?",
+                options: ["Si", "Ag", "Sr", "Sn"],
+                answer: "Ag"
+            },
+            {
+                question: "Which element is the most abundant in Earth's crust?",
+                options: ["Oxygen", "Silicon", "Aluminum", "Iron"],
+                answer: "Oxygen"
+            },
+            {
+                question: "What is the atomic number of Hydrogen?",
+                options: ["1", "2", "3", "4"],
+                answer: "1"
+            },
+            {
+                question: "Which element is a halogen with the symbol Cl?",
+                options: ["Chlorine", "Calcium", "Chromium", "Cobalt"],
+                answer: "Chlorine"
+            },
+            {
+                question: "What is the symbol for Calcium?",
+                options: ["Ca", "Cl", "Ce", "Cu"],
+                answer: "Ca"
+            },
+            {
+                question: "Which element is used in batteries and has the symbol Li?",
+                options: ["Lead", "Lithium", "Lanthanum", "Lutetium"],
+                answer: "Lithium"
+            },
+            {
+                question: "What is the chemical symbol for Nitrogen?",
+                options: ["Ni", "N", "Ne", "Na"],
+                answer: "N"
+            },
+            {
+                question: "Which element is a gas essential for respiration?",
+                options: ["Oxygen", "Carbon Dioxide", "Nitrogen", "Helium"],
+                answer: "Oxygen"
+            },
+            {
+                question: "What is the symbol for Aluminum?",
+                options: ["Al", "Au", "Ag", "Am"],
+                answer: "Al"
+            },
+            {
+                question: "Which element is radioactive and used in nuclear reactors?",
+                options: ["Uranium", "Iron", "Copper", "Zinc"],
+                answer: "Uranium"
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+
+        const questionEl = document.getElementById('question');
+        const optionsEl = document.getElementById('options');
+        const submitBtn = document.getElementById('submit-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const restartBtn = document.getElementById('restart-btn');
+        const resultEl = document.getElementById('result');
+
+        function loadQuestion() {
+            const q = questions[currentQuestion];
+            questionEl.textContent = q.question;
+            optionsEl.innerHTML = '';
+            q.options.forEach((option, index) => {
+                const div = document.createElement('div');
+                div.className = 'option';
+                div.textContent = option;
+                div.addEventListener('click', () => selectOption(div, option));
+                optionsEl.appendChild(div);
+            });
+            submitBtn.style.display = 'block';
+            nextBtn.style.display = 'none';
+            resultEl.textContent = '';
+        }
+
+        function selectOption(div, option) {
+            document.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
+            div.classList.add('selected');
+            submitBtn.dataset.selected = option;
+        }
+
+        submitBtn.addEventListener('click', () => {
+            const selected = submitBtn.dataset.selected;
+            if (!selected) {
+                alert('Please select an option!');
+                return;
+            }
+            if (selected === questions[currentQuestion].answer) {
+                score++;
+                resultEl.textContent = 'Correct!';
+                resultEl.style.color = '#4ecdc4';
+            } else {
+                resultEl.textContent = `Wrong! The correct answer is ${questions[currentQuestion].answer}.`;
+                resultEl.style.color = '#ff6b6b';
+            }
+            submitBtn.style.display = 'none';
+            nextBtn.style.display = 'block';
+        });
+
+        nextBtn.addEventListener('click', () => {
+            currentQuestion++;
+            if (currentQuestion < questions.length) {
+                loadQuestion();
+            } else {
+                questionEl.textContent = 'Quiz Completed!';
+                optionsEl.innerHTML = '';
+                resultEl.textContent = `Your score: ${score} out of ${questions.length}`;
+                submitBtn.style.display = 'none';
+                nextBtn.style.display = 'none';
+                restartBtn.style.display = 'block';
+            }
+        });
+
+        restartBtn.addEventListener('click', () => {
+            currentQuestion = 0;
+            score = 0;
+            restartBtn.style.display = 'none';
+            loadQuestion();
+        });
+
+        loadQuestion();
+    </script>
+</body>
+</html>

@@ -22,8 +22,8 @@ namespace JacobsDesktopApp
         private Dictionary<int, List<string>> classDocuments;
         private Dictionary<int, List<string>> EnglishclassDocuments = new Dictionary<int, List<string>>
     {
-        { 1, new List<string> { "English_Class1.pdf", "English_Class1.pptx", "English_Class1.mp4" } },
-        { 2, new List<string> { "English_Class2.pdf", "English_Class2.pptx", "English_Class2.mp4" } },
+        { 1, new List<string> { "flame_test_simulator.html", "periodic_table_quiz.html", "A_human_brain__3d.glb" } },
+        { 2, new List<string> { "English_Class1.pdf", "English_Class1.pptx", "English_Class1.mp4" } },
         { 3, new List<string> { "English_Class3.pdf", "English_Class3.pptx", "English_Class3.mp4" } },
         { 4, new List<string> { "English_Class4.pdf", "English_Class4.pptx", "English_Class4.mp4" } },
         { 5, new List<string> { "English_Class5.pdf", "English_Class5.pptx", "English_Class5.mp4" } },
@@ -343,6 +343,30 @@ namespace JacobsDesktopApp
                         SubjectName = SubjectName
                     };
                     mp4Viewer.Show();
+                    this.Hide();
+                }
+                else if (extension == ".html" || extension == ".htm")
+                {
+                    OpenHtml htmlViewer = new OpenHtml();
+                    htmlViewer.DocName = documentPath;
+                    htmlViewer.ClassNo = ClassNo;
+                    htmlViewer.SchlName = SchlName;
+                    htmlViewer.LessonName = LessonName;
+                    htmlViewer.SubjectName = SubjectName;
+                    htmlViewer.Show();
+                    this.Hide();
+                }
+                else if (extension == ".glb")
+                {
+                    OpenGlb glbViewer = new OpenGlb
+                    {
+                        DocName = documentPath,
+                        ClassNo = ClassNo,
+                        SchlName = SchlName,
+                        LessonName = LessonName,
+                        SubjectName = SubjectName
+                    };
+                    glbViewer.Show();
                     this.Hide();
                 }
             }

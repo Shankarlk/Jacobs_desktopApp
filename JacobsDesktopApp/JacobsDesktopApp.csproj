@@ -52,10 +52,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>CF035243680F3A08B37674DCE0383B3B819DB626</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>BD7B69266B3F7414A95F92754840269AF7D33E76</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>JacobsDesktopApp_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>JacobsDesktopApp_1_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -139,6 +139,15 @@
     <Reference Include="Microsoft.Office.Interop.PowerPoint, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Office.Interop.PowerPoint.15.0.4420.1018\lib\net20\Microsoft.Office.Interop.PowerPoint.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Web.WebView2.Core, Version=1.0.3537.50, Culture=neutral, PublicKeyToken=2a8ab48044d2601e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.WebView2.1.0.3537.50\lib\net462\Microsoft.Web.WebView2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.WebView2.WinForms, Version=1.0.3537.50, Culture=neutral, PublicKeyToken=2a8ab48044d2601e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.WebView2.1.0.3537.50\lib\net462\Microsoft.Web.WebView2.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.WebView2.Wpf, Version=1.0.3537.50, Culture=neutral, PublicKeyToken=2a8ab48044d2601e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.WebView2.1.0.3537.50\lib\net462\Microsoft.Web.WebView2.Wpf.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -253,6 +262,18 @@
     <Compile Include="MathFiles.Designer.cs">
       <DependentUpon>MathFiles.cs</DependentUpon>
     </Compile>
+    <Compile Include="OpenGlb.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OpenGlb.Designer.cs">
+      <DependentUpon>OpenGlb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OpenHtml.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OpenHtml.Designer.cs">
+      <DependentUpon>OpenHtml.cs</DependentUpon>
+    </Compile>
     <Compile Include="OpenMp4.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -291,6 +312,10 @@
     <Compile Include="Subjects.Designer.cs">
       <DependentUpon>Subjects.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Files\A_human_brain__3d.glb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <None Include="JacobsDesktopApp_1_TemporaryKey.pfx" />
     <None Include="Resources\folder.png" />
     <EmbeddedResource Include="EnglishFiles.resx">
       <DependentUpon>EnglishFiles.cs</DependentUpon>
@@ -318,6 +343,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MathFiles.resx">
       <DependentUpon>MathFiles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpenGlb.resx">
+      <DependentUpon>OpenGlb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpenHtml.resx">
+      <DependentUpon>OpenHtml.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OpenMp4.resx">
       <DependentUpon>OpenMp4.cs</DependentUpon>
@@ -560,6 +591,9 @@
     <EmbeddedResource Include="Files\Math_Class9.pptx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="AppFiles\GlbViewer.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <Content Include="AppFiles\logoandbg.png" />
     <Content Include="AppFiles\dummy-school-logo 1.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -575,9 +609,15 @@
     </Content>
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <EmbeddedResource Include="Files\flame_test_simulator.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <Content Include="Files\pause.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <EmbeddedResource Include="Files\periodic_table_quiz.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <Content Include="Files\play.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -973,4 +1013,11 @@
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Microsoft.Web.WebView2.1.0.3537.50\build\Microsoft.Web.WebView2.targets" Condition="Exists('..\packages\Microsoft.Web.WebView2.1.0.3537.50\build\Microsoft.Web.WebView2.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Web.WebView2.1.0.3537.50\build\Microsoft.Web.WebView2.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Web.WebView2.1.0.3537.50\build\Microsoft.Web.WebView2.targets'))" />
+  </Target>
 </Project>
