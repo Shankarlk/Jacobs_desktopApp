@@ -22,52 +22,33 @@ namespace JacobsDesktopApp
         public OpenMp4()
         {
             InitializeComponent();
+            this.FormClosing += OpenMp4_FormClosing;
         }
+
+        
+
+
 
         private void OpenMp4_Load(object sender, EventArgs e)
         {
-            //button1.Visible = false;
-            string tempPath = Path.Combine(Path.GetTempPath(), DocName);
-
-            // Extract MP4 from embedded resources
-            ExtractEmbeddedResource("JacobsDesktopApp.Files." + DocName, tempPath);
-
-            // Check if extraction was successful
-            if (!File.Exists(tempPath))
+            if (!File.Exists(DocName))
             {
-                MessageBox.Show("Failed to extract MP4 file.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("File not found:\n" + DocName);
                 return;
             }
 
-            // Play the extracted MP4 file
-            axWindowsMediaPlayer1.URL = tempPath;
+            axWindowsMediaPlayer1.URL = DocName;
             axWindowsMediaPlayer1.Ctlcontrols.play();
+         
         }
 
-        private void ExtractEmbeddedResource(string resourceName, string outputPath)
+        private void OpenMp4_FormClosing(object sender, FormClosingEventArgs e)
         {
-            try
-            {
-                Assembly assembly = Assembly.GetExecutingAssembly();
-                using (Stream resourceStream = assembly.GetManifestResourceStream(resourceName))
-                {
-                    if (resourceStream == null)
-                    {
-                        MessageBox.Show("Resource not found: " + resourceName);
-                        return;
-                    }
-
-                    using (FileStream fileStream = new FileStream(outputPath, FileMode.Create, FileAccess.Write))
-                    {
-                        resourceStream.CopyTo(fileStream);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                //MessageBox.Show("Error extracting file: " + ex.Message);
-            }
+            axWindowsMediaPlayer1.Ctlcontrols.stop();
+            axWindowsMediaPlayer1.close();
         }
+
+       
 
         private void button1_Click(object sender, EventArgs e)
         {

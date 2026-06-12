@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static iText.StyledXmlParser.Jsoup.Select.Evaluator;
+using static System.Windows.Forms.AxHost;
+using System.Drawing.Drawing2D;
 
 namespace JacobsDesktopApp
 {
@@ -20,19 +22,19 @@ namespace JacobsDesktopApp
         public string SubjectName { get; set; }
         public string Board { get; set; }
         private Dictionary<int, List<string>> classDocuments;
-        private Dictionary<int, List<string>> EnglishclassDocuments = new Dictionary<int, List<string>>
-    {
-        { 1, new List<string> { "flame_test_simulator.html", "periodic_table_quiz.html", "A_human_brain__3d.glb" } },
-        { 2, new List<string> { "English_Class1.pdf", "English_Class1.pptx", "English_Class1.mp4" } },
-        { 3, new List<string> { "English_Class3.pdf", "English_Class3.pptx", "English_Class3.mp4" } },
-        { 4, new List<string> { "English_Class4.pdf", "English_Class4.pptx", "English_Class4.mp4" } },
-        { 5, new List<string> { "English_Class5.pdf", "English_Class5.pptx", "English_Class5.mp4" } },
-        { 6, new List<string> { "English_Class6.pdf", "English_Class6.pptx", "English_Class6.mp4" } },
-        { 7, new List<string> { "English_Class7.pdf", "English_Class7.pptx", "English_Class7.mp4" } },
-        { 8, new List<string> { "English_Class8.pdf", "English_Class8.pptx", "English_Class8.mp4" } },
-        { 9, new List<string> { "English_Class9.pdf", "English_Class9.pptx", "English_Class9.mp4" } },
-        { 10, new List<string> { "English_Class10.pdf", "English_Class10.pptx", "English_Class10.mp4" } }
-    };
+    //    private Dictionary<int, List<string>> EnglishclassDocuments = new Dictionary<int, List<string>>
+    //{
+    //    { 1, new List<string> { "flame_test_simulator.html", "periodic_table_quiz.html", "A_human_brain__3d.glb" } },
+    //    { 2, new List<string> { "English_Class1.pdf", "English_Class1.pptx", "English_Class1.mp4" } },
+    //    { 3, new List<string> { "English_Class3.pdf", "English_Class3.pptx", "English_Class3.mp4" } },
+    //    { 4, new List<string> { "English_Class4.pdf", "English_Class4.pptx", "English_Class4.mp4" } },
+    //    { 5, new List<string> { "English_Class5.pdf", "English_Class5.pptx", "English_Class5.mp4" } },
+    //    { 6, new List<string> { "English_Class6.pdf", "English_Class6.pptx", "English_Class6.mp4" } },
+    //    { 7, new List<string> { "English_Class7.pdf", "English_Class7.pptx", "English_Class7.mp4" } },
+    //    { 8, new List<string> { "English_Class8.pdf", "English_Class8.pptx", "English_Class8.mp4" } },
+    //    { 9, new List<string> { "English_Class9.pdf", "English_Class9.pptx", "English_Class9.mp4" } },
+    //    { 10, new List<string> { "English_Class10.pdf", "English_Class10.pptx", "English_Class10.mp4" } }
+    //};
         private Dictionary<int, List<string>> HindiclassDocuments = new Dictionary<int, List<string>>
         {
             { 1, new List<string> { "Hindi_Class1.pdf", "Hindi_Class1.pptx", "Hindi_Class1.mp4" } },
@@ -85,19 +87,19 @@ namespace JacobsDesktopApp
         { 9, new List<string> { "Social_Class9.pdf", "Social_Class9.pptx", "Social_Class9.mp4" } },
         { 10, new List<string> { "Social_Class10.pdf", "Social_Class10.pptx", "Social_Class10.mp4" } }
     };
-        private Dictionary<int, List<string>> ScienceclassDocuments = new Dictionary<int, List<string>>
-    {
-        { 1, new List<string> { "Science_Class1.pdf", "Science_Class1.pptx", "Science_Class1.mp4" } },
-        { 2, new List<string> { "Science_Class2.pdf", "Science_Class2.pptx", "Science_Class2.mp4" } },
-        { 3, new List<string> { "Science_Class3.pdf", "Science_Class3.pptx", "Science_Class3.mp4" } },
-        { 4, new List<string> { "Science_Class4.pdf", "Science_Class4.pptx", "Science_Class4.mp4" } },
-        { 5, new List<string> { "Science_Class5.pdf", "Science_Class5.pptx", "Science_Class5.mp4" } },
-        { 6, new List<string> { "Science_Class6.pdf", "Science_Class6.pptx", "Science_Class6.mp4" } },
-        { 7, new List<string> { "Science_Class7.pdf", "Science_Class7.pptx", "Science_Class7.mp4" } },
-        { 8, new List<string> { "Science_Class8.pdf", "Science_Class8.pptx", "Science_Class8.mp4" } },
-        { 9, new List<string> { "Science_Class9.pdf", "Science_Class9.pptx", "Science_Class9.mp4" } },
-        { 10, new List<string> { "Science_Class10.pdf", "Science_Class10.pptx", "Science_Class10.mp4" } }
-    };
+    //    private Dictionary<int, List<string>> ScienceclassDocuments = new Dictionary<int, List<string>>
+    //{
+    //    { 1, new List<string> { "Science_Class1.pdf", "Science_Class1.pptx", "Science_Class1.mp4" } },
+    //    { 2, new List<string> { "Science_Class2.pdf", "Science_Class2.pptx", "Science_Class2.mp4" } },
+    //    { 3, new List<string> { "Science_Class3.pdf", "Science_Class3.pptx", "Science_Class3.mp4" } },
+    //    { 4, new List<string> { "Science_Class4.pdf", "Science_Class4.pptx", "Science_Class4.mp4" } },
+    //    { 5, new List<string> { "Science_Class5.pdf", "Science_Class5.pptx", "Science_Class5.mp4" } },
+    //    { 6, new List<string> { "Science_Class6.pdf", "Science_Class6.pptx", "Science_Class6.mp4" } },
+    //    { 7, new List<string> { "Science_Class7.pdf", "Science_Class7.pptx", "Science_Class7.mp4" } },
+    //    { 8, new List<string> { "Science_Class8.pdf", "Science_Class8.pptx", "Science_Class8.mp4" } },
+    //    { 9, new List<string> { "Science_Class9.pdf", "Science_Class9.pptx", "Science_Class9.mp4" } },
+    //    { 10, new List<string> { "Science_Class10.pdf", "Science_Class10.pptx", "Science_Class10.mp4" } }
+    //};
         private Dictionary<string, List<string>> exercise = new Dictionary<string, List<string>>
     {
         { "English_Class1_Lesson1", new List<string> { "English_Lesson1_Exercise1.pdf"} },
@@ -207,110 +209,239 @@ namespace JacobsDesktopApp
         {
             InitializeComponent();
         }
+        //private void LoadDocumentsForClass(int classNo, string lessonNumber)
+        //{
+        //    if (SubjectName == "English")
+        //        classDocuments = new Dictionary<int, List<string>>(EnglishclassDocuments);
+        //    else if (SubjectName == "Hindi")
+        //        classDocuments = new Dictionary<int, List<string>>(HindiclassDocuments);
+        //    else if (SubjectName == "Kannada")
+        //        classDocuments = new Dictionary<int, List<string>>(KannadaclassDocuments);
+        //    else if (SubjectName == "Math")
+        //        classDocuments = new Dictionary<int, List<string>>(MathclassDocuments);
+        //    else if (SubjectName == "Science")
+        //        classDocuments = new Dictionary<int, List<string>>(ScienceclassDocuments);
+        //    else if (SubjectName == "Social")
+        //        classDocuments = new Dictionary<int, List<string>>(SocialclassDocuments);
+
+        //    // Load documents as folders
+        //    groupBox2.Controls.Clear();
+        //    FlowLayoutPanel docFlow = CreateFolderFlowPanel();
+        //    if (classDocuments.TryGetValue(classNo, out List<string> documents))
+        //    {
+        //        foreach (var doc in documents)
+        //        {
+        //            docFlow.Controls.Add(CreateFolderItem(doc));
+        //        }
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show($"No documents found for this subject of class {classNo}.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //    }
+        //    groupBox2.Controls.Add(docFlow);
+
+        //    // Load exercises as folders
+        //    groupBox4.Controls.Clear();
+        //    FlowLayoutPanel exFlow = CreateFolderFlowPanel();
+        //    if (exercise.TryGetValue(lessonNumber, out List<string> exercises))
+        //    {
+        //        foreach (var ex in exercises)
+        //        {
+        //            exFlow.Controls.Add(CreateFolderItem(ex));
+        //        }
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show($"No exercise found for this subject of lesson {lessonNumber}.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //    }
+        //    groupBox4.Controls.Add(exFlow);
+        //}
+        private void SetRoundedPanel(Control control, int radius)
+        {
+            GraphicsPath path = new GraphicsPath();
+
+            path.AddArc(0, 0, radius, radius, 180, 90);
+            path.AddArc(control.Width - radius, 0, radius, radius, 270, 90);
+            path.AddArc(control.Width - radius, control.Height - radius, radius, radius, 0, 90);
+            path.AddArc(0, control.Height - radius, radius, radius, 90, 90);
+
+            path.CloseFigure();
+
+            control.Region = new Region(path);
+        }
         private void LoadDocumentsForClass(int classNo, string lessonNumber)
         {
-            if (SubjectName == "English")
-                classDocuments = new Dictionary<int, List<string>>(EnglishclassDocuments);
-            else if (SubjectName == "Hindi")
-                classDocuments = new Dictionary<int, List<string>>(HindiclassDocuments);
-            else if (SubjectName == "Kannada")
-                classDocuments = new Dictionary<int, List<string>>(KannadaclassDocuments);
-            else if (SubjectName == "Math")
-                classDocuments = new Dictionary<int, List<string>>(MathclassDocuments);
-            else if (SubjectName == "Science")
-                classDocuments = new Dictionary<int, List<string>>(ScienceclassDocuments);
-            else if (SubjectName == "Social")
-                classDocuments = new Dictionary<int, List<string>>(SocialclassDocuments);
+            string lessonFolder = Path.Combine(
+                Application.StartupPath,
+                "Files",
+                 $"Class {classNo}",
+                SubjectName,
+                lessonNumber);
+           // MessageBox.Show(lessonFolder);
+            lessonFolder = Path.GetFullPath(lessonFolder);
 
-            // Load documents as folders
-            groupBox2.Controls.Clear();
+            if (!Directory.Exists(lessonFolder))
+            {
+                MessageBox.Show("Lesson folder not found:\n" + lessonFolder);
+                return;
+            }
+
+            //groupBox2.Controls.Clear();
+            //groupBox4.Controls.Clear();
+
             FlowLayoutPanel docFlow = CreateFolderFlowPanel();
-            if (classDocuments.TryGetValue(classNo, out List<string> documents))
-            {
-                foreach (var doc in documents)
-                {
-                    docFlow.Controls.Add(CreateFolderItem(doc));
-                }
-            }
-            else
-            {
-                MessageBox.Show($"No documents found for this subject of class {classNo}.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            groupBox2.Controls.Add(docFlow);
-
-            // Load exercises as folders
-            groupBox4.Controls.Clear();
             FlowLayoutPanel exFlow = CreateFolderFlowPanel();
-            if (exercise.TryGetValue(lessonNumber, out List<string> exercises))
+
+            // string[] files = Directory.GetFiles(lessonFolder);
+
+            string[] files = Directory.GetFiles(lessonFolder,"*.enc");
+           // MessageBox.Show(files.Length.ToString());
+
+            foreach (string file in files)
             {
-                foreach (var ex in exercises)
+                string fileName = Path.GetFileName(file);
+
+                if (fileName.ToLower().Contains("exercise"))
                 {
-                    exFlow.Controls.Add(CreateFolderItem(ex));
+                    exFlow.Controls.Add(CreateFolderItem(file));
+                }
+                else
+                {
+                    docFlow.Controls.Add(CreateFolderItem(file));
                 }
             }
-            else
-            {
-                MessageBox.Show($"No exercise found for this subject of lesson {lessonNumber}.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+
+            groupBox2.Controls.Add(docFlow);
             groupBox4.Controls.Add(exFlow);
         }
+
+       
         private FlowLayoutPanel CreateFolderFlowPanel()
         {
-            return new FlowLayoutPanel
-            {
-                Dock = DockStyle.Fill,
-                AutoScroll = true,
-                WrapContents = true,
-                FlowDirection = FlowDirection.LeftToRight,
-                Padding = new Padding(10),
-            };
+            FlowLayoutPanel flow = new FlowLayoutPanel();
+
+            flow.Dock = DockStyle.Fill;
+            flow.AutoScroll = true;
+            flow.WrapContents = true;
+            flow.FlowDirection = FlowDirection.LeftToRight;
+
+            flow.Padding = new Padding(25, 70, 25, 25);
+            flow.BackColor = Color.White;
+
+            return flow;
         }
-        private Panel CreateFolderItem(string documentPath)
+
+
+
+        private Panel CreateFolderItem(string filePath)
         {
-            Panel folderItem = new Panel
-            {
-                Width = 100,
-                Height = 100,
-                Margin = new Padding(10)
-            };
+            string fileName = Path.GetFileNameWithoutExtension(filePath);
+            fileName = Path.GetFileNameWithoutExtension(fileName);
 
-            PictureBox folderIcon = new PictureBox
-            {
-                Image = Properties.Resources.folder, // Make sure to add a folder image to Resources
-                Size = new Size(64, 64),
-                SizeMode = PictureBoxSizeMode.StretchImage,
-                Location = new Point(18, 0),
-                Cursor = Cursors.Hand,
-                Tag = documentPath
-            };
+            Panel panel = new Panel();
+            panel.Width = 220;
+            panel.Height = 250;
+            panel.Margin = new Padding(20);
+
+            panel.BackColor = Color.White;
+
+          
+
+            // Rounded card
+            SetRoundedPanel(panel, 18);
+
+            // Circle background
+            Panel circle = new Panel();
+            circle.Width = 120;
+            circle.Height = 120;
+            circle.BackColor = Color.FromArgb(245, 248, 252);
+
+            circle.Left = (panel.Width - circle.Width) / 2;
+            circle.Top = 20;
+
+            SetRoundedPanel(circle, 60);
+
+            // Folder Image
+            PictureBox folderIcon = new PictureBox();
+
+            folderIcon.Image = Properties.Resources.logofolde;
+
+            folderIcon.Size = new Size(75, 75);
+
+            folderIcon.SizeMode = PictureBoxSizeMode.Zoom;
+
+            folderIcon.Left = (circle.Width - folderIcon.Width) / 2;
+            folderIcon.Top = (circle.Height - folderIcon.Height) / 2;
+
+            folderIcon.Cursor = Cursors.Hand;
+
+            folderIcon.Tag = filePath;
+
+            circle.Controls.Add(folderIcon);
+
+            // File Name
+            Label lbl = new Label();
+
+            lbl.Text = fileName;
+
+            lbl.Width = panel.Width;
+
+            lbl.Height = 40;
+
+            lbl.Location = new Point(0, 150);
+
+            lbl.TextAlign = ContentAlignment.MiddleCenter;
+
+            lbl.ForeColor = Color.FromArgb(15, 23, 42);
+
+            lbl.Font = new Font(
+                "Segoe UI",
+                11,
+                FontStyle.Bold);
+
+            // File Count
+            Label lblCount = new Label();
+
+            lblCount.Text = "1 File";
+
+            lblCount.Width = panel.Width;
+
+            lblCount.Height = 25;
+
+            lblCount.Location = new Point(0, 190);
+
+            lblCount.TextAlign = ContentAlignment.MiddleCenter;
+
+            lblCount.ForeColor = Color.RoyalBlue;
+
+            lblCount.Font = new Font(
+                "Segoe UI",
+                10,
+                FontStyle.Regular);
+
+            panel.Controls.Add(circle);
+            panel.Controls.Add(lbl);
+            panel.Controls.Add(lblCount);
+
             folderIcon.Click += FolderIcon_Click;
+            lbl.Click += FolderIcon_Click;
 
-            Label folderLabel = new Label
-            {
-                Text = System.IO.Path.GetFileNameWithoutExtension(documentPath),
-                AutoSize = false,
-                Width = 100,
-                Height = 30,
-                TextAlign = ContentAlignment.MiddleCenter,
-                Location = new Point(0, 70)
-            };
-
-            folderItem.Controls.Add(folderIcon);
-            folderItem.Controls.Add(folderLabel);
-            return folderItem;
+            return panel;
         }
         private void FolderIcon_Click(object sender, EventArgs e)
         {
             if (sender is PictureBox pic)
             {
-                string documentPath = pic.Tag.ToString();
-                string extension = Path.GetExtension(documentPath).ToLower();
+                 string documentPath = pic.Tag.ToString();
+                string tempFile =FileSecurity.DecryptToTemp(documentPath,"SmsTeacher@123");
+                string originalFileName = Path.GetFileNameWithoutExtension(documentPath);
+                string extension = Path.GetExtension(originalFileName).ToLower();
 
                 if (extension == ".pdf")
                 {
                     OpenPdfFile pdfViewer = new OpenPdfFile
                     {
-                        DocName = documentPath,
+                        DocName = tempFile,
                         ClassNo = ClassNo,
                         SchlName = SchlName,
                         LessonName = LessonName,
@@ -323,7 +454,7 @@ namespace JacobsDesktopApp
                 {
                     OpenPPTFile pptViewer = new OpenPPTFile
                     {
-                        DocName = documentPath,
+                        DocName = tempFile,
                         ClassNo = ClassNo,
                         SchlName = SchlName,
                         LessonName = LessonName,
@@ -336,7 +467,7 @@ namespace JacobsDesktopApp
                 {
                     OpenMp4 mp4Viewer = new OpenMp4
                     {
-                        DocName = documentPath,
+                        DocName = tempFile,
                         ClassNo = ClassNo,
                         SchlName = SchlName,
                         LessonName = LessonName,
@@ -348,7 +479,7 @@ namespace JacobsDesktopApp
                 else if (extension == ".html" || extension == ".htm")
                 {
                     OpenHtml htmlViewer = new OpenHtml();
-                    htmlViewer.DocName = documentPath;
+                    htmlViewer.DocName = tempFile;
                     htmlViewer.ClassNo = ClassNo;
                     htmlViewer.SchlName = SchlName;
                     htmlViewer.LessonName = LessonName;
@@ -360,7 +491,7 @@ namespace JacobsDesktopApp
                 {
                     OpenGlb glbViewer = new OpenGlb
                     {
-                        DocName = documentPath,
+                        DocName = tempFile,
                         ClassNo = ClassNo,
                         SchlName = SchlName,
                         LessonName = LessonName,
@@ -372,15 +503,127 @@ namespace JacobsDesktopApp
             }
         }
 
+
+
         private void LessonsList_Load(object sender, EventArgs e)
         {
-            lblSchl.Text = "              " + SchlName + "          ";
-            lblLesson.Text = "              " + LessonName + "          ";
-            btnLogout.Visible = false;
-            lblSchl.Visible = false;
-            LoadDocumentsForClass(ClassNo, LessonName);
-        }
+            // Full Screen
+            this.WindowState = FormWindowState.Maximized;
+            this.BackColor = Color.FromArgb(245, 248, 252);
 
+            // School Name
+            lblSchl.Text = "Jacob Educare";
+            lblSchl.Font = new Font("Segoe UI", 24, FontStyle.Bold);
+            lblSchl.ForeColor = Color.RoyalBlue;
+            lblSchl.AutoSize = true;
+            lblSchl.Left = (this.ClientSize.Width - lblSchl.Width) / 2;
+            lblSchl.Top = 20;
+
+            // Lesson Name
+            lblLesson.Text = LessonName;
+            lblLesson.Font = new Font("Segoe UI", 22, FontStyle.Bold);
+            lblLesson.ForeColor = Color.RoyalBlue;
+            lblLesson.AutoSize = true;
+            lblLesson.Left = (this.ClientSize.Width - lblLesson.Width) / 2;
+            lblLesson.Top = 100;
+
+            btnLogout.Visible = false;
+
+            // GroupBoxes
+            int gap = 30;
+            int sideMargin = 50;
+
+            int availableWidth = this.ClientSize.Width - (sideMargin * 2) - gap;
+
+            groupBox2.Width = availableWidth / 2;
+            groupBox4.Width = availableWidth / 2;
+
+            groupBox2.Height = 550;
+            groupBox4.Height = 550;
+
+            groupBox2.Top = 180;
+            groupBox4.Top = 180;
+
+            groupBox2.Left = sideMargin;
+            groupBox4.Left = groupBox2.Right + gap;
+
+            groupBox2.BackColor = Color.White;
+            groupBox4.BackColor = Color.White;
+
+            groupBox2.Text = "";
+            groupBox4.Text = "";
+
+
+            btnBack.Text = "← Back";
+            btnBack.Width = 110;
+            btnBack.Height = 35;
+
+            btnBack.BackColor = Color.FromArgb(37, 99, 235);
+            btnBack.ForeColor = Color.White;
+
+            btnBack.FlatStyle = FlatStyle.Flat;
+            btnBack.FlatAppearance.BorderSize = 0;
+
+            btnBack.Font = new Font("Segoe UI", 10, FontStyle.Bold);
+
+          
+
+            // Load folders first
+            LoadDocumentsForClass(ClassNo, LessonName);
+
+            // Document Header
+            Label lblDoc = new Label();
+            lblDoc.Text = "📄 Lesson Documents";
+            lblDoc.Font = new Font("Segoe UI", 16, FontStyle.Bold);
+            lblDoc.ForeColor = Color.FromArgb(20, 40, 90);
+            lblDoc.AutoSize = true;
+            lblDoc.Location = new Point(15, 15);
+
+            groupBox2.Controls.Add(lblDoc);
+            lblDoc.BringToFront();
+
+            // Blue Line
+            Panel line1 = new Panel();
+            line1.BackColor = Color.RoyalBlue;
+            line1.Size = new Size(50, 3);
+            line1.Location = new Point(15, 50);
+
+            groupBox2.Controls.Add(line1);
+            line1.BringToFront();
+
+            // Exercise Header
+            Label lblEx = new Label();
+            lblEx.Text = "✏ Lesson Exercises";
+            lblEx.Font = new Font("Segoe UI", 16, FontStyle.Bold);
+            lblEx.ForeColor = Color.FromArgb(20, 40, 90);
+            lblEx.AutoSize = true;
+            lblEx.Location = new Point(15, 15);
+
+            groupBox4.Controls.Add(lblEx);
+            lblEx.BringToFront();
+
+            // Blue Line
+            Panel line2 = new Panel();
+            line2.BackColor = Color.RoyalBlue;
+            line2.Size = new Size(50, 3);
+            line2.Location = new Point(15, 50);
+
+            groupBox4.Controls.Add(line2);
+            line2.BringToFront();
+        }
+        private void GroupBoxBlueBorder(object sender, PaintEventArgs e)
+        {
+            GroupBox grp = sender as GroupBox;
+
+            using (Pen pen = new Pen(Color.RoyalBlue, 3))
+            {
+                e.Graphics.DrawLine( pen,
+                    0,
+                    1,
+                    grp.Width,
+                    1);
+            }
+        }
         private void button2_Click(object sender, EventArgs e)
         {
             if (SubjectName == "English")
@@ -444,54 +687,15 @@ namespace JacobsDesktopApp
         private void btnBack_Click(object sender, EventArgs e)
         {
 
-            if (SubjectName == "English")
-            {
-                EnglishFiles englishFiles = new EnglishFiles();
-                englishFiles.ClassNo = ClassNo;
-                englishFiles.SchlName = SchlName;
-                englishFiles.Show();
-                this.Hide();
-            }
-            else if (SubjectName == "Hindi")
-            {
-                HindiFiles englishFiles = new HindiFiles();
-                englishFiles.ClassNo = ClassNo;
-                englishFiles.SchlName = SchlName;
-                englishFiles.Show();
-                this.Hide();
-            }
-            else if (SubjectName == "Kannada")
-            {
-                KanndaFiles englishFiles = new KanndaFiles();
-                englishFiles.ClassNo = ClassNo;
-                englishFiles.SchlName = SchlName;
-                englishFiles.Show();
-                this.Hide();
-            }
-            else if (SubjectName == "Math")
-            {
-                MathFiles englishFiles = new MathFiles();
-                englishFiles.ClassNo = ClassNo;
-                englishFiles.SchlName = SchlName;
-                englishFiles.Show();
-                this.Hide();
-            }
-            else if (SubjectName == "Science")
-            {
-                ScienceFile englishFiles = new ScienceFile();
-                englishFiles.ClassNo = ClassNo;
-                englishFiles.SchlName = SchlName;
-                englishFiles.Show();
-                this.Hide();
-            }
-            else if (SubjectName == "Social")
-            {
-                SocialFiles englishFiles = new SocialFiles();
-                englishFiles.ClassNo = ClassNo;
-                englishFiles.SchlName = SchlName;
-                englishFiles.Show();
-                this.Hide();
-            }
+             
+            ScienceFile frm = new ScienceFile();
+
+            frm.SubjectName = SubjectName;
+            frm.ClassNo = ClassNo;
+            frm.SchlName = SchlName;
+
+            frm.Show();
+            this.Hide();
         }
 
         private void labelArrow_Click(object sender, EventArgs e)
@@ -502,127 +706,4 @@ namespace JacobsDesktopApp
     }
 }
 
-
-/* 
-        private void LoadDocumentsForClass(int classNo, string lessonNumber)
-        {
-            if(SubjectName == "English")
-            {
-                classDocuments = new Dictionary<int, List<string>>(EnglishclassDocuments);
-            }else if(SubjectName == "Hindi")
-            {
-                classDocuments = new Dictionary<int, List<string>>(HindiclassDocuments);
-            }else if( SubjectName == "Kannada")
-            {
-                classDocuments = new Dictionary<int, List<string>>(KannadaclassDocuments);
-            }
-            else if( SubjectName == "Math")
-            {
-                classDocuments = new Dictionary<int, List<string>>(MathclassDocuments);
-            }
-            else if( SubjectName == "Science")
-            {
-                classDocuments = new Dictionary<int, List<string>>(ScienceclassDocuments);
-            }
-            else if( SubjectName == "Social")
-            {
-                classDocuments = new Dictionary<int, List<string>>(SocialclassDocuments);
-            }
-            if (classDocuments.TryGetValue(classNo, out List<string> documents))
-            {
-                int buttonHeight = 30;
-                int buttonWidth = 200;
-                int spacing = 10;
-                int startY = 20;
-                groupBox2.Controls.Clear();
-                for (int i = 0; i < documents.Count; i++)
-                {
-                    Button documentButton = new Button
-                    {
-                        Text = documents[i],
-                        Size = new System.Drawing.Size(buttonWidth, buttonHeight),
-                        Location = new System.Drawing.Point(10, startY + (i * (buttonHeight + spacing))),
-                        Tag = documents[i],
-                        BackColor = Color.LightGray,
-                        ForeColor = Color.Blue
-                    };
-                    documentButton.Click += DocumentButton_Click;
-                    groupBox2.Controls.Add(documentButton);
-                }
-            }
-            else
-            {
-                MessageBox.Show($"No documents found for this subject of class {classNo}.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            if (exercise.TryGetValue(lessonNumber, out List<string> exercises))
-            {
-                int buttonHeight = 30;
-                int buttonWidth = 250;
-                int spacing = 10;
-                int startY = 20;
-                groupBox4.Controls.Clear();
-                for (int i = 0; i < exercises.Count; i++)
-                {
-                    Button documentButton = new Button
-                    {
-                        Text = exercises[i],
-                        Size = new System.Drawing.Size(buttonWidth, buttonHeight),
-                        Location = new System.Drawing.Point(10, startY + (i * (buttonHeight + spacing))),
-                        Tag = exercises[i],
-                        BackColor = Color.LightGray,
-                        ForeColor = Color.Blue
-                    };
-                    documentButton.Click += DocumentButton_Click;
-                    groupBox4.Controls.Add(documentButton);
-                }
-            }
-            else
-            {
-                MessageBox.Show($"No exercise found for this subject of lesson {lessonNumber}.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-
-        }
-        private void DocumentButton_Click(object sender, EventArgs e)
-        {
-            Button clickedButton = sender as Button;
-            if (clickedButton != null)
-            {
-                string documentPath = clickedButton.Tag.ToString();
-
-                string fileExtension = System.IO.Path.GetExtension(documentPath);
-                if (fileExtension == ".pdf")
-                {
-                    OpenPdfFile english = new OpenPdfFile();
-                    english.DocName = documentPath;
-                    english.ClassNo = ClassNo;
-                    english.SchlName = SchlName;
-                    english.LessonName = LessonName;
-                    english.SubjectName = SubjectName;
-                    english.Show();
-                    this.Hide();
-                }
-                else if (fileExtension == ".pptx")
-                {
-                    OpenPPTFile openPPTFile = new OpenPPTFile();
-                    openPPTFile.DocName = documentPath;
-                    openPPTFile.ClassNo = ClassNo;
-                    openPPTFile.SchlName = SchlName;
-                    openPPTFile.LessonName = LessonName;
-                    openPPTFile.SubjectName = SubjectName;
-                    openPPTFile.Show();
-                    this.Hide();
-                }
-                else if (fileExtension == ".mp4")
-                {
-                    OpenMp4 openPPTFile = new OpenMp4();
-                    openPPTFile.DocName = documentPath;
-                    openPPTFile.ClassNo = ClassNo;
-                    openPPTFile.SchlName = SchlName;
-                    openPPTFile.LessonName = LessonName;
-                    openPPTFile.SubjectName = SubjectName;
-                    openPPTFile.Show();
-                    this.Hide();
-                }
-            }
-        }
- */
+ 

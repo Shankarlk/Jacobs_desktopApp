@@ -28,13 +28,21 @@ namespace JacobsDesktopApp
         private async void OpenGlb_Load(object sender, EventArgs e)
         {
             // --- Phase 1: Extract the GLB file to the temp directory ---
-            string glbFileName = DocName; // e.g., "A_human_brain_3d.glb"
-            string tempDir = Path.GetTempPath(); // The root folder where the file will be
-            string glbTempPath = Path.Combine(tempDir, glbFileName);
+            //string glbFileName = DocName; // e.g., "A_human_brain_3d.glb"
+            //string tempDir = Path.GetTempPath(); // The root folder where the file will be
+            string glbTempPath = DocName;
+            string tempDir = Path.GetDirectoryName(glbTempPath);
+            //string glbTempPath = Path.Combine(tempDir, glbFileName);
 
-            // Extract the GLB file
-            ExtractEmbeddedResource("JacobsDesktopApp.Files." + glbFileName, glbTempPath);
+            //// Extract the GLB file
+            //ExtractEmbeddedResource("JacobsDesktopApp.Files." + glbFileName, glbTempPath);
+           // string glbTempPath = DocName;
 
+            if (!File.Exists(glbTempPath))
+            {
+                MessageBox.Show("GLB file not found:\n" + glbTempPath);
+                return;
+            }
             if (!File.Exists(glbTempPath))
             {
                 MessageBox.Show("Failed to extract GLB file.", "Error");
@@ -81,7 +89,8 @@ namespace JacobsDesktopApp
                 }
 
                 // The URI is now the VIRTUAL HTTPS path to the file!
-                string glbVirtualUri = $"https://{virtualHostName}/{glbFileName}";
+                // string glbVirtualUri = $"https://{virtualHostName}/{glbFileName}";
+                string glbVirtualUri = $"https://{virtualHostName}/{Path.GetFileName(glbTempPath)}";
 
                 // Inject the VIRTUAL URI into the HTML placeholder
                 string finalHtml = htmlContent.Replace("###GLB_FILE_PATH###", glbVirtualUri);

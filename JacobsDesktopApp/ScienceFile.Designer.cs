@@ -36,19 +36,19 @@
             this.grpLesson = new System.Windows.Forms.GroupBox();
             this.btnBack = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.labelArrow = new System.Windows.Forms.Label();
             this.labelName = new System.Windows.Forms.Label();
             this.pictureBoxProfile = new System.Windows.Forms.PictureBox();
             this.labelRole = new System.Windows.Forms.Label();
             this.lblSchl = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -72,9 +72,9 @@
             this.groupBox4.Controls.Add(this.grpLesson);
             this.groupBox4.Controls.Add(this.btnBack);
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox4.Location = new System.Drawing.Point(4, 99);
+            this.groupBox4.Location = new System.Drawing.Point(4, 117);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(1159, 573);
+            this.groupBox4.Size = new System.Drawing.Size(1159, 555);
             this.groupBox4.TabIndex = 22;
             this.groupBox4.TabStop = false;
             // 
@@ -99,7 +99,7 @@
             this.lbllesson.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lbllesson.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbllesson.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.lbllesson.Location = new System.Drawing.Point(542, 17);
+            this.lbllesson.Location = new System.Drawing.Point(542, -6);
             this.lbllesson.Name = "lbllesson";
             this.lbllesson.Padding = new System.Windows.Forms.Padding(7, 10, 10, 10);
             this.lbllesson.Size = new System.Drawing.Size(108, 46);
@@ -110,11 +110,11 @@
             // grpLesson
             // 
             this.grpLesson.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.grpLesson.Location = new System.Drawing.Point(358, 79);
+            this.grpLesson.Location = new System.Drawing.Point(358, 70);
             this.grpLesson.Margin = new System.Windows.Forms.Padding(4);
             this.grpLesson.Name = "grpLesson";
             this.grpLesson.Padding = new System.Windows.Forms.Padding(13);
-            this.grpLesson.Size = new System.Drawing.Size(584, 440);
+            this.grpLesson.Size = new System.Drawing.Size(591, 263);
             this.grpLesson.TabIndex = 0;
             this.grpLesson.TabStop = false;
             // 
@@ -123,7 +123,7 @@
             this.btnBack.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBack.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnBack.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnBack.Location = new System.Drawing.Point(1049, 498);
+            this.btnBack.Location = new System.Drawing.Point(1049, 480);
             this.btnBack.Margin = new System.Windows.Forms.Padding(1);
             this.btnBack.Name = "btnBack";
             this.btnBack.Padding = new System.Windows.Forms.Padding(5);
@@ -136,27 +136,15 @@
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.groupBox3.Controls.Add(this.pictureBox2);
+            this.groupBox3.Controls.Add(this.pictureBox1);
             this.groupBox3.Controls.Add(this.groupBox6);
             this.groupBox3.Controls.Add(this.lblSchl);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox3.Location = new System.Drawing.Point(4, 17);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1159, 82);
+            this.groupBox3.Size = new System.Drawing.Size(1159, 100);
             this.groupBox3.TabIndex = 21;
             this.groupBox3.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(3, 16);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(89, 63);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 17;
-            this.pictureBox2.TabStop = false;
             // 
             // groupBox6
             // 
@@ -168,7 +156,7 @@
             this.groupBox6.Dock = System.Windows.Forms.DockStyle.Right;
             this.groupBox6.Location = new System.Drawing.Point(1033, 16);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(123, 63);
+            this.groupBox6.Size = new System.Drawing.Size(123, 81);
             this.groupBox6.TabIndex = 16;
             this.groupBox6.TabStop = false;
             // 
@@ -222,13 +210,25 @@
             this.lblSchl.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblSchl.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSchl.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.lblSchl.Location = new System.Drawing.Point(146, 29);
+            this.lblSchl.Location = new System.Drawing.Point(146, 38);
             this.lblSchl.Name = "lblSchl";
             this.lblSchl.Padding = new System.Windows.Forms.Padding(7, 10, 10, 10);
             this.lblSchl.Size = new System.Drawing.Size(100, 47);
             this.lblSchl.TabIndex = 11;
             this.lblSchl.Text = "Classes";
             this.lblSchl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(3, 16);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(89, 81);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 18;
+            this.pictureBox1.TabStop = false;
             // 
             // ScienceFile
             // 
@@ -247,10 +247,10 @@
             this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -259,7 +259,6 @@
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Label labelArrow;
         private System.Windows.Forms.Label labelName;
@@ -271,5 +270,6 @@
         private System.Windows.Forms.Label lbllesson;
         private System.Windows.Forms.GroupBox grpLesson;
         private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

@@ -15,7 +15,8 @@ using System.Drawing.Drawing2D;
 using System.Speech.Synthesis;
 using System.Drawing.Text;
 using com.itextpdf.text.pdf;
-using System.Reflection;
+using Spire.Pdf;
+//using System.Reflection;
 namespace JacobsDesktopApp
 {
     public partial class OpenPdfFile : Form
@@ -33,6 +34,7 @@ namespace JacobsDesktopApp
         PdfReader reader;
         //int totalPages = 0;
 
+        
         private Spire.Pdf.PdfDocument pdfDocument;
         private int currentPage = 0;
         private SpeechSynthesizer speechSynthesizer;
@@ -52,102 +54,96 @@ namespace JacobsDesktopApp
 
         private void OpenPdfFile_Load(object sender, EventArgs e)
         {
-            //this.FormBorderStyle = FormBorderStyle.None;
-            //this.WindowState = FormWindowState.Maximized;
+             
+
             try
             {
-                string baseDirectory = AppDomain.CurrentDomain.BaseDirectory; string embeddedResourceName = "JacobsDesktopApp.Files." + DocName; // Change YourNamespace
-                string tempFilePath = System.IO.Path.Combine(System.IO.Path.GetTempPath(), DocName);
-
-                using (Stream resourceStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(embeddedResourceName))
+                if (!File.Exists(DocName))
                 {
-                    if (resourceStream == null)
-                    {
-                        MessageBox.Show("Resource not found: " + embeddedResourceName);
-                        return;
-                    }
-
-                    using (FileStream outputFileStream = new FileStream(tempFilePath, FileMode.Create, FileAccess.Write))
-                    {
-                        resourceStream.CopyTo(outputFileStream);
-                    }
-                }
-                if (!File.Exists(tempFilePath))
-                {
-                    MessageBox.Show("PDF file not found: " + tempFilePath);
+                    MessageBox.Show("PDF file not found:\n" + DocName);
                     return;
                 }
 
                 pdfDocument = new Spire.Pdf.PdfDocument();
-                pdfDocument.LoadFromFile(tempFilePath);
-                pdfDocument.Dispose(); // Ensure it is released
-
+                pdfDocument.LoadFromFile(DocName);
+               // MessageBox.Show(pdfDocument.Pages.Count.ToString());
                 if (DocName.Contains("Exercise"))
-                {
-                    button7.Visible = true;  // Show the button
-                }
+                    button7.Visible = true;
                 else
+                    button7.Visible = false;
+
+                string playimages = System.IO.Path.Combine(
+                         Application.StartupPath,
+                         @"..\..\Files\play.png");
+
+                playimages = System.IO.Path.GetFullPath(playimages);
+
+                if (System.IO.File.Exists(playimages))
                 {
-                    button7.Visible = false; // Hide the button
+                    System.Drawing.Image playImage = System.Drawing.Image.FromFile(playimages);
+
+                    Bitmap resizedPlayImage = new Bitmap(playImage, 22, 22);
+
+                    btnPlayPause.Image = resizedPlayImage;
                 }
-                string playimages = System.IO.Path.Combine(baseDirectory, "Files", "play.png");
-                System.Drawing.Image playImage = System.Drawing.Image.FromFile(playimages);
-                Bitmap resizedPlayImage = new Bitmap(playImage, new Size(22, 22));
-                btnPlayPause.Image = resizedPlayImage;
-                pdfDocument = new Spire.Pdf.PdfDocument();
-                pdfDocument.LoadFromFile(tempFilePath);
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error loading PDF: {ex.Message}", "Error");
+                MessageBox.Show("Error loading PDF:\n" + ex.Message);
             }
 
             DisplayPage(0);
         }
+        
+
+
         private void DisplayPage(int pageIndex)
         {
             if (pdfDocument != null && pageIndex >= 0 && pageIndex < pdfDocument.Pages.Count)
             {
-                using (var pageStream = pdfDocument.SaveAsImage(pageIndex))
+                using (System.IO.Stream pageStream = pdfDocument.SaveAsImage(pageIndex))
                 {
-                    System.Drawing.Image pageImage = pageStream;
+                    System.Drawing.Image pageImage =
+                        System.Drawing.Image.FromStream(pageStream);
+
                     originalImage = (System.Drawing.Image)pageImage.Clone();
 
-                    // Store the original image only once when the page is loaded
                     if (backupImage != null)
-                        backupImage.Dispose(); // Free the previous backup memory
+                        backupImage.Dispose();
 
-                    backupImage = (System.Drawing.Image)originalImage.Clone(); // Backup
+                    backupImage = (System.Drawing.Image)originalImage.Clone();
 
                     pictureBox1.Image = originalImage;
                     pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-                    lblExtractedTexts.Text = pdfDocument.Pages[pageIndex].ExtractText();
-                    RenderZoomedImage(pageImage);
+
+                    lblExtractedTexts.Text = "";
+
+                    currentPage = pageIndex;
+                    isCursive = false;
                 }
-                currentPage = pageIndex;
-                isCursive = false;
             }
+
             pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
         }
-
         private void ReadPageText(int pageIndex)
         {
             if (pdfDocument != null && pageIndex >= 0 && pageIndex < pdfDocument.Pages.Count)
             {
-                string text = pdfDocument.Pages[pageIndex].ExtractText();
-                if (!string.IsNullOrWhiteSpace(text))
-                {
-                    //string cursiveText = ConvertToCursive(text);
-                    //DrawCursiveText(text); // Show joined cursive text in PictureBox
-                    ////lblExtractedTexts.Text = cursiveText;
-                    //lblExtractedTexts.Text = text;
-                    //lblExtractedTexts.Font = new System.Drawing.Font("Brush Script MT", 25, FontStyle.Italic);
-                    speechSynthesizer.SpeakAsync(text);  // Speak original text
-                }
-                else
-                {
-                    MessageBox.Show("No text found on this page.");
-                }
+                //string text = pdfDocument.Pages[pageIndex].ExtractText();
+                //if (!string.IsNullOrWhiteSpace(text))
+                //{
+                //    //string cursiveText = ConvertToCursive(text);
+                //    //DrawCursiveText(text); // Show joined cursive text in PictureBox
+                //    ////lblExtractedTexts.Text = cursiveText;
+                //    //lblExtractedTexts.Text = text;
+                //    //lblExtractedTexts.Font = new System.Drawing.Font("Brush Script MT", 25, FontStyle.Italic);
+                //    speechSynthesizer.SpeakAsync(text);  // Speak original text
+                //}
+                //else
+                //{
+                //    MessageBox.Show("No text found on this page.");
+                //}
+                return;
             }
         }
         private void SpeechSynthesizer_SpeakCompleted(object sender, SpeakCompletedEventArgs e)
@@ -256,8 +252,13 @@ namespace JacobsDesktopApp
             {
                 pp = 1;
                 string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-                string opf = System.IO.Path.Combine(baseDirectory, "Files", DocName);
-                string playimages = System.IO.Path.Combine(baseDirectory, "Files", "pause.png");
+                //string opf = System.IO.Path.Combine(baseDirectory, "Files", DocName);
+
+                //string playimages = System.IO.Path.Combine(baseDirectory, "Files", "pause.png");
+                string playimages = System.IO.Path.Combine( Application.StartupPath,@"..\..\Files\pause.png");
+
+                playimages = System.IO.Path.GetFullPath(playimages);
+
                 System.Drawing.Image playImage = System.Drawing.Image.FromFile(playimages);
                 Bitmap resizedPlayImage = new Bitmap(playImage, new Size(22, 22));
                 btnPlayPause.Image = resizedPlayImage;
@@ -270,9 +271,12 @@ namespace JacobsDesktopApp
                 speechSynthesizer.Pause();
                 string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
                 string opf = System.IO.Path.Combine(baseDirectory, "Files", DocName);
-                string playimages = System.IO.Path.Combine(baseDirectory, "Files", "play.png");
+                //string playimages = System.IO.Path.Combine(baseDirectory, "Files", "play.png");
+                string playimages = System.IO.Path.Combine(Application.StartupPath,@"..\..\Files\play.png");
+                playimages = System.IO.Path.GetFullPath(playimages);
                 System.Drawing.Image playImage = System.Drawing.Image.FromFile(playimages);
-                Bitmap resizedPlayImage = new Bitmap(playImage, new Size(22, 22));
+                Bitmap resizedPlayImage = new Bitmap(playImage, 22, 22);
+                //Bitmap resizedPlayImage = new Bitmap(playImage, 22, 22);
                 btnPlayPause.Image = resizedPlayImage;
             }
         }

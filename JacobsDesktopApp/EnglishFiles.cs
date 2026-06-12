@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,19 +28,19 @@ namespace JacobsDesktopApp
     //    { 9, new List<string> { "English_Class9.pdf", "English_Class9.pptx", "English_Class9.mp4" } },
     //    { 10, new List<string> { "English_Class10.pdf", "English_Class10.pptx", "English_Class10.mp4" } }
     //};
-        private Dictionary<int, List<string>> lessons = new Dictionary<int, List<string>>
-    {
-        { 1, new List<string> { "English_Class1_Lesson1", "English_Class1_Lesson2", "English_Class1_Lesson3", "English_Class1_Lesson4", "English_Class1_Lesson5", "English_Class1_Lesson6", "English_Class1_Lesson7", "English_Class1_Lesson8", "English_Class1_Lesson9", "English_Class1_Lesson10", "English_Class1_Lesson11", "English_Class1_Lesson12" } },
-        { 2, new List<string> { "English_Class2_Lesson1", "English_Class2_Lesson2", "English_Class2_Lesson3", "English_Class2_Lesson4", "English_Class2_Lesson5", "English_Class2_Lesson6", "English_Class2_Lesson7", "English_Class2_Lesson8", "English_Class2_Lesson9", "English_Class2_Lesson10", "English_Class2_Lesson11", "English_Class2_Lesson12" } },
-        { 3, new List<string> { "English_Class3_Lesson1", "English_Class3_Lesson2", "English_Class3_Lesson3", "English_Class3_Lesson4", "English_Class3_Lesson5", "English_Class3_Lesson6", "English_Class3_Lesson7", "English_Class3_Lesson8", "English_Class3_Lesson9", "English_Class3_Lesson10", "English_Class3_Lesson11", "English_Class3_Lesson12" } },
-        { 4, new List<string> { "English_Class4_Lesson1", "English_Class4_Lesson2", "English_Class4_Lesson3", "English_Class4_Lesson4", "English_Class4_Lesson5", "English_Class4_Lesson6", "English_Class4_Lesson7", "English_Class4_Lesson8", "English_Class4_Lesson9", "English_Class4_Lesson10", "English_Class4_Lesson11", "English_Class4_Lesson12" } },
-        { 5, new List<string> { "English_Class5_Lesson1", "English_Class5_Lesson2", "English_Class5_Lesson3", "English_Class5_Lesson4", "English_Class5_Lesson5", "English_Class5_Lesson6", "English_Class5_Lesson7", "English_Class5_Lesson8", "English_Class5_Lesson9", "English_Class5_Lesson10", "English_Class5_Lesson11", "English_Class5_Lesson12" } },
-        { 6, new List<string> { "English_Class6_Lesson1", "English_Class6_Lesson2", "English_Class6_Lesson3", "English_Class6_Lesson4", "English_Class6_Lesson5", "English_Class6_Lesson6", "English_Class6_Lesson7", "English_Class6_Lesson8", "English_Class6_Lesson9", "English_Class6_Lesson10", "English_Class6_Lesson11", "English_Class6_Lesson12" } },
-        { 7, new List<string> { "English_Class7_Lesson1", "English_Class7_Lesson2", "English_Class7_Lesson3", "English_Class7_Lesson4", "English_Class7_Lesson5", "English_Class7_Lesson6", "English_Class7_Lesson7", "English_Class7_Lesson8", "English_Class7_Lesson9", "English_Class7_Lesson10", "English_Class7_Lesson11", "English_Class7_Lesson12" } },
-        { 8, new List<string> { "English_Class8_Lesson1", "English_Class8_Lesson2", "English_Class8_Lesson3", "English_Class8_Lesson4", "English_Class8_Lesson5", "English_Class8_Lesson6", "English_Class8_Lesson7", "English_Class8_Lesson8", "English_Class8_Lesson9", "English_Class8_Lesson10", "English_Class8_Lesson11", "English_Class8_Lesson12" } },
-        { 9, new List<string> { "English_Class9_Lesson1", "English_Class9_Lesson2", "English_Class9_Lesson3", "English_Class9_Lesson4", "English_Class9_Lesson5", "English_Class9_Lesson6", "English_Class9_Lesson7", "English_Class9_Lesson8", "English_Class9_Lesson9", "English_Class9_Lesson10", "English_Class9_Lesson11", "English_Class9_Lesson12" } },
-        { 10, new List<string> { "English_Class10_Lesson1", "English_Class10_Lesson2", "English_Class10_Lesson3", "English_Class10_Lesson4", "English_Class10_Lesson5", "English_Class10_Lesson6", "English_Class10_Lesson7", "English_Class10_Lesson8", "English_Class10_Lesson9", "English_Class10_Lesson10", "English_Class10_Lesson11", "English_Class10_Lesson12" } }
-    };
+    //    private Dictionary<int, List<string>> lessons = new Dictionary<int, List<string>>
+    //{
+    //    { 1, new List<string> { "English_Class1_Lesson1", "English_Class1_Lesson2", "English_Class1_Lesson3", "English_Class1_Lesson4", "English_Class1_Lesson5", "English_Class1_Lesson6", "English_Class1_Lesson7", "English_Class1_Lesson8", "English_Class1_Lesson9", "English_Class1_Lesson10", "English_Class1_Lesson11", "English_Class1_Lesson12" } },
+    //    { 2, new List<string> { "English_Class2_Lesson1", "English_Class2_Lesson2", "English_Class2_Lesson3", "English_Class2_Lesson4", "English_Class2_Lesson5", "English_Class2_Lesson6", "English_Class2_Lesson7", "English_Class2_Lesson8", "English_Class2_Lesson9", "English_Class2_Lesson10", "English_Class2_Lesson11", "English_Class2_Lesson12" } },
+    //    { 3, new List<string> { "English_Class3_Lesson1", "English_Class3_Lesson2", "English_Class3_Lesson3", "English_Class3_Lesson4", "English_Class3_Lesson5", "English_Class3_Lesson6", "English_Class3_Lesson7", "English_Class3_Lesson8", "English_Class3_Lesson9", "English_Class3_Lesson10", "English_Class3_Lesson11", "English_Class3_Lesson12" } },
+    //    { 4, new List<string> { "English_Class4_Lesson1", "English_Class4_Lesson2", "English_Class4_Lesson3", "English_Class4_Lesson4", "English_Class4_Lesson5", "English_Class4_Lesson6", "English_Class4_Lesson7", "English_Class4_Lesson8", "English_Class4_Lesson9", "English_Class4_Lesson10", "English_Class4_Lesson11", "English_Class4_Lesson12" } },
+    //    { 5, new List<string> { "English_Class5_Lesson1", "English_Class5_Lesson2", "English_Class5_Lesson3", "English_Class5_Lesson4", "English_Class5_Lesson5", "English_Class5_Lesson6", "English_Class5_Lesson7", "English_Class5_Lesson8", "English_Class5_Lesson9", "English_Class5_Lesson10", "English_Class5_Lesson11", "English_Class5_Lesson12" } },
+    //    { 6, new List<string> { "English_Class6_Lesson1", "English_Class6_Lesson2", "English_Class6_Lesson3", "English_Class6_Lesson4", "English_Class6_Lesson5", "English_Class6_Lesson6", "English_Class6_Lesson7", "English_Class6_Lesson8", "English_Class6_Lesson9", "English_Class6_Lesson10", "English_Class6_Lesson11", "English_Class6_Lesson12" } },
+    //    { 7, new List<string> { "English_Class7_Lesson1", "English_Class7_Lesson2", "English_Class7_Lesson3", "English_Class7_Lesson4", "English_Class7_Lesson5", "English_Class7_Lesson6", "English_Class7_Lesson7", "English_Class7_Lesson8", "English_Class7_Lesson9", "English_Class7_Lesson10", "English_Class7_Lesson11", "English_Class7_Lesson12" } },
+    //    { 8, new List<string> { "English_Class8_Lesson1", "English_Class8_Lesson2", "English_Class8_Lesson3", "English_Class8_Lesson4", "English_Class8_Lesson5", "English_Class8_Lesson6", "English_Class8_Lesson7", "English_Class8_Lesson8", "English_Class8_Lesson9", "English_Class8_Lesson10", "English_Class8_Lesson11", "English_Class8_Lesson12" } },
+    //    { 9, new List<string> { "English_Class9_Lesson1", "English_Class9_Lesson2", "English_Class9_Lesson3", "English_Class9_Lesson4", "English_Class9_Lesson5", "English_Class9_Lesson6", "English_Class9_Lesson7", "English_Class9_Lesson8", "English_Class9_Lesson9", "English_Class9_Lesson10", "English_Class9_Lesson11", "English_Class9_Lesson12" } },
+    //    { 10, new List<string> { "English_Class10_Lesson1", "English_Class10_Lesson2", "English_Class10_Lesson3", "English_Class10_Lesson4", "English_Class10_Lesson5", "English_Class10_Lesson6", "English_Class10_Lesson7", "English_Class10_Lesson8", "English_Class10_Lesson9", "English_Class10_Lesson10", "English_Class10_Lesson11", "English_Class10_Lesson12" } }
+    //};
         //        "English_Lesson1_Exercise2.pdf", "English_Lesson1_Exercise3.pdf" 
         //"English_Lesson2_Exercise2.pdf", "English_Lesson2_Exercise3.pdf" 
         //"English_Lesson3_Exercise2.pdf", "English_Lesson3_Exercise3.pdf" 
@@ -68,62 +69,133 @@ namespace JacobsDesktopApp
             grpLesson.Top = (this.ClientSize.Height - grpLesson.Height) / 3;
             LoadDocumentsForClass(ClassNo);
         }
+        //private void LoadDocumentsForClass(int classNo)
+        //{
+        //    if (lessons.TryGetValue(classNo, out List<string> documents))
+        //    {
+        //        grpLesson.Controls.Clear();
+
+        //        FlowLayoutPanel flowPanel = new FlowLayoutPanel
+        //        {
+        //            Dock = DockStyle.Fill,
+        //            AutoScroll = true,
+        //            WrapContents = true,
+        //            FlowDirection = FlowDirection.LeftToRight,
+        //            Padding = new Padding(20),
+        //        };
+
+        //        foreach (var doc in documents)
+        //        {
+        //            Panel folderItem = new Panel
+        //            {
+        //                Width = 100,
+        //                Height = 100,
+        //                Margin = new Padding(10)
+        //            };
+
+        //            PictureBox folderIcon = new PictureBox
+        //            {
+        //                Image = Properties.Resources.folder, // Replace with your folder image in Resources
+        //                Size = new Size(64, 64),
+        //                SizeMode = PictureBoxSizeMode.StretchImage,
+        //                Location = new Point(18, 0),
+        //                Cursor = Cursors.Hand,
+        //                Tag = doc
+        //            };
+        //            folderIcon.Click += FolderIcon_Click;
+
+        //            Label folderLabel = new Label
+        //            {
+        //                Text = doc,
+        //                AutoSize = false,
+        //                Width = 100,
+        //                Height = 30,
+        //                TextAlign = ContentAlignment.MiddleCenter,
+        //                Location = new Point(0, 70)
+        //            };
+
+        //            folderItem.Controls.Add(folderIcon);
+        //            folderItem.Controls.Add(folderLabel);
+        //            flowPanel.Controls.Add(folderItem);
+        //        }
+
+        //        grpLesson.Controls.Add(flowPanel); // Add the flow layout to your GroupBox
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show($"No documents found for this subject of class {classNo}.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //    }
+        //}
+
         private void LoadDocumentsForClass(int classNo)
         {
-            if (lessons.TryGetValue(classNo, out List<string> documents))
-            {
-                grpLesson.Controls.Clear();
+            string englishFolder = Path.Combine(
+                Application.StartupPath,
+                @"..\..\Files",
+                $"Class {classNo}",
+                "English");
 
-                FlowLayoutPanel flowPanel = new FlowLayoutPanel
+            englishFolder = Path.GetFullPath(englishFolder);
+
+            if (!Directory.Exists(englishFolder))
+            {
+                MessageBox.Show("English folder not found:\n" + englishFolder);
+                return;
+            }
+
+            grpLesson.Controls.Clear();
+
+            FlowLayoutPanel flowPanel = new FlowLayoutPanel
+            {
+                Dock = DockStyle.Fill,
+                AutoScroll = true,
+                WrapContents = true,
+                FlowDirection = FlowDirection.LeftToRight,
+                Padding = new Padding(20)
+            };
+
+            string[] lessonFolders = Directory.GetDirectories(englishFolder);
+
+            foreach (string lessonFolder in lessonFolders)
+            {
+                string lessonName = Path.GetFileName(lessonFolder);
+
+                Panel folderItem = new Panel
                 {
-                    Dock = DockStyle.Fill,
-                    AutoScroll = true,
-                    WrapContents = true,
-                    FlowDirection = FlowDirection.LeftToRight,
-                    Padding = new Padding(20),
+                    Width = 100,
+                    Height = 100,
+                    Margin = new Padding(10)
                 };
 
-                foreach (var doc in documents)
+                PictureBox folderIcon = new PictureBox
                 {
-                    Panel folderItem = new Panel
-                    {
-                        Width = 100,
-                        Height = 100,
-                        Margin = new Padding(10)
-                    };
+                    Image = Properties.Resources.folder1,
+                    Size = new Size(64, 64),
+                    SizeMode = PictureBoxSizeMode.StretchImage,
+                    Location = new Point(18, 0),
+                    Cursor = Cursors.Hand,
+                    Tag = lessonName
+                };
 
-                    PictureBox folderIcon = new PictureBox
-                    {
-                        Image = Properties.Resources.folder, // Replace with your folder image in Resources
-                        Size = new Size(64, 64),
-                        SizeMode = PictureBoxSizeMode.StretchImage,
-                        Location = new Point(18, 0),
-                        Cursor = Cursors.Hand,
-                        Tag = doc
-                    };
-                    folderIcon.Click += FolderIcon_Click;
+                folderIcon.Click += FolderIcon_Click;
 
-                    Label folderLabel = new Label
-                    {
-                        Text = doc,
-                        AutoSize = false,
-                        Width = 100,
-                        Height = 30,
-                        TextAlign = ContentAlignment.MiddleCenter,
-                        Location = new Point(0, 70)
-                    };
+                Label folderLabel = new Label
+                {
+                    Text = lessonName,
+                    AutoSize = false,
+                    Width = 100,
+                    Height = 30,
+                    TextAlign = ContentAlignment.MiddleCenter,
+                    Location = new Point(0, 70)
+                };
 
-                    folderItem.Controls.Add(folderIcon);
-                    folderItem.Controls.Add(folderLabel);
-                    flowPanel.Controls.Add(folderItem);
-                }
+                folderItem.Controls.Add(folderIcon);
+                folderItem.Controls.Add(folderLabel);
 
-                grpLesson.Controls.Add(flowPanel); // Add the flow layout to your GroupBox
+                flowPanel.Controls.Add(folderItem);
             }
-            else
-            {
-                MessageBox.Show($"No documents found for this subject of class {classNo}.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+
+            grpLesson.Controls.Add(flowPanel);
         }
         private void FolderIcon_Click(object sender, EventArgs e)
         {

@@ -63,7 +63,7 @@
             this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.Blue;
-            this.button1.Location = new System.Drawing.Point(100, 44);
+            this.button1.Location = new System.Drawing.Point(145, 96);
             this.button1.Margin = new System.Windows.Forms.Padding(1);
             this.button1.Name = "button1";
             this.button1.Padding = new System.Windows.Forms.Padding(5);
@@ -78,7 +78,7 @@
             this.button2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button2.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.Blue;
-            this.button2.Location = new System.Drawing.Point(287, 44);
+            this.button2.Location = new System.Drawing.Point(352, 96);
             this.button2.Margin = new System.Windows.Forms.Padding(1);
             this.button2.Name = "button2";
             this.button2.Padding = new System.Windows.Forms.Padding(5);
@@ -93,7 +93,7 @@
             this.button3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button3.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.Blue;
-            this.button3.Location = new System.Drawing.Point(287, 127);
+            this.button3.Location = new System.Drawing.Point(352, 179);
             this.button3.Margin = new System.Windows.Forms.Padding(1);
             this.button3.Name = "button3";
             this.button3.Padding = new System.Windows.Forms.Padding(5);
@@ -108,7 +108,7 @@
             this.button4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button4.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.Color.Blue;
-            this.button4.Location = new System.Drawing.Point(287, 212);
+            this.button4.Location = new System.Drawing.Point(352, 264);
             this.button4.Margin = new System.Windows.Forms.Padding(1);
             this.button4.Name = "button4";
             this.button4.Padding = new System.Windows.Forms.Padding(5);
@@ -123,7 +123,7 @@
             this.button5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button5.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button5.ForeColor = System.Drawing.Color.Blue;
-            this.button5.Location = new System.Drawing.Point(100, 127);
+            this.button5.Location = new System.Drawing.Point(145, 179);
             this.button5.Margin = new System.Windows.Forms.Padding(1);
             this.button5.Name = "button5";
             this.button5.Padding = new System.Windows.Forms.Padding(5);
@@ -138,7 +138,7 @@
             this.button6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button6.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button6.ForeColor = System.Drawing.Color.Blue;
-            this.button6.Location = new System.Drawing.Point(100, 212);
+            this.button6.Location = new System.Drawing.Point(145, 264);
             this.button6.Margin = new System.Windows.Forms.Padding(1);
             this.button6.Name = "button6";
             this.button6.Padding = new System.Windows.Forms.Padding(5);
@@ -153,7 +153,7 @@
             this.button7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button7.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.button7.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button7.Location = new System.Drawing.Point(652, 412);
+            this.button7.Location = new System.Drawing.Point(651, 424);
             this.button7.Margin = new System.Windows.Forms.Padding(1);
             this.button7.Name = "button7";
             this.button7.Padding = new System.Windows.Forms.Padding(5);
@@ -182,9 +182,9 @@
             this.groupBox4.Controls.Add(this.groupBox2);
             this.groupBox4.Controls.Add(this.button7);
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox4.Location = new System.Drawing.Point(3, 109);
+            this.groupBox4.Location = new System.Drawing.Point(3, 116);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(761, 455);
+            this.groupBox4.Size = new System.Drawing.Size(761, 448);
             this.groupBox4.TabIndex = 14;
             this.groupBox4.TabStop = false;
             // 
@@ -207,12 +207,12 @@
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label1.Location = new System.Drawing.Point(333, 12);
+            this.label1.Location = new System.Drawing.Point(314, -17);
             this.label1.Name = "label1";
             this.label1.Padding = new System.Windows.Forms.Padding(7, 10, 10, 10);
-            this.label1.Size = new System.Drawing.Size(115, 46);
+            this.label1.Size = new System.Drawing.Size(161, 65);
             this.label1.TabIndex = 14;
             this.label1.Text = "Subjects";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -220,18 +220,22 @@
             // groupBox2
             // 
             this.groupBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.groupBox2.BackColor = System.Drawing.Color.DodgerBlue;
             this.groupBox2.Controls.Add(this.button1);
             this.groupBox2.Controls.Add(this.button4);
             this.groupBox2.Controls.Add(this.button5);
             this.groupBox2.Controls.Add(this.button2);
             this.groupBox2.Controls.Add(this.button3);
             this.groupBox2.Controls.Add(this.button6);
-            this.groupBox2.Location = new System.Drawing.Point(131, 82);
+            this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.ForeColor = System.Drawing.Color.Black;
+            this.groupBox2.Location = new System.Drawing.Point(30, 73);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(10);
-            this.groupBox2.Size = new System.Drawing.Size(517, 349);
+            this.groupBox2.Size = new System.Drawing.Size(522, 453);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Subjects";
             // 
             // groupBox3
             // 
@@ -242,7 +246,7 @@
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox3.Location = new System.Drawing.Point(3, 21);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(761, 88);
+            this.groupBox3.Size = new System.Drawing.Size(761, 95);
             this.groupBox3.TabIndex = 13;
             this.groupBox3.TabStop = false;
             // 
@@ -253,7 +257,7 @@
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(3, 21);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(89, 64);
+            this.pictureBox2.Size = new System.Drawing.Size(89, 71);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 17;
             this.pictureBox2.TabStop = false;
@@ -268,7 +272,7 @@
             this.groupBox6.Dock = System.Windows.Forms.DockStyle.Right;
             this.groupBox6.Location = new System.Drawing.Point(635, 21);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(123, 64);
+            this.groupBox6.Size = new System.Drawing.Size(123, 71);
             this.groupBox6.TabIndex = 16;
             this.groupBox6.TabStop = false;
             // 
@@ -320,14 +324,14 @@
             this.lblSchl.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblSchl.AutoSize = true;
             this.lblSchl.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblSchl.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSchl.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSchl.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.lblSchl.Location = new System.Drawing.Point(146, 32);
+            this.lblSchl.Location = new System.Drawing.Point(299, 21);
             this.lblSchl.Name = "lblSchl";
             this.lblSchl.Padding = new System.Windows.Forms.Padding(7, 10, 10, 10);
-            this.lblSchl.Size = new System.Drawing.Size(100, 47);
+            this.lblSchl.Size = new System.Drawing.Size(169, 50);
             this.lblSchl.TabIndex = 11;
-            this.lblSchl.Text = "Classes";
+            this.lblSchl.Text = "Jacob Educare";
             this.lblSchl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Subjects

@@ -1,5 +1,6 @@
-﻿using iText.Kernel.Pdf.Canvas.Parser;
-using iText.Kernel.Pdf;
+﻿using iText.Kernel.Pdf;
+using iText.Kernel.Pdf.Canvas.Parser;
+using iText.Layout;
 using iText.Layout.Element;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,8 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using iText.Layout;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
+
 
 namespace JacobsDesktopApp
 {
@@ -29,18 +31,39 @@ namespace JacobsDesktopApp
         public string Board { get; set; }
         private void Home_Load(object sender, EventArgs e)
         {
-            groupBox2.Left = (this.ClientSize.Width - groupBox2.Width) / 2;
+            this.WindowState = FormWindowState.Maximized;
+
             btnLogout.Visible = false;
-            lblSchl.Visible = false;
-            // Center vertically (optional)
-            groupBox2.Top = (this.ClientSize.Height - groupBox2.Height) / 5;
-            lblSchl.Text = "              " + SchoolName + "          ";
-            label1.Left = (this.ClientSize.Width - label1.Width) / 2;
+
+            lblSchl.Text = "Welcome to Jacob Educare";
+
+            
+            groupBox2.Controls.Clear();
+
+            groupBox2.BackColor = Color.FromArgb(245, 248, 252);
+            groupBox2.Text = "";
+
+            groupBox2.Width = 700;
+            groupBox2.Height = 700;
+
+            groupBox2.Left =
+                (this.ClientSize.Width - groupBox2.Width) / 2;
+
+            groupBox2.Top = 120;
+            foreach (Control ctrl in groupBox2.Controls)
+            {
+                if (ctrl is Button btn)
+                {
+                    btn.MouseEnter += Button_MouseEnter;
+                    btn.MouseLeave += Button_MouseLeave;
+                }
+            }
             try
             {
-                string encryptedFilePath = Path.Combine(baseDirectory, "LicenseKey", "License_protected.txt");
-                string password = "SmsTeacher@123"; // Your encryption password
-
+                 string encryptedFilePath = Path.Combine(baseDirectory, "LicenseKey", "License_protected.txt");
+                //string encryptedFilePath = Path.Combine(baseDirectory, @"..\..\LicenseKey", "License_protected.txt");
+                string password = "SmsTeacher@123"; // Your encryption password To open pdf 
+              
                 string decryptedFilePath = DecryptTxtWithPassword(encryptedFilePath, password);
 
                 if (decryptedFilePath == null)
@@ -52,54 +75,139 @@ namespace JacobsDesktopApp
 
                 // Read the decrypted TXT content
                 string txtContent = File.ReadAllText(decryptedFilePath);
+                 
 
                 // Validate the license
                 if (!ValidateLicense(txtContent))
                 {
                     MessageBox.Show("Invalid or expired license. The application will now close.", "License Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    //Application.Exit();
+                    Application.Exit();
                 }
 
                 if (File.Exists(decryptedFilePath))
                 {
                     File.Delete(decryptedFilePath);
                 }
-                //string encryptedFilePath = Path.Combine(baseDirectory, "LicenseKey", "License_protected.pdf");
-                //string password = "SmsTeacher@123";
-                //string decryptedFilePath = DecryptPdfWithPassword(encryptedFilePath, password);
+                LoadClassCards();
 
-                //if (decryptedFilePath == null)
-                //{
-                //    MessageBox.Show("Failed to decrypt the PDF file.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //    //Application.Exit();
-                //    return;
-                //}
-
-                //// Read the decrypted PDF content
-                //string pdfContent = ReadDecryptedPdf(decryptedFilePath);
-
-                //// Validate the license
-                //if (!ValidateLicense(pdfContent))
-                //{
-                //    MessageBox.Show("Invalid or expired license. The application will now close.", "License Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //    //ReplaceLicenseFile();
-                //    Application.Exit();
-                //}
-                //else
-                //{
-                //}
-
-                //if (File.Exists(decryptedFilePath))
-                //{
-                //    File.Delete(decryptedFilePath);
-                //}
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"An error occurred during license validation: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit(); // Close the application if there's an error
             }
+
+
         }
+
+       
+
+        private void LoadClassCards()
+        {
+            int cardWidth = 170;
+            int cardHeight = 140;
+
+            int startX = 80;
+            int startY = 40;
+
+            int gapX = 30;
+            int gapY = 25;
+
+            int classNo = 1;
+
+            for (int row = 0; row < 4; row++)
+            {
+                int cardsInRow = (row == 3) ? 1 : 3;
+
+                int rowStartX = startX;
+
+                if (row == 3)
+                    rowStartX = startX + cardWidth + gapX;
+
+                for (int col = 0; col < cardsInRow; col++)
+                {
+                    Panel card = new Panel();
+                    card.Width = cardWidth;
+                    card.Height = cardHeight;
+                    card.BackColor = Color.White;
+                    card.Cursor = Cursors.Hand;
+
+                    card.Location = new Point(
+                        rowStartX + (col * (cardWidth + gapX)),
+                        startY + (row * (cardHeight + gapY)));
+
+                    card.Tag = classNo;
+
+                    card.BackColor = Color.White;
+                    card.Padding = new Padding(10);
+
+                    card.BorderStyle = BorderStyle.None;
+
+                    PictureBox pic = new PictureBox();
+                    pic.Size = new Size(60, 60);
+                    pic.Location = new Point(55, 20);
+
+                    pic.SizeMode = PictureBoxSizeMode.Zoom;
+
+                    pic.Image = Properties.Resources.bookicon; // Add your blue book icon
+
+                    pic.Tag = classNo;
+
+                    Label lbl = new Label();
+                    lbl.Text = "Class " + classNo;
+                    lbl.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+
+                    lbl.ForeColor = Color.FromArgb(30, 58, 138);
+
+                    lbl.Width = cardWidth;
+                    lbl.Height = 30;
+
+                    lbl.Location = new Point(0, 90);
+
+                    lbl.TextAlign = ContentAlignment.MiddleCenter;
+
+                    lbl.Tag = classNo;
+
+                    card.Controls.Add(pic);
+                    card.Controls.Add(lbl);
+
+                    card.Click += ClassCard_Click;
+                    pic.Click += ClassCard_Click;
+                    lbl.Click += ClassCard_Click;
+
+                    groupBox2.Controls.Add(card);
+
+                    classNo++;
+
+                    if (classNo > 10)
+                        return;
+                }
+            }
+        }
+
+        private void ClassCard_Click(object sender, EventArgs e)
+        {
+            int classNo = 0;
+
+            if (sender is Panel)
+                classNo = Convert.ToInt32(((Panel)sender).Tag);
+
+            else if (sender is PictureBox)
+                classNo = Convert.ToInt32(((PictureBox)sender).Tag);
+
+            else if (sender is Label)
+                classNo = Convert.ToInt32(((Label)sender).Tag);
+
+            Subjects frm = new Subjects();
+
+            frm.ClassNo = classNo;
+            frm.SchlName = SchoolName;
+
+            frm.Show();
+
+            this.Hide();
+        }
+
         private void ReplaceLicenseFile()
         {
             LicenseKeyReplacement subjects = new LicenseKeyReplacement();
@@ -161,7 +269,7 @@ namespace JacobsDesktopApp
 
         //    if (match.Success)
         //    {
-        //        string licenseKey = match.Groups["key"].Value; 
+        //        string licenseKey = match.Groups["key"].Value;
         //        DateTime expirationDate = DateTime.Parse(match.Groups["date"].Value);
         //        if (DateTime.Now <= expirationDate)
         //        {
@@ -178,13 +286,15 @@ namespace JacobsDesktopApp
         //            return true;
         //        }
         //    }
-        //    return false; 
+        //    return false;
         //}
 
         public static string DecryptTxtWithPassword(string encryptedFilePath, string password)
         {
             try
             {
+                 
+
                 byte[] key = new SHA256Managed().ComputeHash(Encoding.UTF8.GetBytes(password));
 
                 // Read the encrypted file
@@ -244,7 +354,7 @@ namespace JacobsDesktopApp
                 {
                     int daysUntilExpiration = (expirationDate - DateTime.Now).Days;
 
-                    if (daysUntilExpiration <= 30) // Threshold for expiration warning
+                    if (daysUntilExpiration <= 15) // Threshold for expiration warning
                     {
                         MessageBox.Show($"Warning: Your license will expire in {daysUntilExpiration} days!",
                             "License Expiration Warning",
@@ -255,6 +365,20 @@ namespace JacobsDesktopApp
                 }
             }
             return false;
+        }
+
+        private void Button_MouseEnter(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            btn.BackColor = Color.RoyalBlue;
+            btn.ForeColor = Color.White;
+        }
+
+        private void Button_MouseLeave(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            btn.BackColor = Color.White;
+            btn.ForeColor = Color.RoyalBlue;
         }
         private void cLass1_Click(object sender, EventArgs e)
         {

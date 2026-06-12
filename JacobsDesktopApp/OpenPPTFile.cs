@@ -19,34 +19,33 @@ namespace JacobsDesktopApp
 {
     public partial class OpenPPTFile : Form
     {
-        private Microsoft.Office.Interop.PowerPoint.Application pptApplication = new Microsoft.Office.Interop.PowerPoint.Application();
-        private Presentation pptPresentation;
-        private int slideIndex = 1;
-        private int slideIndexs = 1;
-        public string DocName { get; set; }
+        private Microsoft.Office.Interop.PowerPoint.Application pptApplication = new Microsoft.Office.Interop.PowerPoint.Application(); private Presentation pptPresentation; private int slideIndex = 1; private int slideIndexs = 1; public string DocName { get; set; }
         public string SubjectName { get; set; }
         public string LessonName { get; set; }
         public int ClassNo { get; set; }
         public string SchlName { get; set; }
-        private SpeechSynthesizer speechSynthesizer;
-        private bool isSpeechPlaying;
-        public OpenPPTFile()
-        {
-            InitializeComponent();
-            speechSynthesizer = new SpeechSynthesizer();
-            isSpeechPlaying = false;
-        }
+
+        private bool isClosing = false;
+        private SpeechSynthesizer speechSynthesizer; private bool isSpeechPlaying; public OpenPPTFile() { InitializeComponent(); speechSynthesizer = new SpeechSynthesizer(); isSpeechPlaying = false; }
 
         private void OpenPPTFile_Load(object sender, EventArgs e)
         {
             string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            string pptFilePath = ExtractEmbeddedResource(DocName, "pptx");
+
             string playimages = Path.Combine(baseDirectory, "Files", "play.png");
+
             Image playImage = Image.FromFile(playimages);
             Bitmap resizedPlayImage = new Bitmap(playImage, new Size(22, 22));
+
             btnPlayPause.Image = resizedPlayImage;
-            pptPresentation = pptApplication.Presentations.Open(pptFilePath, MsoTriState.msoFalse, MsoTriState.msoFalse, MsoTriState.msoFalse);
-            
+
+            // DocName already contains the full ppt path
+            pptPresentation = pptApplication.Presentations.Open(
+                DocName,
+                MsoTriState.msoFalse,
+                MsoTriState.msoFalse,
+                MsoTriState.msoFalse);
+
             DisplaySlide();
         }
 
@@ -112,22 +111,37 @@ namespace JacobsDesktopApp
 
         private void button6_Click(object sender, EventArgs e)
         {
-            zoomFactor = Math.Max(0.1f, zoomFactor - 0.1f); 
+            zoomFactor = Math.Max(0.1f, zoomFactor - 0.1f);
             DisplaySlide();
         }
 
+        //private void button1_Click_1(object sender, EventArgs e)
+        //{
+        //    speechSynthesizer.SpeakAsyncCancelAll();
+        //    //EnglishFiles englishFiles = new EnglishFiles();
+        //    speechSynthesizer.SpeakAsyncCancelAll();
+        //    LessonsList openPPTFile = new LessonsList();
+        //    openPPTFile.LessonName = LessonName;
+        //    openPPTFile.SubjectName = SubjectName;
+        //    openPPTFile.ClassNo = ClassNo;
+        //    openPPTFile.SchlName = SchlName;
+        //    openPPTFile.Show();
+        //    this.Hide();
+        //    if (pptPresentation != null)
+        //    {
+        //        pptPresentation.Close();
+        //        Marshal.ReleaseComObject(pptPresentation);
+        //        pptPresentation = null;
+        //    }
+
+        //}
+
         private void button1_Click_1(object sender, EventArgs e)
         {
+            isClosing = true;
+
             speechSynthesizer.SpeakAsyncCancelAll();
-            //EnglishFiles englishFiles = new EnglishFiles();
-            speechSynthesizer.SpeakAsyncCancelAll();
-            LessonsList openPPTFile = new LessonsList();
-            openPPTFile.LessonName = LessonName;
-            openPPTFile.SubjectName = SubjectName;
-            openPPTFile.ClassNo = ClassNo;
-            openPPTFile.SchlName = SchlName;
-            openPPTFile.Show();
-            this.Hide();
+
             if (pptPresentation != null)
             {
                 pptPresentation.Close();
@@ -135,6 +149,14 @@ namespace JacobsDesktopApp
                 pptPresentation = null;
             }
 
+            LessonsList frm = new LessonsList();
+            frm.LessonName = LessonName;
+            frm.SubjectName = SubjectName;
+            frm.ClassNo = ClassNo;
+            frm.SchlName = SchlName;
+            frm.Show();
+
+            this.Hide();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -172,9 +194,10 @@ namespace JacobsDesktopApp
                 Image playImage = Image.FromFile(playimages);
                 Bitmap resizedPlayImage = new Bitmap(playImage, new Size(22, 22));
                 btnPlayPause.Image = resizedPlayImage;
-                    ReadSlideText(slideIndex);
+                ReadSlideText(slideIndex);
                 speechSynthesizer.Resume();
-            } else if (pp == 1)
+            }
+            else if (pp == 1)
             {
                 pp = 0;
                 //speechSynthesizer.SpeakAsyncCancelAll();
@@ -197,35 +220,70 @@ namespace JacobsDesktopApp
             //    ReadSlideText(slideIndex);
             //}
         }
+        //private void ReadSlideText(int slideIndex)
+        //{
+        //    // Get the text from the current slide
+        //    string slideText = GetSlideText(slideIndex);
+
+        //    if (!string.IsNullOrEmpty(slideText))
+        //    {
+        //        // Speak the text of the slide
+        //        speechSynthesizer.SpeakAsync(slideText);
+
+        //        // Once speech is finished, go to the next slide
+        //        speechSynthesizer.SpeakCompleted += (s, args) =>
+        //        {
+        //            // Check if there are more slides
+        //            if (slideIndex < pptPresentation.Slides.Count)
+        //            {
+        //                slideIndex++;
+        //                int currentSlideIndex = slideIndexs;
+        //                if (currentSlideIndex < pptPresentation.Slides.Count)
+        //                {
+        //                    slideIndexs = slideIndexs + 1;
+        //                    DisplaySlide();
+        //                }
+        //                ReadSlideText(slideIndex);  // Continue to the next slide
+        //            }
+        //            else
+        //            {
+        //                // All slides have been spoken
+        //                isSpeechPlaying = false; // Set flag to stop speech
+        //            }
+        //        };
+        //    }
+        //}
         private void ReadSlideText(int slideIndex)
         {
-            // Get the text from the current slide
             string slideText = GetSlideText(slideIndex);
 
             if (!string.IsNullOrEmpty(slideText))
             {
-                // Speak the text of the slide
                 speechSynthesizer.SpeakAsync(slideText);
 
-                // Once speech is finished, go to the next slide
                 speechSynthesizer.SpeakCompleted += (s, args) =>
                 {
-                    // Check if there are more slides
+                    if (isClosing)
+                        return;
+
+                    if (pptPresentation == null)
+                        return;
+
                     if (slideIndex < pptPresentation.Slides.Count)
                     {
-                        slideIndex++; 
-                        int currentSlideIndex = slideIndexs;
-                        if (currentSlideIndex < pptPresentation.Slides.Count)
+                        slideIndex++;
+
+                        if (slideIndexs < pptPresentation.Slides.Count)
                         {
-                            slideIndexs = slideIndexs + 1;
+                            slideIndexs++;
                             DisplaySlide();
                         }
-                        ReadSlideText(slideIndex);  // Continue to the next slide
+
+                        ReadSlideText(slideIndex);
                     }
                     else
                     {
-                        // All slides have been spoken
-                        isSpeechPlaying = false; // Set flag to stop speech
+                        isSpeechPlaying = false;
                     }
                 };
             }
@@ -252,37 +310,30 @@ namespace JacobsDesktopApp
             return slideText;
         }
 
+        //private void OpenPPTFile_FormClosing(object sender, FormClosingEventArgs e)
+        //{
+        //    System.Windows.Forms.Application.Exit();
+        //    if (pptPresentation != null)
+        //    {
+        //        pptPresentation.Close();
+        //        Marshal.ReleaseComObject(pptPresentation);
+        //        pptPresentation = null;
+        //    }
+        //}
         private void OpenPPTFile_FormClosing(object sender, FormClosingEventArgs e)
         {
-            System.Windows.Forms.Application.Exit();
+            isClosing = true;
+
+            speechSynthesizer.SpeakAsyncCancelAll();
+
             if (pptPresentation != null)
             {
                 pptPresentation.Close();
                 Marshal.ReleaseComObject(pptPresentation);
                 pptPresentation = null;
             }
+
+            System.Windows.Forms.Application.Exit();
         }
     }
 }
-
-
-//private void btnPrev_Click(object sender, EventArgs e)
-//{
-//    int currentSlideIndex = slideIndex;
-//    if (currentSlideIndex > 1)
-//    {
-//        slideIndex = slideIndex - 1;
-//        DisplaySlide();
-//    }
-//}
-
-//private void btnNext_Click(object sender, EventArgs e)
-//{
-
-//    int currentSlideIndex = slideIndex;
-//    if (currentSlideIndex < pptPresentation.Slides.Count)
-//    {
-//        slideIndex = slideIndex + 1;
-//        DisplaySlide();
-//    }
-//}

@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+//using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,90 +18,191 @@ namespace JacobsDesktopApp
     {
         public int ClassNo { get; set; }
         public string SchlName { get; set; }
-        private Dictionary<int, List<string>> lessons = new Dictionary<int, List<string>>
-    {
-        { 1, new List<string> { "Science_Class1_Lesson1", "Science_Class1_Lesson2", "Science_Class1_Lesson3", "Science_Class1_Lesson4", "Science_Class1_Lesson5", "Science_Class1_Lesson6", "Science_Class1_Lesson7", "Science_Class1_Lesson8", "Science_Class1_Lesson9", "Science_Class1_Lesson10", "Science_Class1_Lesson11", "Science_Class1_Lesson12" } },
-        { 2, new List<string> { "Science_Class2_Lesson1", "Science_Class2_Lesson2", "Science_Class2_Lesson3", "Science_Class2_Lesson4", "Science_Class2_Lesson5", "Science_Class2_Lesson6", "Science_Class2_Lesson7", "Science_Class2_Lesson8", "Science_Class2_Lesson9", "Science_Class2_Lesson10", "Science_Class2_Lesson11", "Science_Class2_Lesson12" } },
-        { 3, new List<string> { "Science_Class3_Lesson1", "Science_Class3_Lesson2", "Science_Class3_Lesson3", "Science_Class3_Lesson4", "Science_Class3_Lesson5", "Science_Class3_Lesson6", "Science_Class3_Lesson7", "Science_Class3_Lesson8", "Science_Class3_Lesson9", "Science_Class3_Lesson10", "Science_Class3_Lesson11", "Science_Class3_Lesson12" } },
-        { 4, new List<string> { "Science_Class4_Lesson1", "Science_Class4_Lesson2", "Science_Class4_Lesson3", "Science_Class4_Lesson4", "Science_Class4_Lesson5", "Science_Class4_Lesson6", "Science_Class4_Lesson7", "Science_Class4_Lesson8", "Science_Class4_Lesson9", "Science_Class4_Lesson10", "Science_Class4_Lesson11", "Science_Class4_Lesson12" } },
-        { 5, new List<string> { "Science_Class5_Lesson1", "Science_Class5_Lesson2", "Science_Class5_Lesson3", "Science_Class5_Lesson4", "Science_Class5_Lesson5", "Science_Class5_Lesson6", "Science_Class5_Lesson7", "Science_Class5_Lesson8", "Science_Class5_Lesson9", "Science_Class5_Lesson10", "Science_Class5_Lesson11", "Science_Class5_Lesson12" } },
-        { 6, new List<string> { "Science_Class6_Lesson1", "Science_Class6_Lesson2", "Science_Class6_Lesson3", "Science_Class6_Lesson4", "Science_Class6_Lesson5", "Science_Class6_Lesson6", "Science_Class6_Lesson7", "Science_Class6_Lesson8", "Science_Class6_Lesson9", "Science_Class6_Lesson10", "Science_Class6_Lesson11", "Science_Class6_Lesson12" } },
-        { 7, new List<string> { "Science_Class7_Lesson1", "Science_Class7_Lesson2", "Science_Class7_Lesson3", "Science_Class7_Lesson4", "Science_Class7_Lesson5", "Science_Class7_Lesson6", "Science_Class7_Lesson7", "Science_Class7_Lesson8", "Science_Class7_Lesson9", "Science_Class7_Lesson10", "Science_Class7_Lesson11", "Science_Class7_Lesson12" } },
-        { 8, new List<string> { "Science_Class8_Lesson1", "Science_Class8_Lesson2", "Science_Class8_Lesson3", "Science_Class8_Lesson4", "Science_Class8_Lesson5", "Science_Class8_Lesson6", "Science_Class8_Lesson7", "Science_Class8_Lesson8", "Science_Class8_Lesson9", "Science_Class8_Lesson10", "Science_Class8_Lesson11", "Science_Class8_Lesson12" } },
-        { 9, new List<string> { "Science_Class9_Lesson1", "Science_Class9_Lesson2", "Science_Class9_Lesson3", "Science_Class9_Lesson4", "Science_Class9_Lesson5", "Science_Class9_Lesson6", "Science_Class9_Lesson7", "Science_Class9_Lesson8", "Science_Class9_Lesson9", "Science_Class9_Lesson10", "Science_Class9_Lesson11", "Science_Class9_Lesson12" } },
-        { 10, new List<string> { "Science_Class10_Lesson1", "Science_Class10_Lesson2", "Science_Class10_Lesson3", "Science_Class10_Lesson4", "Science_Class10_Lesson5", "Science_Class10_Lesson6", "Science_Class10_Lesson7", "Science_Class10_Lesson8", "Science_Class10_Lesson9", "Science_Class10_Lesson10", "Science_Class10_Lesson11", "Science_Class10_Lesson12" } }
-    };
+
+        public string SubjectName { get; set; }
+
+
+      
         public ScienceFile()
         {
             InitializeComponent();
         }
+         
+
         private void ScienceFile_Load(object sender, EventArgs e)
         {
-            LoadDocumentsForClass(ClassNo);
-            lblSchl.Text = "              " + SchlName + "          ";
+            this.WindowState = FormWindowState.Maximized;
+
+            lblSchl.Text = "Jacob Educare";
+            lblSchl.Font = new Font("Segoe UI", 24, FontStyle.Bold);
+            lblSchl.ForeColor = Color.RoyalBlue;
+            lblSchl.Visible = true;
+
+            lblSchl.Left = (this.ClientSize.Width - lblSchl.Width) / 2;
+            lblSchl.Top = 20;
+           
+
+
             btnLogout.Visible = false;
-            lblSchl.Visible = false;
+
+            lbllesson.Text = SubjectName + " Lessons";
+            lbllesson.Font = new Font("Segoe UI", 22, FontStyle.Bold);
+            lbllesson.ForeColor = Color.RoyalBlue;
+
             lbllesson.Left = (this.ClientSize.Width - lbllesson.Width) / 2;
+            lbllesson.Top = 100;
+
+            grpLesson.Left = 20;
+            grpLesson.Top = 180;
+
+            grpLesson.Width = 1400;
+            grpLesson.Height = 630;
+
             grpLesson.Left = (this.ClientSize.Width - grpLesson.Width) / 2;
-            grpLesson.Top = (this.ClientSize.Height - grpLesson.Height) / 3;
+            grpLesson.Top = 180;
+
+            this.BackColor = Color.FromArgb(245, 248, 252);
+
+            grpLesson.BackColor = Color.White;
+            grpLesson.FlatStyle = FlatStyle.Flat;
+            grpLesson.Text = "";
+
+            pictureBox1.Dock = DockStyle.None;
+            pictureBox1.Size = new Size(140, 100);
+            pictureBox1.Location = new Point(10, 10);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+
+            // ===== BACK BUTTON DESIGN =====
+            btnBack.Text = "← Back";
+            btnBack.Width = 110;
+            btnBack.Height = 35;
+
+            btnBack.BackColor = Color.FromArgb(37, 99, 235);
+            btnBack.ForeColor = Color.White;
+
+            btnBack.FlatStyle = FlatStyle.Flat;
+            btnBack.FlatAppearance.BorderSize = 0;
+
+            btnBack.Font = new Font("Segoe UI", 10, FontStyle.Bold);
+
+           // SetRoundedButton(btnBack, 12);
+
+            LoadDocumentsForClass(ClassNo);
+
+       
         }
+
+        
 
         private void LoadDocumentsForClass(int classNo)
         {
-            if (lessons.TryGetValue(classNo, out List<string> documents))
+            string subjectFolder = Path.Combine(
+                Application.StartupPath,
+                  "Files",
+                $"Class {classNo}",
+                SubjectName);
+            
+            subjectFolder = Path.GetFullPath(subjectFolder);
+
+            if (!Directory.Exists(subjectFolder))
             {
-                grpLesson.Controls.Clear();
-
-                FlowLayoutPanel flowPanel = new FlowLayoutPanel
-                {
-                    Dock = DockStyle.Fill,
-                    AutoScroll = true,
-                    WrapContents = true,
-                    FlowDirection = FlowDirection.LeftToRight,
-                    Padding = new Padding(20),
-                };
-
-                foreach (var doc in documents)
-                {
-                    Panel folderItem = new Panel
-                    {
-                        Width = 100,
-                        Height = 100,
-                        Margin = new Padding(10)
-                    };
-
-                    PictureBox folderIcon = new PictureBox
-                    {
-                        Image = Properties.Resources.folder, // Replace with your folder image in Resources
-                        Size = new Size(64, 64),
-                        SizeMode = PictureBoxSizeMode.StretchImage,
-                        Location = new Point(18, 0),
-                        Cursor = Cursors.Hand,
-                        Tag = doc
-                    };
-                    folderIcon.Click += FolderIcon_Click;
-
-                    Label folderLabel = new Label
-                    {
-                        Text = doc,
-                        AutoSize = false,
-                        Width = 100,
-                        Height = 30,
-                        TextAlign = ContentAlignment.MiddleCenter,
-                        Location = new Point(0, 70)
-                    };
-
-                    folderItem.Controls.Add(folderIcon);
-                    folderItem.Controls.Add(folderLabel);
-                    flowPanel.Controls.Add(folderItem);
-                }
-
-                grpLesson.Controls.Add(flowPanel); // Add the flow layout to your GroupBox
+                MessageBox.Show(SubjectName + " folder not found:\n" + subjectFolder);
+                return;
             }
-            else
+
+            grpLesson.Controls.Clear();
+
+            FlowLayoutPanel flowPanel = new FlowLayoutPanel();
+            flowPanel.Dock = DockStyle.Fill;
+            flowPanel.AutoScroll = true;
+            flowPanel.WrapContents = true;
+            flowPanel.FlowDirection = FlowDirection.LeftToRight;
+            flowPanel.Padding = new Padding(40);
+            flowPanel.BackColor = Color.White;
+
+            string[] lessonFolders = Directory.GetDirectories(subjectFolder);
+
+            foreach (string lessonFolder in lessonFolders)
             {
-                MessageBox.Show($"No documents found for this subject of class {classNo}.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                string lessonName = Path.GetFileName(lessonFolder);
+
+                // Card
+                Panel card = new Panel();
+                card.Width = 240;
+                card.Height = 220;
+                card.BackColor = Color.White;
+                card.Margin = new Padding(25);
+                card.BorderStyle = BorderStyle.None;
+                card.Cursor = Cursors.Hand;
+
+                SetRoundedPanel(card, 20);
+
+                // Circle Background
+                Panel circle = new Panel();
+                circle.Width = 130;
+                circle.Height = 130;
+                circle.BackColor = Color.FromArgb(245, 248, 252);
+
+                circle.Left = (card.Width - circle.Width) / 2;
+                circle.Top = 15;
+
+                SetRoundedPanel(circle, 65);
+
+                // Folder Icon
+                PictureBox folderIcon = new PictureBox();
+                folderIcon.Image = Properties.Resources.logofolde;
+                folderIcon.Size = new Size(80, 80);
+                folderIcon.SizeMode = PictureBoxSizeMode.Zoom;
+
+                folderIcon.Left = (circle.Width - folderIcon.Width) / 2;
+                folderIcon.Top = (circle.Height - folderIcon.Height) / 2;
+
+                folderIcon.Tag = lessonName;
+                folderIcon.Cursor = Cursors.Hand;
+                folderIcon.Click += FolderIcon_Click;
+
+                circle.Controls.Add(folderIcon);
+
+                // Lesson Label
+                Label lblLesson = new Label();
+                lblLesson.Text = lessonName;
+                lblLesson.Width = card.Width;
+                lblLesson.Height = 40;
+                lblLesson.TextAlign = ContentAlignment.MiddleCenter;
+                lblLesson.Font = new Font("Segoe UI", 14, FontStyle.Bold);
+                lblLesson.ForeColor = Color.FromArgb(15, 23, 42);
+                lblLesson.Location = new Point(0, 150);
+
+                // Blue Underline
+                Panel underline = new Panel();
+                underline.Width = 60;
+                underline.Height = 3;
+                underline.BackColor = Color.RoyalBlue;
+                underline.Left = (card.Width - underline.Width) / 2;
+                underline.Top = 190;
+
+                card.Controls.Add(circle);
+                card.Controls.Add(lblLesson);
+                card.Controls.Add(underline);
+
+                flowPanel.Controls.Add(card);
             }
+
+            grpLesson.Controls.Add(flowPanel);
+        }
+
+        private void SetRoundedPanel(Control control, int radius)
+        {
+            System.Drawing.Drawing2D.GraphicsPath path =
+                new System.Drawing.Drawing2D.GraphicsPath();
+
+            path.AddArc(0, 0, radius, radius, 180, 90);
+            path.AddArc(control.Width - radius, 0, radius, radius, 270, 90);
+            path.AddArc(control.Width - radius, control.Height - radius, radius, radius, 0, 90);
+            path.AddArc(0, control.Height - radius, radius, radius, 90, 90);
+            path.CloseFigure();
+
+            control.Region = new Region(path);
         }
         private void FolderIcon_Click(object sender, EventArgs e)
         {
@@ -110,7 +213,7 @@ namespace JacobsDesktopApp
                 LessonsList openPPTFile = new LessonsList
                 {
                     LessonName = lessonName,
-                    SubjectName = "Science",
+                    SubjectName = SubjectName,
                     ClassNo = ClassNo,
                     SchlName = SchlName
                 };
