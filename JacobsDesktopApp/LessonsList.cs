@@ -271,13 +271,15 @@ namespace JacobsDesktopApp
         }
         private void LoadDocumentsForClass(int classNo, string lessonNumber)
         {
+
+            
             string lessonFolder = Path.Combine(
                 Application.StartupPath,
-                "Files",
+                  @"..\..\Files",
                  $"Class {classNo}",
                 SubjectName,
                 lessonNumber);
-           // MessageBox.Show(lessonFolder);
+          
             lessonFolder = Path.GetFullPath(lessonFolder);
 
             if (!Directory.Exists(lessonFolder))
@@ -303,11 +305,13 @@ namespace JacobsDesktopApp
 
                 if (fileName.ToLower().Contains("exercise"))
                 {
-                    exFlow.Controls.Add(CreateFolderItem(file));
+                    // exFlow.Controls.Add(CreateFolderItem(file));
+                    exFlow.Controls.Add(CreateFileItem(file));
                 }
                 else
                 {
-                    docFlow.Controls.Add(CreateFolderItem(file));
+                    //docFlow.Controls.Add(CreateFolderItem(file));
+                    docFlow.Controls.Add(CreateFileItem(file));
                 }
             }
 
@@ -503,8 +507,115 @@ namespace JacobsDesktopApp
             }
         }
 
+        private Panel CreateFileItem(string filePath)
+        {
+            string fileName = Path.GetFileNameWithoutExtension(filePath);
 
+            // Remove .enc
+            fileName = Path.GetFileNameWithoutExtension(fileName);
 
+            Panel pnl = new Panel();
+            pnl.Width = 480;
+            pnl.Height = 50;
+            pnl.Margin = new Padding(5);
+            pnl.BackColor = Color.White;
+            pnl.BorderStyle = BorderStyle.FixedSingle;
+
+            Label lblName = new Label();
+            lblName.Text = fileName;
+            lblName.Font = new Font("Segoe UI", 11, FontStyle.Bold);
+            lblName.AutoSize = false;
+            lblName.Width = 450;
+            lblName.Height = 30;
+            lblName.Location = new Point(15, 10);
+            lblName.Cursor = Cursors.Hand;
+
+            pnl.Tag = filePath;
+            lblName.Tag = filePath;
+
+            pnl.Controls.Add(lblName);
+
+            pnl.Click += File_Click;
+            lblName.Click += File_Click;
+
+            return pnl;
+        }
+        private void File_Click(object sender, EventArgs e)
+        {
+            string filePath = ((Control)sender).Tag.ToString();
+
+            string ext = Path.GetExtension(
+                Path.GetFileNameWithoutExtension(filePath))
+                .ToLower();
+
+            string tempFile =
+                FileSecurity.DecryptToTemp(
+                    filePath,
+                    "SmsTeacher@123");
+
+            if (ext == ".html")
+            {
+                OpenHtml frm = new OpenHtml();
+
+                frm.DocName = tempFile;
+                frm.ClassNo = ClassNo;
+                frm.SchlName = SchlName;
+                frm.LessonName = LessonName;
+                frm.SubjectName = SubjectName;
+
+                frm.Show();
+            }
+            else if (ext == ".pdf")
+            {
+                OpenPdfFile frm = new OpenPdfFile();
+
+                frm.DocName = tempFile;
+                frm.ClassNo = ClassNo;
+                frm.SchlName = SchlName;
+                frm.LessonName = LessonName;
+                frm.SubjectName = SubjectName;
+
+                frm.Show();
+            }
+            else if (ext == ".pptx")
+            {
+                OpenPPTFile frm = new OpenPPTFile();
+
+                frm.DocName = tempFile;
+                frm.ClassNo = ClassNo;
+                frm.SchlName = SchlName;
+                frm.LessonName = LessonName;
+                frm.SubjectName = SubjectName;
+
+                frm.Show();
+            }
+            else if (ext == ".mp4")
+            {
+                OpenMp4 frm = new OpenMp4();
+
+                frm.DocName = tempFile;
+                frm.ClassNo = ClassNo;
+                frm.SchlName = SchlName;
+                frm.LessonName = LessonName;
+                frm.SubjectName = SubjectName;
+
+                frm.Show();
+            }
+            else if (ext == ".glb")
+            {
+                OpenGlb frm = new OpenGlb();
+
+                frm.DocName = tempFile;
+                frm.ClassNo = ClassNo;
+                frm.SchlName = SchlName;
+                frm.LessonName = LessonName;
+                frm.SubjectName = SubjectName;
+
+                frm.Show();
+            }
+
+            this.Hide();
+        }
         private void LessonsList_Load(object sender, EventArgs e)
         {
             // Full Screen
@@ -512,7 +623,7 @@ namespace JacobsDesktopApp
             this.BackColor = Color.FromArgb(245, 248, 252);
 
             // School Name
-            lblSchl.Text = "Jacob Educare";
+            lblSchl.Text = "Jacobs Educare";
             lblSchl.Font = new Font("Segoe UI", 24, FontStyle.Bold);
             lblSchl.ForeColor = Color.RoyalBlue;
             lblSchl.AutoSize = true;
@@ -610,7 +721,10 @@ namespace JacobsDesktopApp
 
             groupBox4.Controls.Add(line2);
             line2.BringToFront();
+            this.Text = "";
         }
+
+
         private void GroupBoxBlueBorder(object sender, PaintEventArgs e)
         {
             GroupBox grp = sender as GroupBox;

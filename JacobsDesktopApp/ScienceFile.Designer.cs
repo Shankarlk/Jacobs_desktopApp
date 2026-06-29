@@ -36,19 +36,19 @@
             this.grpLesson = new System.Windows.Forms.GroupBox();
             this.btnBack = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.labelArrow = new System.Windows.Forms.Label();
             this.labelName = new System.Windows.Forms.Label();
             this.pictureBoxProfile = new System.Windows.Forms.PictureBox();
             this.labelRole = new System.Windows.Forms.Label();
             this.lblSchl = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -57,10 +57,10 @@
             this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(1167, 676);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.groupBox1.Size = new System.Drawing.Size(1556, 832);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             // 
@@ -72,9 +72,11 @@
             this.groupBox4.Controls.Add(this.grpLesson);
             this.groupBox4.Controls.Add(this.btnBack);
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox4.Location = new System.Drawing.Point(4, 117);
+            this.groupBox4.Location = new System.Drawing.Point(5, 143);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(1159, 555);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox4.Size = new System.Drawing.Size(1546, 684);
             this.groupBox4.TabIndex = 22;
             this.groupBox4.TabStop = false;
             // 
@@ -84,9 +86,10 @@
             this.btnLogout.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnLogout.Font = new System.Drawing.Font("Times New Roman", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogout.ForeColor = System.Drawing.Color.Blue;
-            this.btnLogout.Location = new System.Drawing.Point(1055, 0);
+            this.btnLogout.Location = new System.Drawing.Point(1408, 0);
+            this.btnLogout.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(107, 36);
+            this.btnLogout.Size = new System.Drawing.Size(143, 44);
             this.btnLogout.TabIndex = 15;
             this.btnLogout.Text = "Logout";
             this.btnLogout.UseVisualStyleBackColor = false;
@@ -99,10 +102,11 @@
             this.lbllesson.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lbllesson.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbllesson.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.lbllesson.Location = new System.Drawing.Point(542, -6);
+            this.lbllesson.Location = new System.Drawing.Point(724, -7);
+            this.lbllesson.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbllesson.Name = "lbllesson";
-            this.lbllesson.Padding = new System.Windows.Forms.Padding(7, 10, 10, 10);
-            this.lbllesson.Size = new System.Drawing.Size(108, 46);
+            this.lbllesson.Padding = new System.Windows.Forms.Padding(9, 12, 13, 12);
+            this.lbllesson.Size = new System.Drawing.Size(137, 59);
             this.lbllesson.TabIndex = 14;
             this.lbllesson.Text = "Lessons";
             this.lbllesson.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -110,11 +114,11 @@
             // grpLesson
             // 
             this.grpLesson.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.grpLesson.Location = new System.Drawing.Point(358, 70);
-            this.grpLesson.Margin = new System.Windows.Forms.Padding(4);
+            this.grpLesson.Location = new System.Drawing.Point(478, 86);
+            this.grpLesson.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.grpLesson.Name = "grpLesson";
-            this.grpLesson.Padding = new System.Windows.Forms.Padding(13);
-            this.grpLesson.Size = new System.Drawing.Size(591, 263);
+            this.grpLesson.Padding = new System.Windows.Forms.Padding(17, 16, 17, 16);
+            this.grpLesson.Size = new System.Drawing.Size(788, 324);
             this.grpLesson.TabIndex = 0;
             this.grpLesson.TabStop = false;
             // 
@@ -123,11 +127,11 @@
             this.btnBack.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBack.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnBack.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnBack.Location = new System.Drawing.Point(1049, 480);
+            this.btnBack.Location = new System.Drawing.Point(1400, 592);
             this.btnBack.Margin = new System.Windows.Forms.Padding(1);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Padding = new System.Windows.Forms.Padding(5);
-            this.btnBack.Size = new System.Drawing.Size(107, 39);
+            this.btnBack.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.btnBack.Size = new System.Drawing.Size(143, 48);
             this.btnBack.TabIndex = 6;
             this.btnBack.Text = "Back";
             this.btnBack.UseVisualStyleBackColor = false;
@@ -140,11 +144,26 @@
             this.groupBox3.Controls.Add(this.groupBox6);
             this.groupBox3.Controls.Add(this.lblSchl);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox3.Location = new System.Drawing.Point(4, 17);
+            this.groupBox3.Location = new System.Drawing.Point(5, 20);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1159, 100);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Size = new System.Drawing.Size(1546, 123);
             this.groupBox3.TabIndex = 21;
             this.groupBox3.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(4, 19);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(119, 100);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 18;
+            this.pictureBox1.TabStop = false;
             // 
             // groupBox6
             // 
@@ -154,9 +173,11 @@
             this.groupBox6.Controls.Add(this.pictureBoxProfile);
             this.groupBox6.Controls.Add(this.labelRole);
             this.groupBox6.Dock = System.Windows.Forms.DockStyle.Right;
-            this.groupBox6.Location = new System.Drawing.Point(1033, 16);
+            this.groupBox6.Location = new System.Drawing.Point(1378, 19);
+            this.groupBox6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(123, 81);
+            this.groupBox6.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox6.Size = new System.Drawing.Size(164, 100);
             this.groupBox6.TabIndex = 16;
             this.groupBox6.TabStop = false;
             // 
@@ -165,9 +186,10 @@
             this.labelArrow.AutoSize = true;
             this.labelArrow.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelArrow.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.labelArrow.Location = new System.Drawing.Point(92, 34);
+            this.labelArrow.Location = new System.Drawing.Point(123, 42);
+            this.labelArrow.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelArrow.Name = "labelArrow";
-            this.labelArrow.Size = new System.Drawing.Size(23, 17);
+            this.labelArrow.Size = new System.Drawing.Size(29, 22);
             this.labelArrow.TabIndex = 18;
             this.labelArrow.Text = "▼";
             this.labelArrow.Click += new System.EventHandler(this.labelArrow_Click);
@@ -176,30 +198,35 @@
             // 
             this.labelName.AutoSize = true;
             this.labelName.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelName.Location = new System.Drawing.Point(54, 18);
+            this.labelName.Location = new System.Drawing.Point(72, 22);
+            this.labelName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(61, 17);
+            this.labelName.Size = new System.Drawing.Size(76, 22);
             this.labelName.TabIndex = 16;
             this.labelName.Text = "Teacher";
+            this.labelName.Visible = false;
             // 
             // pictureBoxProfile
             // 
             this.pictureBoxProfile.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBoxProfile.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxProfile.Image")));
-            this.pictureBoxProfile.Location = new System.Drawing.Point(8, 18);
+            this.pictureBoxProfile.Location = new System.Drawing.Point(11, 22);
+            this.pictureBoxProfile.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBoxProfile.Name = "pictureBoxProfile";
-            this.pictureBoxProfile.Size = new System.Drawing.Size(40, 40);
+            this.pictureBoxProfile.Size = new System.Drawing.Size(53, 49);
             this.pictureBoxProfile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxProfile.TabIndex = 15;
             this.pictureBoxProfile.TabStop = false;
+            this.pictureBoxProfile.Visible = false;
             // 
             // labelRole
             // 
             this.labelRole.AutoSize = true;
             this.labelRole.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelRole.Location = new System.Drawing.Point(54, 35);
+            this.labelRole.Location = new System.Drawing.Point(72, 43);
+            this.labelRole.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelRole.Name = "labelRole";
-            this.labelRole.Size = new System.Drawing.Size(37, 17);
+            this.labelRole.Size = new System.Drawing.Size(45, 21);
             this.labelRole.TabIndex = 17;
             this.labelRole.Text = "User";
             // 
@@ -210,32 +237,22 @@
             this.lblSchl.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblSchl.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSchl.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.lblSchl.Location = new System.Drawing.Point(146, 38);
+            this.lblSchl.Location = new System.Drawing.Point(195, 47);
+            this.lblSchl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSchl.Name = "lblSchl";
-            this.lblSchl.Padding = new System.Windows.Forms.Padding(7, 10, 10, 10);
-            this.lblSchl.Size = new System.Drawing.Size(100, 47);
+            this.lblSchl.Padding = new System.Windows.Forms.Padding(9, 12, 13, 12);
+            this.lblSchl.Size = new System.Drawing.Size(123, 58);
             this.lblSchl.TabIndex = 11;
             this.lblSchl.Text = "Classes";
             this.lblSchl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(3, 16);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(89, 81);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 18;
-            this.pictureBox1.TabStop = false;
-            // 
             // ScienceFile
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1167, 676);
+            this.ClientSize = new System.Drawing.Size(1556, 832);
             this.Controls.Add(this.groupBox1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ScienceFile";
@@ -247,10 +264,10 @@
             this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }

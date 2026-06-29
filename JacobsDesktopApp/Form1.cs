@@ -30,7 +30,7 @@ namespace JacobsDesktopApp
         {
             string uname = txtUsername.Text;
             string pwd = txtPwd.Text;
-            string board = cmbBoard.SelectedItem?.ToString();
+            //string board = cmbBoard.SelectedItem?.ToString();
             if (uname == "")
             {
                 MessageBox.Show("Please Enter The Username");
@@ -66,15 +66,15 @@ namespace JacobsDesktopApp
             {
                 MessageBox.Show("Invalid Password");
             }
-            else if (board == null)
-            {
-                MessageBox.Show("Please select the board.");
-            }
+            //else if (board == null)
+            //{
+            //    MessageBox.Show("Please select the board.");
+            //}
             else
             {
                 //MessageBox.Show("";
                 Home home = new Home();
-                home.Board = board;
+                //home.Board = board;
                 home.Show();
                 this.Hide();
             }
@@ -91,6 +91,9 @@ namespace JacobsDesktopApp
             this.WindowState = FormWindowState.Maximized;
             btnCancel.Visible=false;
             this.FormBorderStyle = FormBorderStyle.Sizable;
+            label4.Visible = false;
+            cmbBoard.Visible = false;
+            this.Text = "";
         }
     }
 }

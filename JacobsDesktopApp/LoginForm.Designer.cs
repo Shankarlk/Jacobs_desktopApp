@@ -40,7 +40,6 @@ namespace JacobsDesktopApp
             this.lblPassword = new System.Windows.Forms.Label();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.lblBoard = new System.Windows.Forms.Label();
-            this.cmbBoard = new System.Windows.Forms.ComboBox();
             this.btnLogin = new System.Windows.Forms.Button();
             this.chkAgree = new System.Windows.Forms.CheckBox();
             this.linkForgot = new System.Windows.Forms.LinkLabel();
@@ -86,7 +85,7 @@ namespace JacobsDesktopApp
             // 
             this.txtUsername.Location = new System.Drawing.Point(580, 175);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(300, 20);
+            this.txtUsername.Size = new System.Drawing.Size(300, 22);
             this.txtUsername.TabIndex = 3;
             // 
             // lblPassword
@@ -104,11 +103,12 @@ namespace JacobsDesktopApp
             this.txtPassword.Location = new System.Drawing.Point(580, 245);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(300, 20);
+            this.txtPassword.Size = new System.Drawing.Size(300, 22);
             this.txtPassword.TabIndex = 5;
             // 
             // lblBoard
             // 
+            this.lblBoard.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.lblBoard.Font = new System.Drawing.Font("Arial", 10F);
             this.lblBoard.ForeColor = System.Drawing.Color.Gray;
             this.lblBoard.Location = new System.Drawing.Point(580, 290);
@@ -116,17 +116,7 @@ namespace JacobsDesktopApp
             this.lblBoard.Size = new System.Drawing.Size(100, 23);
             this.lblBoard.TabIndex = 6;
             this.lblBoard.Text = "Board";
-            // 
-            // cmbBoard
-            // 
-            this.cmbBoard.Items.AddRange(new object[] {
-            "CBSE",
-            "ICSE",
-            "State Board"});
-            this.cmbBoard.Location = new System.Drawing.Point(580, 315);
-            this.cmbBoard.Name = "cmbBoard";
-            this.cmbBoard.Size = new System.Drawing.Size(300, 21);
-            this.cmbBoard.TabIndex = 7;
+            this.lblBoard.Visible = false;
             // 
             // btnLogin
             // 
@@ -134,9 +124,9 @@ namespace JacobsDesktopApp
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogin.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.btnLogin.ForeColor = System.Drawing.Color.White;
-            this.btnLogin.Location = new System.Drawing.Point(580, 370);
+            this.btnLogin.Location = new System.Drawing.Point(580, 345);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(300, 23);
+            this.btnLogin.Size = new System.Drawing.Size(300, 31);
             this.btnLogin.TabIndex = 8;
             this.btnLogin.Text = "LOGIN";
             this.btnLogin.UseVisualStyleBackColor = false;
@@ -148,7 +138,7 @@ namespace JacobsDesktopApp
             this.chkAgree.Font = new System.Drawing.Font("Arial", 9F);
             this.chkAgree.Location = new System.Drawing.Point(580, 420);
             this.chkAgree.Name = "chkAgree";
-            this.chkAgree.Size = new System.Drawing.Size(267, 19);
+            this.chkAgree.Size = new System.Drawing.Size(321, 21);
             this.chkAgree.TabIndex = 9;
             this.chkAgree.Text = "Agree to our Terms of use and Privacy Policy";
             // 
@@ -157,7 +147,7 @@ namespace JacobsDesktopApp
             this.linkForgot.AutoSize = true;
             this.linkForgot.Location = new System.Drawing.Point(800, 460);
             this.linkForgot.Name = "linkForgot";
-            this.linkForgot.Size = new System.Drawing.Size(95, 13);
+            this.linkForgot.Size = new System.Drawing.Size(119, 16);
             this.linkForgot.TabIndex = 10;
             this.linkForgot.TabStop = true;
             this.linkForgot.Text = "Forgot Password ?";
@@ -167,7 +157,7 @@ namespace JacobsDesktopApp
             this.linkSignUp.AutoSize = true;
             this.linkSignUp.Location = new System.Drawing.Point(580, 460);
             this.linkSignUp.Name = "linkSignUp";
-            this.linkSignUp.Size = new System.Drawing.Size(125, 13);
+            this.linkSignUp.Size = new System.Drawing.Size(149, 16);
             this.linkSignUp.TabIndex = 11;
             this.linkSignUp.TabStop = true;
             this.linkSignUp.Text = "Don\'t have an account ?";
@@ -179,7 +169,7 @@ namespace JacobsDesktopApp
             this.lblFooter.ForeColor = System.Drawing.Color.Gray;
             this.lblFooter.Location = new System.Drawing.Point(598, 500);
             this.lblFooter.Name = "lblFooter";
-            this.lblFooter.Size = new System.Drawing.Size(249, 28);
+            this.lblFooter.Size = new System.Drawing.Size(327, 32);
             this.lblFooter.TabIndex = 12;
             this.lblFooter.Text = "© 2025 JACOBS EDUCARE, All Rights Reserved\nPowered by EVOLUTION SOFTWARE SOLUTION" +
     "S";
@@ -195,7 +185,6 @@ namespace JacobsDesktopApp
             this.Controls.Add(this.lblPassword);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.lblBoard);
-            this.Controls.Add(this.cmbBoard);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.chkAgree);
             this.Controls.Add(this.linkForgot);

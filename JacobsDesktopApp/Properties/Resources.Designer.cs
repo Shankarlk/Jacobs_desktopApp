@@ -63,6 +63,16 @@ namespace JacobsDesktopApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Biology {
+            get {
+                object obj = ResourceManager.GetObject("Biology", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bookicon {
             get {
                 object obj = ResourceManager.GetObject("bookicon", resourceCulture);

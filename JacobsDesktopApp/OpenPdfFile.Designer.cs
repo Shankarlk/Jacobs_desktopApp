@@ -79,7 +79,7 @@
             this.lblExtractedTexts.AutoSize = true;
             this.lblExtractedTexts.Location = new System.Drawing.Point(274, 62);
             this.lblExtractedTexts.Name = "lblExtractedTexts";
-            this.lblExtractedTexts.Size = new System.Drawing.Size(0, 17);
+            this.lblExtractedTexts.Size = new System.Drawing.Size(0, 21);
             this.lblExtractedTexts.TabIndex = 10;
             // 
             // button7
@@ -130,9 +130,9 @@
             // pictureBox1
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox1.Location = new System.Drawing.Point(54, 22);
+            this.pictureBox1.Location = new System.Drawing.Point(54, 34);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1091, 723);
+            this.pictureBox1.Size = new System.Drawing.Size(1091, 711);
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
@@ -153,10 +153,10 @@
             // button3
             // 
             this.button3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.button3.Location = new System.Drawing.Point(1145, 22);
+            this.button3.Location = new System.Drawing.Point(1145, 26);
             this.button3.Margin = new System.Windows.Forms.Padding(4);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(59, 723);
+            this.button3.Size = new System.Drawing.Size(59, 719);
             this.button3.TabIndex = 1;
             this.button3.Text = ">";
             this.button3.UseVisualStyleBackColor = true;
@@ -165,10 +165,10 @@
             // button2
             // 
             this.button2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.button2.Location = new System.Drawing.Point(4, 22);
+            this.button2.Location = new System.Drawing.Point(4, 26);
             this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(50, 723);
+            this.button2.Size = new System.Drawing.Size(50, 719);
             this.button2.TabIndex = 0;
             this.button2.Text = "<";
             this.button2.UseVisualStyleBackColor = true;
@@ -176,7 +176,7 @@
             // 
             // OpenPdfFile
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1208, 749);
             this.Controls.Add(this.groupBox1);

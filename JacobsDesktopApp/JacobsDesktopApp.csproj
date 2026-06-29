@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\PdfiumViewer.Native.x86_64.v8-xfa.2018.4.8.256\build\PdfiumViewer.Native.x86_64.v8-xfa.props" Condition="Exists('..\packages\PdfiumViewer.Native.x86_64.v8-xfa.2018.4.8.256\build\PdfiumViewer.Native.x86_64.v8-xfa.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -15,7 +16,7 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <PublishUrl>C:\Users\RRMINDS\Desktop\Jacob_App\</PublishUrl>
+    <PublishUrl>D:\Jacob_Application\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -25,7 +26,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>64</ApplicationRevision>
+    <ApplicationRevision>76</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -65,6 +66,49 @@
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>jacobs-logo-png 1.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'x64|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'x64|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\x64\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
@@ -151,6 +195,12 @@
     <Reference Include="office, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
+    <Reference Include="PdfiumViewer, Version=2.13.0.0, Culture=neutral, PublicKeyToken=91e4789cfb0609e0, processorArchitecture=MSIL">
+      <HintPath>..\packages\PdfiumViewer.2.13.0.0\lib\net20\PdfiumViewer.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfiumViewer.Standard, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PdfiumViewer.Standard.1.0.0\lib\netstandard2.0\PdfiumViewer.Standard.dll</HintPath>
+    </Reference>
     <Reference Include="SkiaSharp, Version=2.88.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
       <HintPath>..\packages\SkiaSharp.2.88.8\lib\net462\SkiaSharp.dll</HintPath>
     </Reference>
@@ -166,6 +216,9 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Diagnostics.DiagnosticSource, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Diagnostics.DiagnosticSource.5.0.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing.Common, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Drawing.Common.6.0.0\lib\net461\System.Drawing.Common.dll</HintPath>
     </Reference>
     <Reference Include="System.Memory, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Memory.4.6.3\lib\net462\System.Memory.dll</HintPath>
@@ -308,6 +361,11 @@
     <Compile Include="Subjects.Designer.cs">
       <DependentUpon>Subjects.cs</DependentUpon>
     </Compile>
+    <Content Include="bin\Debug\pdfium.dll" />
+    <Content Include="Files\Class 10\Biology\Lesson 1\Passage_Introduc.html" />
+    <Content Include="Files\pause.png" />
+    <Content Include="Files\play.png" />
+    <Content Include="jacobs-logo-png 1.ico" />
     <Content Include="LicenseKey\License_protected.txt" />
     <EmbeddedResource Include="FileSecurity.resx">
       <DependentUpon>FileSecurity.cs</DependentUpon>
@@ -317,23 +375,18 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\FontAwesome.otf" />
-    <None Include="Files\Class 1\Computer\Lesson 1\English_Class1.pdf.enc" />
-    <None Include="Files\Class 1\Computer\Lesson 1\English_Class1.pptx.enc" />
-    <None Include="Files\Class 1\Computer\Lesson 1\English_Lesson1_Exercise1.pdf.enc" />
-    <None Include="Files\Class 1\Computer\Lesson 1\Hindi_Class1.mp4.enc" />
-    <None Include="Files\Class 1\English\Lesson 2\SachinV R_InternshalaResume.pdf" />
-    <None Include="Files\Class 1\English\Lesson 2\SachinV R_InternshalaResume.pdf.enc" />
-    <None Include="Files\Class 1\English\Lesson 3\English_Class1.pptx.enc" />
-    <None Include="Files\Class 1\Hindi\Lesson 1\English_Class2.mp4.enc" />
-    <None Include="Files\Class 1\Hindi\Lesson 1\Hindi_Class2.pdf" />
-    <None Include="Files\Class 1\Hindi\Lesson 1\Hindi_Class2.pdf.enc" />
-    <None Include="Files\Class 1\Science\Lesson 1\English_Lesson1_Exercise1.pdf.enc" />
-    <None Include="Files\Class 1\Science\Lesson 1\Science_Class1.mp4.enc" />
-    <None Include="Files\Class 1\Science\Lesson 1\Science_Class1.pdf.enc" />
-    <None Include="Files\Class 1\Science\Lesson 1\Science_Class1.pptx.enc" />
-    <None Include="Files\Class 2\English\Lesson 2\A_human_brain__3d.glb.enc" />
-    <None Include="JacobsDesktopApp_1_TemporaryKey.pfx" />
+    <Content Include="Files\Class 10\Biology\Lesson 1\Absorption-by-Roots-The-Processes-Involved-2.pdf" />
+    <Content Include="Files\Class 10\Biology\Lesson 1\Absorption-by-Roots-The-Processes-Involved-2.pdf.enc" />
+    <Content Include="Files\Class 10\Biology\Lesson 1\Passage_Introduc.html.enc" />
+    <None Include="Files\Class 10\Biology\Lesson 1\Tissues-Plant-Tissues.pdf" />
+    <Content Include="Files\Class 10\Biology\Lesson 1\Tissues-Plant-Tissues.pdf.enc" />
+    <None Include="Files\Class 1\Computer\Lesson 1\Invoice-ELXJ15HP-0007.pdf" />
+    <Content Include="Files\Class 1\Computer\Lesson 1\Invoice-ELXJ15HP-0007.pdf.enc" />
+    <None Include="Files\Class 1\English\Lesson 2\Receipt-2808-3547-8544.pdf" />
     <Content Include="LicenseKey\License_protected.pdf" />
+    <Content Include="Files\Class 1\English\Lesson 2\Receipt-2808-3547-8544.pdf.enc" />
+    <None Include="Files\Class 1\Hindi\Lesson 1\223d01b7-3edf-418f-a3f7-2d1e07ce8f3a_Resume %281%29 %281%29.pdf" />
+    <Content Include="Files\Class 1\Hindi\Lesson 1\223d01b7-3edf-418f-a3f7-2d1e07ce8f3a_Resume %281%29 %281%29.pdf.enc" />
     <None Include="packages.config" />
     <None Include="Resources\folder.png" />
     <EmbeddedResource Include="EnglishFiles.resx">
@@ -416,7 +469,6 @@
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <None Include="app.manifest" />
-    <None Include="JacobsDesktopApp_TemporaryKey.pfx" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -490,19 +542,21 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="bin\Debug\" />
     <Folder Include="bin\Release\" />
     <Folder Include="Files\Class 1\Computer\Lesson 2\" />
     <Folder Include="Files\Class 1\Computer\Lesson 3\" />
+    <Folder Include="Files\Class 1\English\Lesson 3\" />
     <Folder Include="Files\Class 1\Hindi\Lesson 2\" />
     <Folder Include="Files\Class 1\Kannada\" />
     <Folder Include="Files\Class 1\Maths\" />
+    <Folder Include="Files\Class 1\Science\Lesson 1\" />
     <Folder Include="Files\Class 1\Science\Lesson 2\" />
     <Folder Include="Files\Class 1\Science\Lesson 3\" />
     <Folder Include="Files\Class 1\Science\Lesson 4\" />
     <Folder Include="Files\Class 1\Science\Lesson 5\" />
     <Folder Include="Files\Class 1\Social Science\" />
     <Folder Include="Files\Class 2\Computer\" />
+    <Folder Include="Files\Class 2\English\Lesson 2\" />
     <Folder Include="Files\Class 2\English\Lesson 3\" />
     <Folder Include="Files\Class 2\Hindi\" />
     <Folder Include="Files\Class 2\Science\" />
@@ -528,6 +582,7 @@
     <Error Condition="!Exists('..\packages\Microsoft.Web.WebView2.1.0.3537.50\build\Microsoft.Web.WebView2.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Web.WebView2.1.0.3537.50\build\Microsoft.Web.WebView2.targets'))" />
     <Error Condition="!Exists('..\packages\SkiaSharp.NativeAssets.macOS.3.119.4\build\net462\SkiaSharp.NativeAssets.macOS.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SkiaSharp.NativeAssets.macOS.3.119.4\build\net462\SkiaSharp.NativeAssets.macOS.targets'))" />
     <Error Condition="!Exists('..\packages\SkiaSharp.NativeAssets.Win32.2.88.8\build\net462\SkiaSharp.NativeAssets.Win32.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SkiaSharp.NativeAssets.Win32.2.88.8\build\net462\SkiaSharp.NativeAssets.Win32.targets'))" />
+    <Error Condition="!Exists('..\packages\PdfiumViewer.Native.x86_64.v8-xfa.2018.4.8.256\build\PdfiumViewer.Native.x86_64.v8-xfa.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\PdfiumViewer.Native.x86_64.v8-xfa.2018.4.8.256\build\PdfiumViewer.Native.x86_64.v8-xfa.props'))" />
   </Target>
   <Import Project="..\packages\SkiaSharp.NativeAssets.macOS.3.119.4\build\net462\SkiaSharp.NativeAssets.macOS.targets" Condition="Exists('..\packages\SkiaSharp.NativeAssets.macOS.3.119.4\build\net462\SkiaSharp.NativeAssets.macOS.targets')" />
   <Import Project="..\packages\SkiaSharp.NativeAssets.Win32.2.88.8\build\net462\SkiaSharp.NativeAssets.Win32.targets" Condition="Exists('..\packages\SkiaSharp.NativeAssets.Win32.2.88.8\build\net462\SkiaSharp.NativeAssets.Win32.targets')" />

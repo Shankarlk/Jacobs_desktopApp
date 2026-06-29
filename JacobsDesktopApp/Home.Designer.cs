@@ -238,7 +238,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(912, 501);
+            this.groupBox1.Size = new System.Drawing.Size(940, 658);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             // 
@@ -250,9 +250,9 @@
             this.groupBox4.Controls.Add(this.groupBox2);
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox4.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.groupBox4.Location = new System.Drawing.Point(3, 127);
+            this.groupBox4.Location = new System.Drawing.Point(3, 131);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(906, 371);
+            this.groupBox4.Size = new System.Drawing.Size(934, 524);
             this.groupBox4.TabIndex = 14;
             this.groupBox4.TabStop = false;
             // 
@@ -262,7 +262,7 @@
             this.btnLogout.BackColor = System.Drawing.Color.Red;
             this.btnLogout.Font = new System.Drawing.Font("Segoe UI", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogout.ForeColor = System.Drawing.Color.AliceBlue;
-            this.btnLogout.Location = new System.Drawing.Point(790, -3);
+            this.btnLogout.Location = new System.Drawing.Point(818, -3);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(107, 36);
             this.btnLogout.TabIndex = 14;
@@ -279,7 +279,7 @@
             this.lblClass.Location = new System.Drawing.Point(773, 36);
             this.lblClass.Name = "lblClass";
             this.lblClass.Padding = new System.Windows.Forms.Padding(7, 10, 10, 10);
-            this.lblClass.Size = new System.Drawing.Size(142, 65);
+            this.lblClass.Size = new System.Drawing.Size(174, 74);
             this.lblClass.TabIndex = 13;
             this.lblClass.Text = "Classes";
             this.lblClass.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -317,9 +317,9 @@
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.groupBox3.Location = new System.Drawing.Point(3, 21);
+            this.groupBox3.Location = new System.Drawing.Point(3, 25);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(906, 106);
+            this.groupBox3.Size = new System.Drawing.Size(934, 106);
             this.groupBox3.TabIndex = 12;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = " ";
@@ -329,9 +329,9 @@
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Left;
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(3, 25);
+            this.pictureBox2.Location = new System.Drawing.Point(3, 30);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(89, 78);
+            this.pictureBox2.Size = new System.Drawing.Size(89, 73);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 16;
             this.pictureBox2.TabStop = false;
@@ -344,9 +344,9 @@
             this.groupBox6.Controls.Add(this.pictureBoxProfile);
             this.groupBox6.Controls.Add(this.labelRole);
             this.groupBox6.Dock = System.Windows.Forms.DockStyle.Right;
-            this.groupBox6.Location = new System.Drawing.Point(782, 25);
+            this.groupBox6.Location = new System.Drawing.Point(810, 30);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(121, 78);
+            this.groupBox6.Size = new System.Drawing.Size(121, 73);
             this.groupBox6.TabIndex = 15;
             this.groupBox6.TabStop = false;
             this.groupBox6.Enter += new System.EventHandler(this.groupBox6_Enter);
@@ -358,7 +358,7 @@
             this.labelArrow.ForeColor = System.Drawing.SystemColors.Desktop;
             this.labelArrow.Location = new System.Drawing.Point(92, 34);
             this.labelArrow.Name = "labelArrow";
-            this.labelArrow.Size = new System.Drawing.Size(23, 17);
+            this.labelArrow.Size = new System.Drawing.Size(29, 22);
             this.labelArrow.TabIndex = 18;
             this.labelArrow.Text = "▼";
             this.labelArrow.Click += new System.EventHandler(this.labelArrow_Click);
@@ -369,9 +369,10 @@
             this.labelName.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelName.Location = new System.Drawing.Point(54, 18);
             this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(61, 17);
+            this.labelName.Size = new System.Drawing.Size(76, 22);
             this.labelName.TabIndex = 16;
             this.labelName.Text = "Teacher";
+            this.labelName.Visible = false;
             // 
             // pictureBoxProfile
             // 
@@ -383,6 +384,7 @@
             this.pictureBoxProfile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxProfile.TabIndex = 15;
             this.pictureBoxProfile.TabStop = false;
+            this.pictureBoxProfile.Visible = false;
             // 
             // labelRole
             // 
@@ -390,7 +392,7 @@
             this.labelRole.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelRole.Location = new System.Drawing.Point(54, 35);
             this.labelRole.Name = "labelRole";
-            this.labelRole.Size = new System.Drawing.Size(37, 17);
+            this.labelRole.Size = new System.Drawing.Size(45, 21);
             this.labelRole.TabIndex = 17;
             this.labelRole.Text = "User";
             // 
@@ -401,19 +403,19 @@
             this.lblSchl.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblSchl.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold);
             this.lblSchl.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.lblSchl.Location = new System.Drawing.Point(257, 29);
+            this.lblSchl.Location = new System.Drawing.Point(271, 29);
             this.lblSchl.Name = "lblSchl";
             this.lblSchl.Padding = new System.Windows.Forms.Padding(7, 10, 10, 10);
-            this.lblSchl.Size = new System.Drawing.Size(365, 57);
+            this.lblSchl.Size = new System.Drawing.Size(472, 66);
             this.lblSchl.TabIndex = 11;
-            this.lblSchl.Text = "Weme to Jacob Education";
+            this.lblSchl.Text = "Weme to Jacobs  Education";
             this.lblSchl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Home
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(912, 501);
+            this.ClientSize = new System.Drawing.Size(940, 658);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);

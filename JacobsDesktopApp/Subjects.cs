@@ -120,7 +120,7 @@ namespace JacobsDesktopApp
             btnLogout.Visible = false;
 
             lblSchl.Visible = true;
-            lblSchl.Text = "Jacob Educare";
+            lblSchl.Text = "Jacobs Educare";
             lblSchl.Font = new Font("Segoe UI", 24, FontStyle.Bold);
             lblSchl.ForeColor = Color.RoyalBlue;
 
@@ -191,7 +191,8 @@ namespace JacobsDesktopApp
             this.Controls.Add(lblDesc);
 
             LoadSubjects();
-            
+            this.Text = "";
+
         }
 
         private Panel CreateStatCard(string title, string value, Color valueColor)
@@ -239,7 +240,7 @@ namespace JacobsDesktopApp
 
                 string classFolder = Path.Combine(
                     Application.StartupPath,
-                    "Files",
+                    @"..\..\Files",
                     $"Class {ClassNo}");
             
             classFolder = Path.GetFullPath(classFolder);
@@ -314,7 +315,11 @@ namespace JacobsDesktopApp
                         case "social science":
                             pic.Image = Properties.Resources.social;
                             break;
-                    }
+
+                        case "biology":
+                            pic.Image = Properties.Resources.Biology;
+                            break;
+                }
 
                         Label lblTitle = new Label();
 
@@ -385,7 +390,11 @@ namespace JacobsDesktopApp
                         case "social science":
                             lblDesc.Text = "Learn about Society and Environment";
                             break;
-                    }
+
+                        case "biology":
+                            lblDesc.Text = "Learn about Biology";
+                            break;
+                }
 
                         Label arrow = new Label();
 

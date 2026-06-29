@@ -33,7 +33,7 @@ namespace JacobsDesktopApp
         {
             this.WindowState = FormWindowState.Maximized;
 
-            lblSchl.Text = "Jacob Educare";
+            lblSchl.Text = "Jacobs Educare";
             lblSchl.Font = new Font("Segoe UI", 24, FontStyle.Bold);
             lblSchl.ForeColor = Color.RoyalBlue;
             lblSchl.Visible = true;
@@ -89,7 +89,7 @@ namespace JacobsDesktopApp
 
             LoadDocumentsForClass(ClassNo);
 
-       
+            this.Text = "";
         }
 
         
@@ -98,7 +98,7 @@ namespace JacobsDesktopApp
         {
             string subjectFolder = Path.Combine(
                 Application.StartupPath,
-                  "Files",
+                 @"..\..\Files",
                 $"Class {classNo}",
                 SubjectName);
             

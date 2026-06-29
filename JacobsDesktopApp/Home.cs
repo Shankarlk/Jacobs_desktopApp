@@ -35,7 +35,7 @@ namespace JacobsDesktopApp
 
             btnLogout.Visible = false;
 
-            lblSchl.Text = "Welcome to Jacob Educare";
+            lblSchl.Text = "Welcome to Jacobs Educare";
 
             
             groupBox2.Controls.Clear();
@@ -60,8 +60,8 @@ namespace JacobsDesktopApp
             }
             try
             {
-                 string encryptedFilePath = Path.Combine(baseDirectory, "LicenseKey", "License_protected.txt");
-                //string encryptedFilePath = Path.Combine(baseDirectory, @"..\..\LicenseKey", "License_protected.txt");
+                 //string encryptedFilePath = Path.Combine(baseDirectory, "LicenseKey", "License_protected.txt");
+                string encryptedFilePath = Path.Combine(baseDirectory, @"..\..\LicenseKey", "License_protected.txt");
                 string password = "SmsTeacher@123"; // Your encryption password To open pdf 
               
                 string decryptedFilePath = DecryptTxtWithPassword(encryptedFilePath, password);
@@ -89,6 +89,7 @@ namespace JacobsDesktopApp
                     File.Delete(decryptedFilePath);
                 }
                 LoadClassCards();
+                this.Text = "";
 
             }
             catch (Exception ex)
