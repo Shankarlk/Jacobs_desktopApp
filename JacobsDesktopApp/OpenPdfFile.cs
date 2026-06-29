@@ -257,9 +257,9 @@ namespace JacobsDesktopApp
                 string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
                 string opf = System.IO.Path.Combine(baseDirectory, "Files", DocName);
 
-                string playimages = System.IO.Path.Combine(baseDirectory, "Files", "pause.png");
+                //string playimages = System.IO.Path.Combine(baseDirectory, "Files", "pause.png");
                 
-                //string playimages = System.IO.Path.Combine(Application.StartupPath, @"..\..\Files\pause.png");
+                string playimages = System.IO.Path.Combine(Application.StartupPath, @"..\..\Files\pause.png");
                 playimages = System.IO.Path.GetFullPath(playimages);
 
                 System.Drawing.Image playImage = System.Drawing.Image.FromFile(playimages);
@@ -274,8 +274,8 @@ namespace JacobsDesktopApp
                 speechSynthesizer.Pause();
                 string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
                 string opf = System.IO.Path.Combine(baseDirectory, "Files", DocName);
-                string playimages = System.IO.Path.Combine(baseDirectory, "Files", "play.png");
-               // string playimages = System.IO.Path.Combine(Application.StartupPath, @"..\..\Files\play.png");
+                //string playimages = System.IO.Path.Combine(baseDirectory, "Files", "play.png");
+                string playimages = System.IO.Path.Combine(Application.StartupPath, @"..\..\Files\play.png");
                 playimages = System.IO.Path.GetFullPath(playimages);
                 System.Drawing.Image playImage = System.Drawing.Image.FromFile(playimages);
                 Bitmap resizedPlayImage = new Bitmap(playImage, 22, 22);
@@ -300,7 +300,7 @@ namespace JacobsDesktopApp
                 {
                     // Clear the background to white (or another color if needed)
                     graphics.Clear(Color.White);
-
+                     
                     graphics.SmoothingMode = SmoothingMode.AntiAlias;
                     graphics.TextRenderingHint = TextRenderingHint.AntiAliasGridFit;
 

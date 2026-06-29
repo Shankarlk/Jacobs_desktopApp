@@ -362,7 +362,6 @@
       <DependentUpon>Subjects.cs</DependentUpon>
     </Compile>
     <Content Include="bin\Debug\pdfium.dll" />
-    <Content Include="Files\Class 10\Biology\Lesson 1\Passage_Introduc.html" />
     <Content Include="Files\pause.png" />
     <Content Include="Files\play.png" />
     <Content Include="jacobs-logo-png 1.ico" />
@@ -375,10 +374,8 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\FontAwesome.otf" />
-    <Content Include="Files\Class 10\Biology\Lesson 1\Absorption-by-Roots-The-Processes-Involved-2.pdf" />
     <Content Include="Files\Class 10\Biology\Lesson 1\Absorption-by-Roots-The-Processes-Involved-2.pdf.enc" />
     <Content Include="Files\Class 10\Biology\Lesson 1\Passage_Introduc.html.enc" />
-    <None Include="Files\Class 10\Biology\Lesson 1\Tissues-Plant-Tissues.pdf" />
     <Content Include="Files\Class 10\Biology\Lesson 1\Tissues-Plant-Tissues.pdf.enc" />
     <None Include="Files\Class 1\Computer\Lesson 1\Invoice-ELXJ15HP-0007.pdf" />
     <Content Include="Files\Class 1\Computer\Lesson 1\Invoice-ELXJ15HP-0007.pdf.enc" />
