@@ -361,7 +361,7 @@
     <Compile Include="Subjects.Designer.cs">
       <DependentUpon>Subjects.cs</DependentUpon>
     </Compile>
-    <Content Include="bin\Debug\pdfium.dll" />
+    
     <Content Include="Files\pause.png" />
     <Content Include="Files\play.png" />
     <Content Include="jacobs-logo-png 1.ico" />
