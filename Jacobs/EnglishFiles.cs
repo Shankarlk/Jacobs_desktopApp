@@ -169,7 +169,7 @@ namespace JacobsDesktopApp
 
                 PictureBox folderIcon = new PictureBox
                 {
-                    Image = Properties.Resources.folder1,
+                    Image = Jacobs.Properties.Resources.folder1,
                     Size = new Size(64, 64),
                     SizeMode = PictureBoxSizeMode.StretchImage,
                     Location = new Point(18, 0),

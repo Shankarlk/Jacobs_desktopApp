@@ -180,7 +180,7 @@ namespace JacobsDesktopApp
 
                 // Folder Icon
                 PictureBox folderIcon = new PictureBox();
-                folderIcon.Image = Properties.Resources.logofolde;
+                folderIcon.Image = Jacobs.Properties.Resources.logofolde;
                 folderIcon.Size = new Size(80, 80);
                 folderIcon.SizeMode = PictureBoxSizeMode.Zoom;
 

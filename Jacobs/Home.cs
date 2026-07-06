@@ -150,7 +150,7 @@ namespace JacobsDesktopApp
 
                     pic.SizeMode = PictureBoxSizeMode.Zoom;
 
-                    pic.Image = Properties.Resources.bookicon; // Add your blue book icon
+                    pic.Image = Jacobs.Properties.Resources.bookicon; // Add your blue book icon
 
                     pic.Tag = classNo;
 

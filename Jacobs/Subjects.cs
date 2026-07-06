@@ -309,35 +309,35 @@ namespace JacobsDesktopApp
                 switch (subjectName.ToLower())
                     {
                         case "computer":
-                            pic.Image = Properties.Resources.download;
+                            pic.Image = Jacobs.Properties.Resources.download;
                             break;
 
                         case "english":
-                            pic.Image = Properties.Resources.eng;
+                            pic.Image = Jacobs.Properties.Resources.eng;
                             break;
 
                         case "hindi":
-                            pic.Image = Properties.Resources.hindi;
+                            pic.Image = Jacobs.Properties.Resources.hindi;
                             break;
 
                         case "kannada":
-                            pic.Image = Properties.Resources.kannada;
+                            pic.Image = Jacobs.Properties.Resources.kannada;
                             break;
 
                         case "maths":
-                            pic.Image = Properties.Resources.maths;
+                            pic.Image = Jacobs.Properties.Resources.maths;
                             break;
 
                         case "science":
-                            pic.Image = Properties.Resources.science;
+                            pic.Image = Jacobs.Properties.Resources.science;
                             break;
 
                         case "social science":
-                            pic.Image = Properties.Resources.social;
+                            pic.Image = Jacobs.Properties.Resources.social;
                             break;
 
                         case "biology":
-                            pic.Image = Properties.Resources.Biology;
+                            pic.Image = Jacobs.Properties.Resources.Biology;
                             break;
                 }
 

@@ -403,7 +403,7 @@ namespace JacobsDesktopApp
             // Folder Image
             PictureBox folderIcon = new PictureBox();
 
-            folderIcon.Image = Properties.Resources.logofolde;
+            folderIcon.Image = Jacobs.Properties.Resources.logofolde;
 
             folderIcon.Size = new Size(75, 75);
 
