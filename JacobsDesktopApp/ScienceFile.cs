@@ -7,11 +7,12 @@ using System.IO;
 using System.Linq;
 //using System.Reflection.Emit;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static iText.StyledXmlParser.Jsoup.Select.Evaluator;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
-
+using static iText.StyledXmlParser.Jsoup.Select.Evaluator;
+ 
 namespace JacobsDesktopApp
 {
     public partial class ScienceFile : Form
@@ -96,13 +97,42 @@ namespace JacobsDesktopApp
 
         private void LoadDocumentsForClass(int classNo)
         {
-            string subjectFolder = Path.Combine(
-                Application.StartupPath,
-                 @"..\..\Files",
-                $"Class {classNo}",
-                SubjectName);
-            
-            subjectFolder = Path.GetFullPath(subjectFolder);
+            //string subjectFolder = Path.Combine(
+            //    Application.StartupPath,
+            //     @"..\..\Files",
+            //    $"Class {classNo}",
+            //    SubjectName);
+
+            //subjectFolder = Path.GetFullPath(subjectFolder);
+            string filesPath = Path.GetFullPath(
+    Path.Combine(Application.StartupPath, @"..\..\Files"));
+
+            // Find the class folder dynamically
+            string classFolder = Directory.GetDirectories(filesPath)
+                .FirstOrDefault(d =>
+                {
+                    string folderName = Path.GetFileName(d);
+
+                    Match match = Regex.Match(folderName, @"^\d+");
+
+                    return match.Success &&
+                           match.Value == classNo.ToString();
+                });
+
+            if (classFolder == null)
+            {
+                MessageBox.Show("Class folder not found.");
+                return;
+            }
+
+            // Build subject folder
+            string subjectFolder = Path.Combine(classFolder, SubjectName);
+
+            if (!Directory.Exists(subjectFolder))
+            {
+                MessageBox.Show(SubjectName + " folder not found:\n" + subjectFolder);
+                return;
+            }
 
             if (!Directory.Exists(subjectFolder))
             {

@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing.Drawing2D;
-
+using System.Text.RegularExpressions;
 namespace JacobsDesktopApp
 {
     public partial class Subjects : Form
@@ -238,14 +238,34 @@ namespace JacobsDesktopApp
                 groupBox2.Left = (this.ClientSize.Width - groupBox2.Width) / 2;
                 groupBox2.Top = 150;
 
-                string classFolder = Path.Combine(
-                    Application.StartupPath,
-                    @"..\..\Files",
-                    $"Class {ClassNo}");
-            
-            classFolder = Path.GetFullPath(classFolder);
+            //    string classFolder = Path.Combine(
+            //        Application.StartupPath,
+            //        @"..\..\Files",
+            //        $"Class {ClassNo}");
 
-                if (!Directory.Exists(classFolder))
+            //classFolder = Path.GetFullPath(classFolder);
+
+
+            string filesPath = Path.GetFullPath(Path.Combine(Application.StartupPath, @"..\..\Files"));
+
+            string classFolder = Directory.GetDirectories(filesPath)
+                .FirstOrDefault(d =>
+                {
+                    string folderName = Path.GetFileName(d);
+
+                    Match match = Regex.Match(folderName, @"^\d+");
+
+                    return match.Success &&
+                           match.Value == ClassNo.ToString();
+                });
+
+            if (classFolder == null)
+            {
+                MessageBox.Show("Class folder not found.");
+                return;
+            }
+
+            if (!Directory.Exists(classFolder))
                     return;
 
                 string[] subjects = Directory.GetDirectories(classFolder);

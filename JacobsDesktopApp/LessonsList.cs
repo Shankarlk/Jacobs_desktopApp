@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static iText.StyledXmlParser.Jsoup.Select.Evaluator;
 using static System.Windows.Forms.AxHost;
-using System.Drawing.Drawing2D;
+using static iText.StyledXmlParser.Jsoup.Select.Evaluator;
 
 namespace JacobsDesktopApp
 {
@@ -272,19 +273,53 @@ namespace JacobsDesktopApp
         private void LoadDocumentsForClass(int classNo, string lessonNumber)
         {
 
-            
-            string lessonFolder = Path.Combine(
-                Application.StartupPath,
-                  @"..\..\Files",
-                 $"Class {classNo}",
-                SubjectName,
-                lessonNumber);
-          
-            lessonFolder = Path.GetFullPath(lessonFolder);
+
+            //string lessonFolder = Path.Combine(
+            //    Application.StartupPath,
+            //      @"..\..\Files",
+            //     $"Class {classNo}",
+            //    SubjectName,
+            //    lessonNumber);
+
+            //lessonFolder = Path.GetFullPath(lessonFolder);
+
+
+            string filesPath = Path.GetFullPath(
+     Path.Combine(Application.StartupPath, @"..\..\Files"));
+
+            // Find the class folder
+            string classFolder = Directory.GetDirectories(filesPath)
+                .FirstOrDefault(d =>
+                {
+                    string folderName = Path.GetFileName(d);
+
+                    Match match = Regex.Match(folderName, @"^\d+");
+
+                    return match.Success &&
+                           match.Value == classNo.ToString();
+                });
+
+            if (classFolder == null)
+            {
+                MessageBox.Show("Class folder not found.");
+                return;
+            }
+
+            // Subject folder
+            string subjectFolder = Path.Combine(classFolder, SubjectName);
+
+            if (!Directory.Exists(subjectFolder))
+            {
+                MessageBox.Show("Subject folder not found.");
+                return;
+            }
+
+            // Lesson folder
+            string lessonFolder = Path.Combine(subjectFolder, lessonNumber);
 
             if (!Directory.Exists(lessonFolder))
             {
-                MessageBox.Show("Lesson folder not found:\n" + lessonFolder);
+                MessageBox.Show("Lesson folder not found.");
                 return;
             }
 
