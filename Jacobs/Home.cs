@@ -60,8 +60,8 @@ namespace JacobsDesktopApp
             }
             try
             {
-                 //string encryptedFilePath = Path.Combine(baseDirectory, "LicenseKey", "License_protected.txt");
-                string encryptedFilePath = Path.Combine(baseDirectory, @"..\..\LicenseKey", "License_protected.txt");
+                string encryptedFilePath = Path.Combine(baseDirectory, "LicenseKey", "License_protected.txt");
+                //string encryptedFilePath = Path.Combine(baseDirectory, @"..\..\LicenseKey", "License_protected.txt");
                 string password = "SmsTeacher@123"; // Your encryption password To open pdf 
               
                 string decryptedFilePath = DecryptTxtWithPassword(encryptedFilePath, password);

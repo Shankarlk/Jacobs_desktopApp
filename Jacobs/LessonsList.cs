@@ -285,7 +285,7 @@ namespace JacobsDesktopApp
 
 
             string filesPath = Path.GetFullPath(
-     Path.Combine(Application.StartupPath, @"..\..\Files"));
+     Path.Combine(Application.StartupPath, "Files"));
 
             // Find the class folder
             string classFolder = Directory.GetDirectories(filesPath)
@@ -471,6 +471,7 @@ namespace JacobsDesktopApp
         {
             if (sender is PictureBox pic)
             {
+                 
                  string documentPath = pic.Tag.ToString();
                 string tempFile =FileSecurity.DecryptToTemp(documentPath,"SmsTeacher@123");
                 string originalFileName = Path.GetFileNameWithoutExtension(documentPath);

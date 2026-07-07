@@ -16,7 +16,7 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <PublishUrl>D:\P\</PublishUrl>
+    <PublishUrl>C:\Users\RRMINDS\Desktop\Jacob_App\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -27,7 +27,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <UpdateUrl>http://localhost/JacobsDesktopApp/</UpdateUrl>
-    <ApplicationRevision>77</ApplicationRevision>
+    <ApplicationRevision>78</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -362,9 +362,11 @@
     </Compile>
     <Compile Include="Subjects.cs">
       <SubType>Form</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Subjects.Designer.cs">
       <DependentUpon>Subjects.cs</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
     <Content Include="Files\pause.png" />
     <Content Include="Files\play.png" />
@@ -376,6 +378,50 @@
     <Content Include="Files\fonts\fontawesome-webfont.woff2" />
     <Content Include="Files\fonts\FontAwesome.otf" />
     <Content Include="LicenseKey\License_protected.pdf" />
+    <Content Include="Files\8 STD\Junior EVS\8. Fruits - Identification &amp; Naming\A-Fruity-Adventure-Discovering-Delicious-Fruits - Copy %282%29.pdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\8 STD\Junior EVS\8. Fruits - Identification &amp; Naming\A-Fruity-Adventure-Discovering-Delicious-Fruits - Copy %282%29.pdf.enc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\8 STD\Junior EVS\8. Fruits - Identification &amp; Naming\A-Fruity-Adventure-Discovering-Delicious-Fruits - Copy.pdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\8 STD\Junior EVS\8. Fruits - Identification &amp; Naming\A-Fruity-Adventure-Discovering-Delicious-Fruits - Copy.pdf.enc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\8 STD\Junior EVS\8. Fruits - Identification &amp; Naming\A-Fruity-Adventure-Discovering-Delicious-Fruits - path 2 34456MN123&amp;.pdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\8 STD\Junior EVS\8. Fruits - Identification &amp; Naming\A-Fruity-Adventure-Discovering-Delicious-Fruits - path 2 34456MN123&amp;.pdf.enc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\8 STD\Junior EVS\8. Fruits - Identification &amp; Naming\A-Fruity-Adventure-Discovering-Delicious-Fruits - path^&amp;%28%29-.pdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\8 STD\Junior EVS\8. Fruits - Identification &amp; Naming\A-Fruity-Adventure-Discovering-Delicious-Fruits - path^&amp;%28%29-.pdf.enc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\8 STD\Junior EVS\8. Fruits - Identification &amp; Naming\A-Fruity-Adventure-Discovering-Delicious-Fruits -3.pdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\8 STD\Junior EVS\8. Fruits - Identification &amp; Naming\A-Fruity-Adventure-Discovering-Delicious-Fruits -3.pdf.enc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\8 STD\Junior EVS\8. Fruits - Identification &amp; Naming\A-Fruity-Adventure-Discovering-Delicious-Fruits-4.pdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\8 STD\Junior EVS\8. Fruits - Identification &amp; Naming\A-Fruity-Adventure-Discovering-Delicious-Fruits-4.pdf.enc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Files\8 STD\Junior EVS\8. Fruits - Identification &amp; Naming\Teaching Slide\A-Fruity-Adventure-Discovering-Delicious-Fruits - Copy %282%29.pdf" />
+    <None Include="Files\8 STD\Junior EVS\8. Fruits - Identification &amp; Naming\Teaching Slide\A-Fruity-Adventure-Discovering-Delicious-Fruits - Copy %282%29.pdf.enc" />
+    <None Include="Files\8 STD\Junior EVS\8. Fruits - Identification &amp; Naming\Teaching Slide\A-Fruity-Adventure-Discovering-Delicious-Fruits - Copy.pdf" />
+    <None Include="Files\8 STD\Junior EVS\8. Fruits - Identification &amp; Naming\Teaching Slide\A-Fruity-Adventure-Discovering-Delicious-Fruits - Copy.pdf.enc" />
+    <None Include="Files\8 STD\Junior EVS\8. Fruits - Identification &amp; Naming\Teaching Slide\A-Fruity-Adventure-Discovering-Delicious-Fruits -3.pdf" />
+    <None Include="Files\8 STD\Junior EVS\8. Fruits - Identification &amp; Naming\Teaching Slide\A-Fruity-Adventure-Discovering-Delicious-Fruits -3.pdf.enc" />
+    <None Include="Files\8 STD\Junior EVS\8. Fruits - Identification &amp; Naming\Teaching Slide\A-Fruity-Adventure-Discovering-Delicious-Fruits-4.pdf" />
+    <None Include="Files\8 STD\Junior EVS\8. Fruits - Identification &amp; Naming\Teaching Slide\A-Fruity-Adventure-Discovering-Delicious-Fruits-4.pdf.enc" />
     <None Include="packages.config" />
     <None Include="Resources\folder.png" />
     <EmbeddedResource Include="EnglishFiles.resx">
@@ -441,6 +487,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Subjects.resx">
       <DependentUpon>Subjects.cs</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="AppFiles\GlbViewer.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
