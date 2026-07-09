@@ -284,8 +284,8 @@ namespace JacobsDesktopApp
             //lessonFolder = Path.GetFullPath(lessonFolder);
 
 
-            string filesPath = Path.GetFullPath(
-     Path.Combine(Application.StartupPath, "Files"));
+            //string filesPath = Path.GetFullPath(Path.Combine(Application.StartupPath, @"..\..\Files"));
+            string filesPath = Path.GetFullPath(Path.Combine(Application.StartupPath, "Files"));
 
             // Find the class folder
             string classFolder = Directory.GetDirectories(filesPath)
@@ -332,26 +332,32 @@ namespace JacobsDesktopApp
             // string[] files = Directory.GetFiles(lessonFolder);
 
             string[] files = Directory.GetFiles(lessonFolder,"*.enc");
-           // MessageBox.Show(files.Length.ToString());
+            string[] folders = Directory.GetDirectories(lessonFolder);
+            // MessageBox.Show(files.Length.ToString());
+            foreach (string folder in folders)
+            {
+                docFlow.Controls.Add(CreateFolderItem(folder));
+            }
 
             foreach (string file in files)
             {
                 string fileName = Path.GetFileName(file);
-
+                 
                 if (fileName.ToLower().Contains("exercise"))
                 {
-                    // exFlow.Controls.Add(CreateFolderItem(file));
-                    exFlow.Controls.Add(CreateFileItem(file));
+
+
+                    docFlow.Controls.Add(CreateFileItem(file));
                 }
                 else
                 {
-                    //docFlow.Controls.Add(CreateFolderItem(file));
+                     
                     docFlow.Controls.Add(CreateFileItem(file));
                 }
             }
 
             groupBox2.Controls.Add(docFlow);
-            groupBox4.Controls.Add(exFlow);
+            //groupBox4.Controls.Add(exFlow);
         }
 
        
@@ -469,80 +475,122 @@ namespace JacobsDesktopApp
         }
         private void FolderIcon_Click(object sender, EventArgs e)
         {
-            if (sender is PictureBox pic)
-            {
-                 
-                 string documentPath = pic.Tag.ToString();
-                string tempFile =FileSecurity.DecryptToTemp(documentPath,"SmsTeacher@123");
-                string originalFileName = Path.GetFileNameWithoutExtension(documentPath);
-                string extension = Path.GetExtension(originalFileName).ToLower();
+            //if (sender is PictureBox pic)
+            //{
+            //     string documentPath = pic.Tag.ToString();
+            //    string tempFile =FileSecurity.DecryptToTemp(documentPath,"SmsTeacher@123");
+            //    string originalFileName = Path.GetFileNameWithoutExtension(documentPath);
+            //    string extension = Path.GetExtension(originalFileName).ToLower();
 
-                if (extension == ".pdf")
-                {
-                    OpenPdfFile pdfViewer = new OpenPdfFile
-                    {
-                        DocName = tempFile,
-                        ClassNo = ClassNo,
-                        SchlName = SchlName,
-                        LessonName = LessonName,
-                        SubjectName = SubjectName
-                    };
-                    pdfViewer.Show();
-                    this.Hide();
-                }
-                else if (extension == ".pptx")
-                {
-                    OpenPPTFile pptViewer = new OpenPPTFile
-                    {
-                        DocName = tempFile,
-                        ClassNo = ClassNo,
-                        SchlName = SchlName,
-                        LessonName = LessonName,
-                        SubjectName = SubjectName
-                    };
-                    pptViewer.Show();
-                    this.Hide();
-                }
-                else if (extension == ".mp4")
-                {
-                    OpenMp4 mp4Viewer = new OpenMp4
-                    {
-                        DocName = tempFile,
-                        ClassNo = ClassNo,
-                        SchlName = SchlName,
-                        LessonName = LessonName,
-                        SubjectName = SubjectName
-                    };
-                    mp4Viewer.Show();
-                    this.Hide();
-                }
-                else if (extension == ".html" || extension == ".htm")
-                {
-                    OpenHtml htmlViewer = new OpenHtml();
-                    htmlViewer.DocName = tempFile;
-                    htmlViewer.ClassNo = ClassNo;
-                    htmlViewer.SchlName = SchlName;
-                    htmlViewer.LessonName = LessonName;
-                    htmlViewer.SubjectName = SubjectName;
-                    htmlViewer.Show();
-                    this.Hide();
-                }
-                else if (extension == ".glb")
-                {
-                    OpenGlb glbViewer = new OpenGlb
-                    {
-                        DocName = tempFile,
-                        ClassNo = ClassNo,
-                        SchlName = SchlName,
-                        LessonName = LessonName,
-                        SubjectName = SubjectName
-                    };
-                    glbViewer.Show();
-                    this.Hide();
-                }
+            //    if (extension == ".pdf")
+            //    {
+            //        OpenPdfFile pdfViewer = new OpenPdfFile
+            //        {
+            //            DocName = tempFile,
+            //            ClassNo = ClassNo,
+            //            SchlName = SchlName,
+            //            LessonName = LessonName,
+            //            SubjectName = SubjectName
+            //        };
+            //        pdfViewer.Show();
+            //        this.Hide();
+            //    }
+            //    else if (extension == ".pptx")
+            //    {
+            //        OpenPPTFile pptViewer = new OpenPPTFile
+            //        {
+            //            DocName = tempFile,
+            //            ClassNo = ClassNo,
+            //            SchlName = SchlName,
+            //            LessonName = LessonName,
+            //            SubjectName = SubjectName
+            //        };
+            //        pptViewer.Show();
+            //        this.Hide();
+            //    }
+            //    else if (extension == ".mp4")
+            //    {
+            //        OpenMp4 mp4Viewer = new OpenMp4
+            //        {
+            //            DocName = tempFile,
+            //            ClassNo = ClassNo,
+            //            SchlName = SchlName,
+            //            LessonName = LessonName,
+            //            SubjectName = SubjectName
+            //        };
+            //        mp4Viewer.Show();
+            //        this.Hide();
+            //    }
+            //    else if (extension == ".html" || extension == ".htm")
+            //    {
+            //        OpenHtml htmlViewer = new OpenHtml();
+            //        htmlViewer.DocName = tempFile;
+            //        htmlViewer.ClassNo = ClassNo;
+            //        htmlViewer.SchlName = SchlName;
+            //        htmlViewer.LessonName = LessonName;
+            //        htmlViewer.SubjectName = SubjectName;
+            //        htmlViewer.Show();
+            //        this.Hide();
+            //    }
+            //    else if (extension == ".glb")
+            //    {
+            //        OpenGlb glbViewer = new OpenGlb
+            //        {
+            //            DocName = tempFile,
+            //            ClassNo = ClassNo,
+            //            SchlName = SchlName,
+            //            LessonName = LessonName,
+            //            SubjectName = SubjectName
+            //        };
+            //        glbViewer.Show();
+            //        this.Hide();
+            //    }
+            //}
+
+            string path = "";
+
+            if (sender is PictureBox pic)
+                path = pic.Tag.ToString();
+            else if (sender is Label lbl)
+                path = lbl.Tag.ToString();
+
+            if (Directory.Exists(path))
+            {
+                LoadFolderContents(path);
             }
         }
+        private void LoadFolderContents(string folderPath)
+        {
+            groupBox2.Controls.Clear();
+            groupBox4.Controls.Clear();
 
+            FlowLayoutPanel docFlow = CreateFolderFlowPanel();
+            FlowLayoutPanel exFlow = CreateFolderFlowPanel();
+
+            string[] folders = Directory.GetDirectories(folderPath);
+            string[] files = Directory.GetFiles(folderPath, "*.enc");
+
+            foreach (string folder in folders)
+            {
+                docFlow.Controls.Add(CreateFolderItem(folder));
+            }
+
+            foreach (string file in files)
+            {
+                string fileName = Path.GetFileName(file);
+
+                if (fileName.ToLower().Contains("exercise"))
+                    docFlow.Controls.Add(CreateFileItem(file));
+                else
+                    docFlow.Controls.Add(CreateFileItem(file));
+            }
+
+            groupBox2.Controls.Add(docFlow);
+            groupBox4.Controls.Add(exFlow);
+
+            // Optional: Add the headers again
+            //AddHeaders();
+        }
         private Panel CreateFileItem(string filePath)
         {
             string fileName = Path.GetFileNameWithoutExtension(filePath);

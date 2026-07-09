@@ -368,6 +368,12 @@
       <DependentUpon>Subjects.cs</DependentUpon>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="SubLessonList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubLessonList.Designer.cs">
+      <DependentUpon>SubLessonList.cs</DependentUpon>
+    </Compile>
     <Content Include="Files\pause.png" />
     <Content Include="Files\play.png" />
     <Content Include="jacobs-logo-png 1.ico" />
@@ -414,6 +420,9 @@
     <Content Include="Files\8 STD\Junior EVS\8. Fruits - Identification &amp; Naming\A-Fruity-Adventure-Discovering-Delicious-Fruits-4.pdf.enc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <EmbeddedResource Include="SubLessonList.resx">
+      <DependentUpon>SubLessonList.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Files\8 STD\Junior EVS\8. Fruits - Identification &amp; Naming\Teaching Slide\A-Fruity-Adventure-Discovering-Delicious-Fruits - Copy %282%29.pdf" />
     <None Include="Files\8 STD\Junior EVS\8. Fruits - Identification &amp; Naming\Teaching Slide\A-Fruity-Adventure-Discovering-Delicious-Fruits - Copy %282%29.pdf.enc" />
     <None Include="Files\8 STD\Junior EVS\8. Fruits - Identification &amp; Naming\Teaching Slide\A-Fruity-Adventure-Discovering-Delicious-Fruits - Copy.pdf" />
@@ -583,6 +592,11 @@
   <ItemGroup>
     <Folder Include="bin\Release\" />
   </ItemGroup>
+<ItemGroup>
+  <Content Include="Files\**\*.enc">
+    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+  </Content>
+</ItemGroup>
   <ItemGroup>
     <PublishFile Include="BouncyCastle.Crypto">
       <Visible>False</Visible>

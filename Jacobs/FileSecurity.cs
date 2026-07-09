@@ -107,45 +107,64 @@ namespace JacobsDesktopApp
                 }
             }
         }
-        private void button1_Click(object sender, EventArgs e)
+        private void EncryptAllFiles()
         {
-            
-            try
+            string rootFolder = Path.Combine(Application.StartupPath, @"..\..\Files");
+
+            string[] files = Directory.GetFiles(
+                rootFolder,
+                "*.*",
+                SearchOption.AllDirectories);
+
+            foreach (string file in files)
             {
-                string rootFolder = Path.Combine(Application.StartupPath, @"..\..\Files");
-                
+                string fileName = Path.GetFileName(file);
 
-                string[] lessonFolders = Directory.GetDirectories(rootFolder,"Lesson *",SearchOption.AllDirectories);
+                // Skip already encrypted files
+                if (file.EndsWith(".enc"))
+                    continue;
 
-                foreach (string lessonFolder in lessonFolders)
+                // Skip Mac metadata files
+                if (fileName.StartsWith("._"))
+                    continue;
+
+                string extension = Path.GetExtension(file).ToLower();
+
+                if (extension == ".pdf" ||
+                    extension == ".pptx" ||
+                    extension == ".mp4" ||
+                    extension == ".glb" ||
+                    extension == ".html")
                 {
-                    foreach (string file in Directory.GetFiles(lessonFolder))
+                    string encryptedFile = file + ".enc";
+
+                    if (!File.Exists(encryptedFile))
                     {
-                        if (file.EndsWith(".enc"))
-                        { 
-                            continue;
-                        }
-                        
-                        string extension = Path.GetExtension(file).ToLower();
-
-                        if (extension == ".pdf" ||extension == ".pptx" || extension == ".mp4" ||extension == ".glb" ||extension == ".html")
-                        {
-                            string encryptedFile = file + ".enc";
-
-                            if (!File.Exists(encryptedFile))
-                            {
-                                EncryptFile(file,encryptedFile,"SmsTeacher@123");
-
-                               
-                            }
-                        }
+                        EncryptFile(file, encryptedFile, "SmsTeacher@123");
                     }
                 }
+            }
+        }
+        private async void button1_Click(object sender, EventArgs e)
+        {
+             
+            try
+            {
+                button1.Enabled = false;
+                Cursor = Cursors.WaitCursor;
+
+                await Task.Run(() => EncryptAllFiles());
+
+                Cursor = Cursors.Default;
+                button1.Enabled = true;
 
                 MessageBox.Show("All new files encrypted successfully.");
             }
             catch (Exception ex)
             {
+                Cursor = Cursors.Default;
+                button1.Enabled = true;
+
                 MessageBox.Show(ex.Message);
             }
         }

@@ -246,6 +246,7 @@ namespace JacobsDesktopApp
             //classFolder = Path.GetFullPath(classFolder);
 
 
+            //string filesPath = Path.GetFullPath(Path.Combine(Application.StartupPath, @"..\..\Files"));
             string filesPath = Path.GetFullPath(Path.Combine(Application.StartupPath, "Files"));
 
             string classFolder = Directory.GetDirectories(filesPath)
