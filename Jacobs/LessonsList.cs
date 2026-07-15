@@ -378,96 +378,73 @@ namespace JacobsDesktopApp
 
 
 
+        // Uniform card size shared by folder and file tiles so they line up in a
+        // clean grid instead of mixing tall cards with short wide bars.
+        private const int CardWidth = 230;
+        private const int CardHeight = 210;
+
         private Panel CreateFolderItem(string filePath)
         {
             string fileName = Path.GetFileNameWithoutExtension(filePath);
             fileName = Path.GetFileNameWithoutExtension(fileName);
 
             Panel panel = new Panel();
-            panel.Width = 220;
-            panel.Height = 250;
-            panel.Margin = new Padding(20);
-
+            panel.Width = CardWidth;
+            panel.Height = CardHeight;
+            panel.Margin = new Padding(12);
             panel.BackColor = Color.White;
+            panel.Cursor = Cursors.Hand;
+            panel.Tag = filePath;
 
-          
+            SetRoundedPanel(panel, 16);
 
-            // Rounded card
-            SetRoundedPanel(panel, 18);
+            // Icon background
+            Panel iconBg = new Panel();
+            iconBg.Width = 90;
+            iconBg.Height = 90;
+            iconBg.BackColor = Color.FromArgb(245, 248, 252);
+            iconBg.Left = (panel.Width - iconBg.Width) / 2;
+            iconBg.Top = 20;
+            SetRoundedPanel(iconBg, 20);
 
-            // Circle background
-            Panel circle = new Panel();
-            circle.Width = 120;
-            circle.Height = 120;
-            circle.BackColor = Color.FromArgb(245, 248, 252);
-
-            circle.Left = (panel.Width - circle.Width) / 2;
-            circle.Top = 20;
-
-            SetRoundedPanel(circle, 60);
-
-            // Folder Image
             PictureBox folderIcon = new PictureBox();
-
             folderIcon.Image = Jacobs.Properties.Resources.logofolde;
-
-            folderIcon.Size = new Size(75, 75);
-
+            folderIcon.Size = new Size(56, 56);
             folderIcon.SizeMode = PictureBoxSizeMode.Zoom;
-
-            folderIcon.Left = (circle.Width - folderIcon.Width) / 2;
-            folderIcon.Top = (circle.Height - folderIcon.Height) / 2;
-
+            folderIcon.Left = (iconBg.Width - folderIcon.Width) / 2;
+            folderIcon.Top = (iconBg.Height - folderIcon.Height) / 2;
             folderIcon.Cursor = Cursors.Hand;
-
             folderIcon.Tag = filePath;
+            iconBg.Controls.Add(folderIcon);
 
-            circle.Controls.Add(folderIcon);
-
-            // File Name
+            // Name
             Label lbl = new Label();
-
             lbl.Text = fileName;
-
-            lbl.Width = panel.Width;
-
+            lbl.Width = panel.Width - 20;
+            lbl.Left = 10;
             lbl.Height = 40;
-
-            lbl.Location = new Point(0, 150);
-
+            lbl.Top = 122;
             lbl.TextAlign = ContentAlignment.MiddleCenter;
-
             lbl.ForeColor = Color.FromArgb(15, 23, 42);
+            lbl.Font = new Font("Segoe UI", 11, FontStyle.Bold);
+            lbl.Cursor = Cursors.Hand;
+            lbl.Tag = filePath;
 
-            lbl.Font = new Font(
-                "Segoe UI",
-                11,
-                FontStyle.Bold);
-
-            // File Count
+            // Subtitle
             Label lblCount = new Label();
-
-            lblCount.Text = "1 File";
-
+            lblCount.Text = "Folder";
             lblCount.Width = panel.Width;
-
             lblCount.Height = 25;
-
-            lblCount.Location = new Point(0, 190);
-
+            lblCount.Top = 168;
             lblCount.TextAlign = ContentAlignment.MiddleCenter;
-
             lblCount.ForeColor = Color.RoyalBlue;
+            lblCount.Font = new Font("Segoe UI", 9, FontStyle.Regular);
 
-            lblCount.Font = new Font(
-                "Segoe UI",
-                10,
-                FontStyle.Regular);
-
-            panel.Controls.Add(circle);
+            panel.Controls.Add(iconBg);
             panel.Controls.Add(lbl);
             panel.Controls.Add(lblCount);
 
+            panel.Click += FolderIcon_Click;
             folderIcon.Click += FolderIcon_Click;
             lbl.Click += FolderIcon_Click;
 
@@ -547,12 +524,8 @@ namespace JacobsDesktopApp
             //    }
             //}
 
-            string path = "";
-
-            if (sender is PictureBox pic)
-                path = pic.Tag.ToString();
-            else if (sender is Label lbl)
-                path = lbl.Tag.ToString();
+            Control ctrl = sender as Control;
+            string path = ctrl?.Tag?.ToString() ?? "";
 
             if (Directory.Exists(path))
             {
@@ -593,33 +566,61 @@ namespace JacobsDesktopApp
         }
         private Panel CreateFileItem(string filePath)
         {
-            string fileName = Path.GetFileNameWithoutExtension(filePath);
-
-            // Remove .enc
-            fileName = Path.GetFileNameWithoutExtension(fileName);
+            // filePath ends in ".<type>.enc" -> strip both extensions for the name
+            string nameWithType = Path.GetFileNameWithoutExtension(filePath); // removes .enc
+            string fileName = Path.GetFileNameWithoutExtension(nameWithType);  // removes .pdf/.mp4/...
 
             Panel pnl = new Panel();
-            pnl.Width = 480;
-            pnl.Height = 50;
-            pnl.Margin = new Padding(5);
+            pnl.Width = CardWidth;
+            pnl.Height = CardHeight;
+            pnl.Margin = new Padding(12);
             pnl.BackColor = Color.White;
-            pnl.BorderStyle = BorderStyle.FixedSingle;
+            pnl.Cursor = Cursors.Hand;
+            pnl.Tag = filePath;
 
+            SetRoundedPanel(pnl, 16);
+
+            // Icon background
+            Panel iconBg = new Panel();
+            iconBg.Width = 90;
+            iconBg.Height = 90;
+            iconBg.BackColor = Color.FromArgb(245, 248, 252);
+            iconBg.Left = (pnl.Width - iconBg.Width) / 2;
+            iconBg.Top = 20;
+            iconBg.Tag = filePath;
+            SetRoundedPanel(iconBg, 20);
+
+            // Book icon (same one used on the class cards)
+            PictureBox bookIcon = new PictureBox();
+            bookIcon.Image = Jacobs.Properties.Resources.bookicon;
+            bookIcon.Size = new Size(56, 56);
+            bookIcon.SizeMode = PictureBoxSizeMode.Zoom;
+            bookIcon.Left = (iconBg.Width - bookIcon.Width) / 2;
+            bookIcon.Top = (iconBg.Height - bookIcon.Height) / 2;
+            bookIcon.Cursor = Cursors.Hand;
+            bookIcon.Tag = filePath;
+            iconBg.Controls.Add(bookIcon);
+
+            // Name
             Label lblName = new Label();
             lblName.Text = fileName;
-            lblName.Font = new Font("Segoe UI", 11, FontStyle.Bold);
+            lblName.Font = new Font("Segoe UI", 10, FontStyle.Bold);
             lblName.AutoSize = false;
-            lblName.Width = 450;
-            lblName.Height = 30;
-            lblName.Location = new Point(15, 10);
+            lblName.Width = pnl.Width - 20;
+            lblName.Left = 10;
+            lblName.Height = 56;
+            lblName.Top = 122;
+            lblName.TextAlign = ContentAlignment.TopCenter;
+            lblName.ForeColor = Color.FromArgb(15, 23, 42);
             lblName.Cursor = Cursors.Hand;
-
-            pnl.Tag = filePath;
             lblName.Tag = filePath;
 
+            pnl.Controls.Add(iconBg);
             pnl.Controls.Add(lblName);
 
             pnl.Click += File_Click;
+            iconBg.Click += File_Click;
+            bookIcon.Click += File_Click;
             lblName.Click += File_Click;
 
             return pnl;
@@ -725,43 +726,30 @@ namespace JacobsDesktopApp
             btnLogout.Visible = false;
 
             // GroupBoxes
-            int gap = 30;
             int sideMargin = 50;
+            int topOffset = 180;
 
-            int availableWidth = this.ClientSize.Width - (sideMargin * 2) - gap;
+            // The exercises pane is not populated on this screen, so give the
+            // documents pane the full width/height instead of squeezing it into
+            // the left half and leaving a large empty column on the right.
+            groupBox4.Visible = false;
 
-            groupBox2.Width = availableWidth / 2;
-            groupBox4.Width = availableWidth / 2;
+            groupBox2.Width = this.ClientSize.Width - (sideMargin * 2);
+            groupBox2.Height = this.ClientSize.Height - topOffset - sideMargin;
 
-            groupBox2.Height = 550;
-            groupBox4.Height = 550;
-
-            groupBox2.Top = 180;
-            groupBox4.Top = 180;
-
+            groupBox2.Top = topOffset;
             groupBox2.Left = sideMargin;
-            groupBox4.Left = groupBox2.Right + gap;
 
             groupBox2.BackColor = Color.White;
-            groupBox4.BackColor = Color.White;
-
             groupBox2.Text = "";
-            groupBox4.Text = "";
 
 
-            btnBack.Text = "← Back";
-            btnBack.Width = 110;
-            btnBack.Height = 35;
-
-            btnBack.BackColor = Color.FromArgb(37, 99, 235);
-            btnBack.ForeColor = Color.White;
-
-            btnBack.FlatStyle = FlatStyle.Flat;
-            btnBack.FlatAppearance.BorderSize = 0;
-
-            btnBack.Font = new Font("Segoe UI", 10, FontStyle.Bold);
-
-          
+            // The designer had two "Back" buttons anchored bottom-right, which got
+            // pushed off-screen (clipped) on displays narrower than the 1556px
+            // design. Use a single themed, always-visible Back button at the
+            // top-left of the content area, consistent with every other screen.
+            button2.Visible = false;
+            Theme.TopLeftBack(btnBack);
 
             // Load folders first
             LoadDocumentsForClass(ClassNo, LessonName);

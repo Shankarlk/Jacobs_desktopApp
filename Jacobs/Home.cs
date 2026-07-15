@@ -105,6 +105,8 @@ namespace JacobsDesktopApp
 
         private void LoadClassCards()
         {
+            groupBox2.Controls.Clear();
+
             int cardWidth = 170;
             int cardHeight = 140;
 
@@ -114,75 +116,92 @@ namespace JacobsDesktopApp
             int gapX = 30;
             int gapY = 25;
 
-            int classNo = 1;
+            int cardsPerRow = 3;
 
-            for (int row = 0; row < 4; row++)
+            // Build the class list from the actual folders on disk so the Home
+            // screen only shows classes that have content (e.g. "8 STD"), instead
+            // of hard-coding Class 1..10 and failing with "Class folder not found".
+            string filesPath = Path.GetFullPath(Path.Combine(baseDirectory, "Files"));
+
+            List<Tuple<int, string>> classes = new List<Tuple<int, string>>();
+
+            if (Directory.Exists(filesPath))
             {
-                int cardsInRow = (row == 3) ? 1 : 3;
-
-                int rowStartX = startX;
-
-                if (row == 3)
-                    rowStartX = startX + cardWidth + gapX;
-
-                for (int col = 0; col < cardsInRow; col++)
+                foreach (string dir in Directory.GetDirectories(filesPath))
                 {
-                    Panel card = new Panel();
-                    card.Width = cardWidth;
-                    card.Height = cardHeight;
-                    card.BackColor = Color.White;
-                    card.Cursor = Cursors.Hand;
+                    string folderName = Path.GetFileName(dir);
 
-                    card.Location = new Point(
-                        rowStartX + (col * (cardWidth + gapX)),
-                        startY + (row * (cardHeight + gapY)));
+                    Match match = Regex.Match(folderName, @"\d+");
+                    if (!match.Success)
+                        continue;
 
-                    card.Tag = classNo;
-
-                    card.BackColor = Color.White;
-                    card.Padding = new Padding(10);
-
-                    card.BorderStyle = BorderStyle.None;
-
-                    PictureBox pic = new PictureBox();
-                    pic.Size = new Size(60, 60);
-                    pic.Location = new Point(55, 20);
-
-                    pic.SizeMode = PictureBoxSizeMode.Zoom;
-
-                    pic.Image = Jacobs.Properties.Resources.bookicon; // Add your blue book icon
-
-                    pic.Tag = classNo;
-
-                    Label lbl = new Label();
-                    lbl.Text = "Class " + classNo;
-                    lbl.Font = new Font("Segoe UI", 12, FontStyle.Bold);
-
-                    lbl.ForeColor = Color.FromArgb(30, 58, 138);
-
-                    lbl.Width = cardWidth;
-                    lbl.Height = 30;
-
-                    lbl.Location = new Point(0, 90);
-
-                    lbl.TextAlign = ContentAlignment.MiddleCenter;
-
-                    lbl.Tag = classNo;
-
-                    card.Controls.Add(pic);
-                    card.Controls.Add(lbl);
-
-                    card.Click += ClassCard_Click;
-                    pic.Click += ClassCard_Click;
-                    lbl.Click += ClassCard_Click;
-
-                    groupBox2.Controls.Add(card);
-
-                    classNo++;
-
-                    if (classNo > 10)
-                        return;
+                    int classNo = int.Parse(match.Value);
+                    classes.Add(Tuple.Create(classNo, folderName));
                 }
+            }
+
+            classes = classes.OrderBy(c => c.Item1).ToList();
+
+            if (classes.Count == 0)
+            {
+                Label empty = new Label();
+                empty.Text = "No class content found.\nPlace class folders inside the \"Files\" directory.";
+                empty.Font = new Font("Segoe UI", 12, FontStyle.Regular);
+                empty.ForeColor = Color.Gray;
+                empty.AutoSize = true;
+                empty.Location = new Point(startX, startY);
+                groupBox2.Controls.Add(empty);
+                return;
+            }
+
+            for (int i = 0; i < classes.Count; i++)
+            {
+                int classNo = classes[i].Item1;
+                string folderName = classes[i].Item2;
+
+                int row = i / cardsPerRow;
+                int col = i % cardsPerRow;
+
+                Panel card = new Panel();
+                card.Width = cardWidth;
+                card.Height = cardHeight;
+                card.BackColor = Color.White;
+                card.Cursor = Cursors.Hand;
+
+                card.Location = new Point(
+                    startX + (col * (cardWidth + gapX)),
+                    startY + (row * (cardHeight + gapY)));
+
+                card.Tag = classNo;
+
+                card.Padding = new Padding(10);
+                card.BorderStyle = BorderStyle.None;
+
+                PictureBox pic = new PictureBox();
+                pic.Size = new Size(60, 60);
+                pic.Location = new Point(55, 20);
+                pic.SizeMode = PictureBoxSizeMode.Zoom;
+                pic.Image = Jacobs.Properties.Resources.bookicon;
+                pic.Tag = classNo;
+
+                Label lbl = new Label();
+                lbl.Text = folderName;
+                lbl.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+                lbl.ForeColor = Color.FromArgb(30, 58, 138);
+                lbl.Width = cardWidth;
+                lbl.Height = 30;
+                lbl.Location = new Point(0, 90);
+                lbl.TextAlign = ContentAlignment.MiddleCenter;
+                lbl.Tag = classNo;
+
+                card.Controls.Add(pic);
+                card.Controls.Add(lbl);
+
+                card.Click += ClassCard_Click;
+                pic.Click += ClassCard_Click;
+                lbl.Click += ClassCard_Click;
+
+                groupBox2.Controls.Add(card);
             }
         }
 

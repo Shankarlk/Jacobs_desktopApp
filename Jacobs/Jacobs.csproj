@@ -347,6 +347,9 @@
       <DependentUpon>OpenPPTFile.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
+    <Compile Include="Theme.cs" />
+    <Compile Include="PiperTts.cs" />
+    <Compile Include="AudioPlayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScienceFile.cs">
       <SubType>Form</SubType>
@@ -376,14 +379,24 @@
     </Compile>
     <Content Include="Files\pause.png" />
     <Content Include="Files\play.png" />
+    <Content Include="Piper\**\*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="PdfViewer\**\*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="jacobs-logo-png 1.ico" />
-    <Content Include="LicenseKey\License_protected.txt" />
+    <Content Include="LicenseKey\License_protected.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Files\fonts\fontawesome-webfont.eot" />
     <Content Include="Files\fonts\fontawesome-webfont.ttf" />
     <Content Include="Files\fonts\fontawesome-webfont.woff" />
     <Content Include="Files\fonts\fontawesome-webfont.woff2" />
     <Content Include="Files\fonts\FontAwesome.otf" />
-    <Content Include="LicenseKey\License_protected.pdf" />
+    <Content Include="LicenseKey\License_protected.pdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Files\8 STD\Junior EVS\8. Fruits - Identification &amp; Naming\A-Fruity-Adventure-Discovering-Delicious-Fruits - Copy %282%29.pdf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

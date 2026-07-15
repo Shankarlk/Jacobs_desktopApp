@@ -74,19 +74,7 @@ namespace JacobsDesktopApp
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
 
             // ===== BACK BUTTON DESIGN =====
-            btnBack.Text = "← Back";
-            btnBack.Width = 110;
-            btnBack.Height = 35;
-
-            btnBack.BackColor = Color.FromArgb(37, 99, 235);
-            btnBack.ForeColor = Color.White;
-
-            btnBack.FlatStyle = FlatStyle.Flat;
-            btnBack.FlatAppearance.BorderSize = 0;
-
-            btnBack.Font = new Font("Segoe UI", 10, FontStyle.Bold);
-
-           // SetRoundedButton(btnBack, 12);
+            Theme.TopLeftBack(btnBack);
 
             LoadDocumentsForClass(ClassNo);
 

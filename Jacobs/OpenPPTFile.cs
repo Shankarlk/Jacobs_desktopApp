@@ -30,6 +30,8 @@ namespace JacobsDesktopApp
 
         private void OpenPPTFile_Load(object sender, EventArgs e)
         {
+            Theme.ApplyViewerChrome(this, LessonName, button1_Click_1, button1);
+
             string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
 
             string playimages = Path.Combine(baseDirectory, "Files", "play.png");

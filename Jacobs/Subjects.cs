@@ -145,15 +145,7 @@ namespace JacobsDesktopApp
 
             footerPanel.Controls.Add(lblFooter);
             this.Controls.Add(footerPanel);
-            button7.Text = "← Back";
-            button7.BackColor = Color.FromArgb(37, 99, 235);
-            button7.ForeColor = Color.White;
-            button7.FlatStyle = FlatStyle.Flat;
-            button7.FlatAppearance.BorderSize = 0;
-            button7.Font = new Font("Segoe UI", 10, FontStyle.Bold);
-            button7.Width = 120;
-            button7.Height = 40;
-            button7.BringToFront();
+            Theme.TopLeftBack(button7);
 
             Label lblWelcome = new Label();
             lblWelcome.Text = "Welcome, Teacher";
