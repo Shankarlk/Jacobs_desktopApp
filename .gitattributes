@@ -61,3 +61,8 @@
 #*.PDF   diff=astextplain
 #*.rtf   diff=astextplain
 #*.RTF   diff=astextplain
+
+# Bundled binary assets - store byte-for-byte (no EOL conversion)
+Jacobs/Piper/** -text
+Jacobs/PdfViewer/pdf.min.js -text
+Jacobs/PdfViewer/pdf.worker.min.js -text

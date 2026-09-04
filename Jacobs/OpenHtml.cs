@@ -19,7 +19,9 @@ namespace JacobsDesktopApp
         }
 
         private async void OpenHtml_Load(object sender, EventArgs e)
-        {// 1. Determine the path where the HTML file will be temporarily extracted
+        {
+            Theme.ApplyViewerChrome(this, LessonName, button1_Click, groupBox1);
+            // 1. Determine the path where the HTML file will be temporarily extracted
          //string tempPath = Path.Combine(Path.GetTempPath(), DocName);
 
             // 2. Use your existing method to extract the HTML file from embedded resources

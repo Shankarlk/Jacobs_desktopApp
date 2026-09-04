@@ -1,426 +1,348 @@
-﻿using System;
-using System.IO;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using iTextSharp.text;
-using iTextSharp.text.pdf;
-using iTextSharp.text.pdf.parser;
-using System.Drawing.Drawing2D;
-using System.Speech.Synthesis;
-using System.Drawing.Text;
-using com.itextpdf.text.pdf;
-using Spire.Pdf;
-//using System.Reflection;
+using Microsoft.Web.WebView2.Core;
+using Newtonsoft.Json.Linq;
+
 namespace JacobsDesktopApp
 {
     public partial class OpenPdfFile : Form
     {
         public string DocName { get; set; }
-        private System.Drawing.Image originalImage;
-        private System.Drawing.Image backupImage;
-        private bool isCursive = false;
 
         public int ClassNo { get; set; }
         public string SchlName { get; set; }
         public string LessonName { get; set; }
         public string SubjectName { get; set; }
-        private float zoomFactor = 0.5f;
-        PdfReader reader;
-        //int totalPages = 0;
 
-        
-        private Spire.Pdf.PdfDocument pdfDocument;
-        private int currentPage = 0;
-        private SpeechSynthesizer speechSynthesizer;
-        private bool isSpeechPlaying = false;
+        private const string VirtualHost = "jacobspdf.local";
+
+        private readonly AudioPlayer _player = new AudioPlayer();
+        private string _workDir;
+
+        // Read-aloud state
+        private List<string> _sentences;
+        private int _curSentence;
+        private bool _reading;
+        private bool _paused;
+        private bool _preparing;
+        private string _curWav;
+        private Task<string> _prefetchTask;
+        private int _prefetchIndex = -1;
+        private Timer _pollTimer;
+
         public OpenPdfFile()
         {
             InitializeComponent();
-            speechSynthesizer = new SpeechSynthesizer();
-            lblExtractedTexts = new Label
+        }
+
+        private async void OpenPdfFile_Load(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(DocName) || !File.Exists(DocName))
             {
-                AutoSize = true,
-                Font = new System.Drawing.Font("Brush Script MT", 18, FontStyle.Italic),
-                ForeColor = Color.Black,
-                Location = new Point(20, 20)
+                MessageBox.Show("PDF file not found:\n" + DocName, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            lblTitle.Text = string.IsNullOrEmpty(LessonName) ? "Lesson Document" : LessonName;
+            btnRead.Visible = PiperTts.IsAvailable;
+            LayoutHeaderButtons();
+            topBar.SizeChanged += (s, ev) => LayoutHeaderButtons();
+
+            try
+            {
+                string userDataFolder = Path.Combine(Path.GetTempPath(), "JacobsDesktopApp", "WebView2");
+                CoreWebView2Environment env =
+                    await CoreWebView2Environment.CreateAsync(null, userDataFolder);
+                if (IsClosingOrGone()) return;
+
+                await webView1.EnsureCoreWebView2Async(env);
+                if (IsClosingOrGone() || webView1.CoreWebView2 == null) return;
+
+                webView1.CoreWebView2.WebMessageReceived += OnWebMessage;
+
+                // Assemble a self-contained folder (viewer assets + this PDF) and
+                // serve it over a virtual https host so PDF.js and its worker load
+                // without file:// restrictions.
+                string viewerSrc = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "PdfViewer");
+                _workDir = Path.Combine(Path.GetTempPath(), "JacobsDesktopApp", "pdfview", Guid.NewGuid().ToString("N"));
+                Directory.CreateDirectory(_workDir);
+                File.Copy(Path.Combine(viewerSrc, "viewer.html"), Path.Combine(_workDir, "viewer.html"), true);
+                File.Copy(Path.Combine(viewerSrc, "pdf.min.js"), Path.Combine(_workDir, "pdf.min.js"), true);
+                File.Copy(Path.Combine(viewerSrc, "pdf.worker.min.js"), Path.Combine(_workDir, "pdf.worker.min.js"), true);
+                File.Copy(DocName, Path.Combine(_workDir, "doc.pdf"), true);
+
+                webView1.CoreWebView2.SetVirtualHostNameToFolderMapping(
+                    VirtualHost, _workDir, CoreWebView2HostResourceAccessKind.Allow);
+
+                webView1.CoreWebView2.Navigate("https://" + VirtualHost + "/viewer.html?file=doc.pdf");
+            }
+            catch (WebView2RuntimeNotFoundException)
+            {
+                MessageBox.Show(
+                    "The Microsoft Edge WebView2 Runtime is not installed on this system.\n" +
+                    "Please install it to view PDF documents.",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                if (IsClosingOrGone() || IsBenignShutdown(ex)) return;
+                MessageBox.Show("Error loading PDF:\n" + ex.Message, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void OnWebMessage(object sender, CoreWebView2WebMessageReceivedEventArgs e)
+        {
+            string json;
+            try { json = e.TryGetWebMessageAsString(); }
+            catch { return; }
+            if (string.IsNullOrEmpty(json)) return;
+
+            try
+            {
+                JObject o = JObject.Parse(json);
+                if ((string)o["type"] == "ready")
+                    _sentences = o["sentences"].ToObject<List<string>>();
+            }
+            catch { }
+        }
+
+        private void PostToJs(string json)
+        {
+            try
+            {
+                if (webView1 != null && webView1.CoreWebView2 != null)
+                    webView1.CoreWebView2.PostWebMessageAsString(json);
+            }
+            catch { }
+        }
+
+        // ===== Read-aloud (bundled Piper neural voice + PDF.js word highlighting) =====
+
+        private void LayoutHeaderButtons()
+        {
+            const int pad = 15, gap = 8, top = 7;
+            btnRead.Top = top;
+            btnStop.Top = top;
+            btnRead.Left = topBar.ClientSize.Width - pad - btnRead.Width;
+            btnStop.Left = btnRead.Left - gap - btnStop.Width;
+            btnRead.BringToFront();
+            btnStop.BringToFront();
+        }
+
+        private async void btnRead_Click(object sender, EventArgs e)
+        {
+            if (_preparing) return;
+
+            if (_reading)
+            {
+                if (!_paused)
+                {
+                    _player.Pause();
+                    PostToJs("{\"type\":\"pause\"}");
+                    _paused = true;
+                    btnRead.Text = "Resume";
+                }
+                else
+                {
+                    _player.Resume();
+                    PostToJs("{\"type\":\"resume\"}");
+                    _paused = false;
+                    btnRead.Text = "Pause";
+                }
+                return;
+            }
+
+            if (_sentences == null || _sentences.Count == 0)
+            {
+                MessageBox.Show(
+                    "The document is still loading, or has no readable text. Please try again in a moment.",
+                    "Read aloud", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            _reading = true;
+            _paused = false;
+            _curSentence = 0;
+            await PlayCurrentAsync();
+        }
+
+        private async Task PlayCurrentAsync()
+        {
+            if (IsClosingOrGone() || !_reading) return;
+
+            if (_curSentence >= _sentences.Count)
+            {
+                FinishReading();
+                return;
+            }
+
+            string wav;
+            _preparing = true;
+            if (_curSentence == 0) { btnRead.Text = "Preparing…"; btnRead.Enabled = false; }
+            try
+            {
+                if (_prefetchTask != null && _prefetchIndex == _curSentence)
+                    wav = await _prefetchTask;
+                else
+                    wav = await Task.Run(() => PiperTts.Synthesize(_sentences[_curSentence]));
+            }
+            finally
+            {
+                _preparing = false;
+                btnRead.Enabled = true;
+            }
+
+            if (IsClosingOrGone() || !_reading) return;
+
+            if (string.IsNullOrEmpty(wav))
+            {
+                _curSentence++;
+                await PlayCurrentAsync();
+                return;
+            }
+
+            _curWav = wav;
+            int durationMs = WavDurationMs(wav);
+            PostToJs("{\"type\":\"play\",\"index\":" + _curSentence + ",\"duration\":" + durationMs + "}");
+            _player.Play(wav);
+            btnRead.Text = "Pause";
+            btnStop.Visible = true;
+            StartPoll();
+            PrefetchNext();
+        }
+
+        private void PrefetchNext()
+        {
+            int next = _curSentence + 1;
+            if (next < _sentences.Count)
+            {
+                _prefetchIndex = next;
+                string text = _sentences[next];
+                _prefetchTask = Task.Run(() => PiperTts.Synthesize(text));
+            }
+            else
+            {
+                _prefetchTask = null;
+                _prefetchIndex = -1;
+            }
+        }
+
+        private void StartPoll()
+        {
+            if (_pollTimer == null)
+            {
+                _pollTimer = new Timer { Interval = 300 };
+                _pollTimer.Tick += PollPlayback;
+            }
+            _pollTimer.Start();
+        }
+
+        private async void PollPlayback(object sender, EventArgs e)
+        {
+            if (_paused || !_reading) return;
+
+            string m = _player.Mode();
+            if (m == "playing" || m == "paused") return;
+
+            // Current sentence finished — move to the next one.
+            _pollTimer.Stop();
+            TryDelete(_curWav);
+            _curSentence++;
+            await PlayCurrentAsync();
+        }
+
+        private void FinishReading()
+        {
+            if (_pollTimer != null) _pollTimer.Stop();
+            _reading = false;
+            _paused = false;
+            PostToJs("{\"type\":\"stop\"}");
+            ResetReadUi();
+        }
+
+        private void btnStop_Click(object sender, EventArgs e)
+        {
+            if (_pollTimer != null) _pollTimer.Stop();
+            _reading = false;
+            _paused = false;
+            _player.Stop();
+            TryDelete(_curWav);
+            PostToJs("{\"type\":\"stop\"}");
+            ResetReadUi();
+        }
+
+        private void ResetReadUi()
+        {
+            btnRead.Text = "Read aloud";
+            btnRead.Enabled = true;
+            btnStop.Visible = false;
+        }
+
+        private static int WavDurationMs(string path)
+        {
+            try
+            {
+                byte[] hdr = new byte[44];
+                using (FileStream fs = File.OpenRead(path))
+                    fs.Read(hdr, 0, 44);
+
+                int sampleRate = BitConverter.ToInt32(hdr, 24);
+                short channels = BitConverter.ToInt16(hdr, 22);
+                short bits = BitConverter.ToInt16(hdr, 34);
+                long dataSize = new FileInfo(path).Length - 44;
+
+                double bytesPerSec = sampleRate * channels * (bits / 8);
+                if (bytesPerSec <= 0) return 3000;
+                return (int)(dataSize / bytesPerSec * 1000.0);
+            }
+            catch { return 3000; }
+        }
+
+        private static void TryDelete(string path)
+        {
+            try { if (!string.IsNullOrEmpty(path) && File.Exists(path)) File.Delete(path); }
+            catch { }
+        }
+
+        // ===== Navigation / lifecycle =====
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            LessonsList lessons = new LessonsList
+            {
+                LessonName = LessonName,
+                SubjectName = SubjectName,
+                ClassNo = ClassNo,
+                SchlName = SchlName
             };
+            lessons.Show();
+            this.Close();
         }
 
-        private void OpenPdfFile_Load(object sender, EventArgs e)
+        protected override void OnFormClosed(FormClosedEventArgs e)
         {
-
-            pdfDocument = new Spire.Pdf.PdfDocument();
-            pdfDocument.LoadFromFile(DocName);
-
-             
-            try
-            {
-                if (!File.Exists(DocName))
-                {
-                    MessageBox.Show("PDF file not found:\n" + DocName);
-                    return;
-                }
-
-                pdfDocument = new Spire.Pdf.PdfDocument();
-                pdfDocument.LoadFromFile(DocName);
-               // MessageBox.Show(pdfDocument.Pages.Count.ToString());
-                if (DocName.Contains("Exercise"))
-                    button7.Visible = true;
-                else
-                    button7.Visible = false;
-
-                string playimages = System.IO.Path.Combine(
-                         Application.StartupPath,
-                         @"..\..\Files\play.png");
-
-                playimages = System.IO.Path.GetFullPath(playimages);
-
-                if (System.IO.File.Exists(playimages))
-                {
-                    System.Drawing.Image playImage = System.Drawing.Image.FromFile(playimages);
-
-                    Bitmap resizedPlayImage = new Bitmap(playImage, 22, 22);
-
-                    btnPlayPause.Image = resizedPlayImage;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error loading PDF:\n" + ex.Message);
-            }
-
-            DisplayPage(0);
-        }
-        
-
-
-        private void DisplayPage(int pageIndex)
-        {
-            if (pdfDocument != null && pageIndex >= 0 && pageIndex < pdfDocument.Pages.Count)
-            {
-                using (System.IO.Stream pageStream = pdfDocument.SaveAsImage(pageIndex))
-                {
-                    System.Drawing.Image pageImage =
-                        System.Drawing.Image.FromStream(pageStream);
-
-                    originalImage = (System.Drawing.Image)pageImage.Clone();
-
-                    if (backupImage != null)
-                        backupImage.Dispose();
-
-                    backupImage = (System.Drawing.Image)originalImage.Clone();
-
-                    pictureBox1.Image = originalImage;
-                    pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-
-                    lblExtractedTexts.Text = "";
-
-                    currentPage = pageIndex;
-                    isCursive = false;
-                }
-            }
-
-            pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
-        }
-        private void ReadPageText(int pageIndex)
-        {
-            if (pdfDocument != null && pageIndex >= 0 && pageIndex < pdfDocument.Pages.Count)
-            {
-                //string text = pdfDocument.Pages[pageIndex].ExtractText();
-                //if (!string.IsNullOrWhiteSpace(text))
-                //{
-                //    //string cursiveText = ConvertToCursive(text);
-                //    //DrawCursiveText(text); // Show joined cursive text in PictureBox
-                //    ////lblExtractedTexts.Text = cursiveText;
-                //    //lblExtractedTexts.Text = text;
-                //    //lblExtractedTexts.Font = new System.Drawing.Font("Brush Script MT", 25, FontStyle.Italic);
-                //    speechSynthesizer.SpeakAsync(text);  // Speak original text
-                //}
-                //else
-                //{
-                //    MessageBox.Show("No text found on this page.");
-                //}
-                return;
-            }
-        }
-        private void SpeechSynthesizer_SpeakCompleted(object sender, SpeakCompletedEventArgs e)
-        {
-            if (currentPage < pdfDocument.Pages.Count - 1)
-            {
-                currentPage++;
-                DisplayPage(currentPage);
-                ReadPageText(currentPage);
-            }
-            else
-            {
-                isSpeechPlaying = false;
-            }
+            try { if (_pollTimer != null) _pollTimer.Stop(); } catch { }
+            try { _player.Dispose(); } catch { }
+            try { TryDelete(_curWav); } catch { }
+            try { if (_workDir != null && Directory.Exists(_workDir)) Directory.Delete(_workDir, true); } catch { }
+            base.OnFormClosed(e);
         }
 
-        private void RenderZoomedImage(System.Drawing.Image originalImage)
+        private bool IsClosingOrGone()
         {
-            int newWidth = (int)(originalImage.Width * zoomFactor);
-            int newHeight = (int)(originalImage.Height * zoomFactor);
-
-            Bitmap zoomedImage = new Bitmap(newWidth, newHeight);
-            using (Graphics graphics = Graphics.FromImage(zoomedImage))
-            {
-                graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
-                graphics.DrawImage(originalImage, new System.Drawing.Rectangle(0, 0, newWidth, newHeight));
-            }
-
-            pictureBox1.Image = zoomedImage;
-            pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
+            return IsDisposed || Disposing || !IsHandleCreated;
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private static bool IsBenignShutdown(Exception ex)
         {
-            if (currentPage > 0)
-            {
-                DisplayPage(currentPage - 1);
-            }
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-
-            if (currentPage < pdfDocument.Pages.Count - 1)
-            {
-                DisplayPage(currentPage + 1);
-            }
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            speechSynthesizer.SpeakAsyncCancelAll();
-            LessonsList openPPTFile = new LessonsList();
-            openPPTFile.LessonName = LessonName;
-            openPPTFile.SubjectName = SubjectName;
-            openPPTFile.ClassNo = ClassNo;
-            openPPTFile.SchlName = SchlName;
-            openPPTFile.Show();
-            //englishFiles.Show();
-            this.Hide();
-
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            zoomFactor = Math.Min(zoomFactor + 0.1f, 3.0f); // Limit max zoom to 3x
-            ApplyZoom();
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-            zoomFactor = Math.Max(zoomFactor - 0.1f, 0.5f); // Limit min zoom to 0.5x
-            ApplyZoom();
-        }
-        private void ApplyZoom()
-        {
-            if (backupImage == null) return; // Ensure we always zoom from the correct base image
-
-            System.Drawing.Image sourceImage = isCursive ? pictureBox1.Image : backupImage;
-
-            int newWidth = (int)(sourceImage.Width * zoomFactor);
-            int newHeight = (int)(sourceImage.Height * zoomFactor);
-
-            Bitmap zoomedImage = new Bitmap(newWidth, newHeight);
-            using (Graphics graphics = Graphics.FromImage(zoomedImage))
-            {
-                graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
-                graphics.DrawImage(sourceImage, new System.Drawing.Rectangle(0, 0, newWidth, newHeight));
-            }
-
-            // Properly replace the image in pictureBox1
-            if (pictureBox1.Image != null)
-            {
-                pictureBox1.Image.Dispose();
-                pictureBox1.Image = null;
-            }
-
-            pictureBox1.Image = zoomedImage;
-            pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
-        }
-
-        int pp = 0;
-        private void btnPlayPause_Click(object sender, EventArgs e)
-        {
-            if (pp == 0)
-            {
-                pp = 1;
-                string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-                string opf = System.IO.Path.Combine(baseDirectory, "Files", DocName);
-
-                //string playimages = System.IO.Path.Combine(baseDirectory, "Files", "pause.png");
-                
-                string playimages = System.IO.Path.Combine(Application.StartupPath, @"..\..\Files\pause.png");
-                playimages = System.IO.Path.GetFullPath(playimages);
-
-                System.Drawing.Image playImage = System.Drawing.Image.FromFile(playimages);
-                Bitmap resizedPlayImage = new Bitmap(playImage, new Size(22, 22));
-                btnPlayPause.Image = resizedPlayImage;
-                ReadPageText(currentPage);
-                speechSynthesizer.Resume();
-            }
-            else if (pp == 1)
-            {
-                pp = 0;
-                speechSynthesizer.Pause();
-                string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-                string opf = System.IO.Path.Combine(baseDirectory, "Files", DocName);
-                //string playimages = System.IO.Path.Combine(baseDirectory, "Files", "play.png");
-                string playimages = System.IO.Path.Combine(Application.StartupPath, @"..\..\Files\play.png");
-                playimages = System.IO.Path.GetFullPath(playimages);
-                System.Drawing.Image playImage = System.Drawing.Image.FromFile(playimages);
-                Bitmap resizedPlayImage = new Bitmap(playImage, 22, 22);
-                //Bitmap resizedPlayImage = new Bitmap(playImage, 22, 22);
-                btnPlayPause.Image = resizedPlayImage;
-            }
-        }
-
-        private System.Drawing.Image DrawCursiveTextOnImage(System.Drawing.Image originalImage, string text)
-        {
-            if (originalImage == null || string.IsNullOrWhiteSpace(text))
-            {
-                MessageBox.Show("Error: Original image is null or text is empty.", "Debug");
-                return originalImage;
-            }
-
-            try
-            {
-                Bitmap newImage = new Bitmap(originalImage.Width, originalImage.Height);
-
-                using (Graphics graphics = Graphics.FromImage(newImage))
-                {
-                    // Clear the background to white (or another color if needed)
-                    graphics.Clear(Color.White);
-                     
-                    graphics.SmoothingMode = SmoothingMode.AntiAlias;
-                    graphics.TextRenderingHint = TextRenderingHint.AntiAliasGridFit;
-
-                    using (System.Drawing.Font cursiveFont = new System.Drawing.Font("Brush Script MT", 25, FontStyle.Italic))
-                    using (SolidBrush textBrush = new SolidBrush(Color.Black))
-                    {
-                        RectangleF rect = new RectangleF(20, 20, newImage.Width - 40, newImage.Height - 40);
-                        StringFormat format = new StringFormat
-                        {
-                            Alignment = StringAlignment.Near,
-                            LineAlignment = StringAlignment.Near,
-                            FormatFlags = StringFormatFlags.LineLimit
-                        };
-
-                        graphics.DrawString(text, cursiveFont, textBrush, rect, format);
-                    }
-                }
-
-                return newImage;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error drawing text: {ex.Message}", "Error");
-                return originalImage;
-            }
-        }
-
-        private void button7_Click(object sender, EventArgs e)
-        {
-            ApplyZoom();
-            if (backupImage == null || string.IsNullOrWhiteSpace(lblExtractedTexts.Text))
-            {
-                MessageBox.Show("No text available to convert.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            if (isCursive)
-            {
-                // Restore from backup instead of originalImage
-                if (pictureBox1.Image != null)
-                {
-                    pictureBox1.Image.Dispose(); // Free memory before replacing image
-                    pictureBox1.Image = null;    // Ensure it's cleared
-                }
-
-                pictureBox1.Image = (System.Drawing.Image)backupImage.Clone();
-                isCursive = false;
-                button7.Text = "Joining Letters";
-            }
-            else
-            {
-                // Generate the cursive image
-                System.Drawing.Image cursiveImage = DrawCursiveTextOnImage(backupImage, lblExtractedTexts.Text);
-                if (cursiveImage != null)
-                {
-                    // Properly replace the image
-                    if (pictureBox1.Image != null)
-                    {
-                        pictureBox1.Image.Dispose();
-                        pictureBox1.Image = null;
-                    }
-
-                    pictureBox1.Image = cursiveImage;
-                    isCursive = true;
-                    button7.Text = "Normal Text";
-                }
-                else
-                {
-                    MessageBox.Show("Failed to generate cursive text image.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-
+            if (ex is ObjectDisposedException) return true;
+            const int E_ABORT = unchecked((int)0x80004004);
+            return ex is System.Runtime.InteropServices.COMException com && com.HResult == E_ABORT;
         }
     }
 }
-
-
-/*
-        private void DrawCursiveText(string text)
-        {
-            if (pictureBox1.Width == 0 || pictureBox1.Height == 0)
-                return;
-
-            // Create a new bitmap
-            Bitmap bitmap = new Bitmap(pictureBox1.Width, pictureBox1.Height);
-            using (Graphics graphics = Graphics.FromImage(bitmap))
-            {
-                graphics.Clear(Color.White);  // Background color
-                graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-
-                // Use a script font that supports joined letters
-                using (System.Drawing.Font cursiveFont = new System.Drawing.Font("Brush Script MT", 25, FontStyle.Italic))
-                using (SolidBrush textBrush = new SolidBrush(Color.Black))
-                {
-                    graphics.DrawString(text, cursiveFont, textBrush, new PointF(10, 10));
-                }
-            }
-
-            pictureBox1.Image = bitmap;
-        }
-
-
-
-        private string ConvertToCursive(string input)
-        {
-            Dictionary<char, string> cursiveMap = new Dictionary<char, string>
-    {
-        {'A', "𝒜"}, {'B', "ℬ"}, {'C', "𝒞"}, {'D', "𝒟"}, {'E', "ℰ"}, {'F', "ℱ"},
-        {'G', "𝒢"}, {'H', "ℋ"}, {'I', "ℐ"}, {'J', "𝒥"}, {'K', "𝒦"}, {'L', "ℒ"},
-        {'M', "ℳ"}, {'N', "𝒩"}, {'O', "𝒪"}, {'P', "𝒫"}, {'Q', "𝒬"}, {'R', "ℛ"},
-        {'S', "𝒮"}, {'T', "𝒯"}, {'U', "𝒰"}, {'V', "𝒱"}, {'W', "𝒲"}, {'X', "𝒳"},
-        {'Y', "𝒴"}, {'Z', "𝒵"}, {'a', "𝒶"}, {'b', "𝒷"}, {'c', "𝒸"}, {'d', "𝒹"},
-        {'e', "ℯ"}, {'f', "𝒻"}, {'g', "ℊ"}, {'h', "𝒽"}, {'i', "𝒾"}, {'j', "𝒿"},
-        {'k', "𝓀"}, {'l', "𝓁"}, {'m', "𝓂"}, {'n', "𝓃"}, {'o', "ℴ"}, {'p', "𝓅"},
-        {'q', "𝓆"}, {'r', "𝓇"}, {'s', "𝓈"}, {'t', "𝓉"}, {'u', "𝓊"}, {'v', "𝓋"},
-        {'w', "𝓌"}, {'x', "𝓍"}, {'y', "𝓎"}, {'z', "𝓏"}
-    };
-
-            return string.Concat(input.Select(c => cursiveMap.ContainsKey(c) ? cursiveMap[c] : c.ToString()));
-        }
-
-
- */

@@ -1,0 +1,244 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  html, body { margin: 0; height: 100%; background: #f5f8fc; font-family: 'Segoe UI', sans-serif; }
+  #pages { padding: 20px; display: flex; flex-direction: column; align-items: center; gap: 18px; }
+  .page { position: relative; box-shadow: 0 3px 14px rgba(0,0,0,.18); background: #fff; border-radius: 2px; }
+  .page canvas { display: block; border-radius: 2px; }
+  .words { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+  .w { position: absolute; color: transparent; white-space: pre; border-radius: 3px; transition: background-color .08s linear; }
+  .w.hl { background: rgba(37, 99, 235, .30); box-shadow: 0 0 0 1px rgba(37,99,235,.35); }
+  #msg { color: #64748b; padding: 40px; text-align: center; font-size: 15px; }
+  .navbtn {
+    position: fixed; top: 50%; transform: translateY(-50%);
+    width: 54px; height: 54px; border-radius: 50%; border: none;
+    background: rgba(37, 99, 235, .88); color: #fff; font-size: 28px; line-height: 1;
+    cursor: pointer; z-index: 1000; box-shadow: 0 3px 12px rgba(0,0,0,.28);
+    display: flex; align-items: center; justify-content: center; user-select: none;
+  }
+  .navbtn:hover { background: rgba(29, 78, 216, .96); }
+  .navbtn:disabled { opacity: .3; cursor: default; }
+  #prevBtn { left: 16px; }
+  #nextBtn { right: 16px; }
+</style>
+</head>
+<body>
+<button id="prevBtn" class="navbtn" title="Previous page" style="display:none">&#8249;</button>
+<button id="nextBtn" class="navbtn" title="Next page" style="display:none">&#8250;</button>
+<div id="pages"><div id="msg">Loading document…</div></div>
+<script src="pdf.min.js"></script>
+<script>
+  pdfjsLib.GlobalWorkerOptions.workerSrc = 'pdf.worker.min.js';
+
+  function post(obj) {
+    if (window.chrome && window.chrome.webview) window.chrome.webview.postMessage(JSON.stringify(obj));
+  }
+  function getParam(n) { return new URLSearchParams(location.search).get(n); }
+
+  var words = [];      // { el, text }
+  var sentences = [];  // { text, first, last }
+  var pageEls = [];    // page container divs, for page navigation
+  var currentPage = 0;
+  var scale = 1.5;
+
+  async function render() {
+    var file = getParam('file') || 'doc.pdf';
+    var pdf = await pdfjsLib.getDocument(file).promise;
+    var container = document.getElementById('pages');
+    container.innerHTML = '';
+
+    var p1 = await pdf.getPage(1);
+    var baseW = p1.getViewport({ scale: 1 }).width;
+    scale = Math.min(2.2, Math.max(1.0, 950 / baseW));
+
+    for (var n = 1; n <= pdf.numPages; n++) {
+      var page = await pdf.getPage(n);
+      var vp = page.getViewport({ scale: scale });
+
+      var pageDiv = document.createElement('div');
+      pageDiv.className = 'page';
+      pageDiv.style.width = vp.width + 'px';
+      pageDiv.style.height = vp.height + 'px';
+
+      var canvas = document.createElement('canvas');
+      canvas.width = Math.floor(vp.width);
+      canvas.height = Math.floor(vp.height);
+      pageDiv.appendChild(canvas);
+
+      var wordsDiv = document.createElement('div');
+      wordsDiv.className = 'words';
+      pageDiv.appendChild(wordsDiv);
+      container.appendChild(pageDiv);
+      pageEls.push(pageDiv);
+
+      await page.render({ canvasContext: canvas.getContext('2d'), viewport: vp }).promise;
+
+      var tc = await page.getTextContent();
+      for (var it = 0; it < tc.items.length; it++) {
+        var item = tc.items[it];
+        if (!item.str || !item.str.trim()) continue;
+
+        var tx = pdfjsLib.Util.transform(vp.transform, item.transform);
+        var fh = Math.hypot(tx[2], tx[3]);
+        var x = tx[4], y = tx[5] - fh;
+        var wtotal = item.width * scale;
+        var strlen = item.str.length || 1;
+
+        var parts = item.str.split(/(\s+)/); // keep whitespace to advance x
+        var cx = x;
+        for (var pi = 0; pi < parts.length; pi++) {
+          var part = parts[pi];
+          var pw = (part.length / strlen) * wtotal;
+          if (part.trim().length > 0) {
+            var span = document.createElement('span');
+            span.className = 'w';
+            span.style.left = cx + 'px';
+            span.style.top = y + 'px';
+            span.style.width = pw + 'px';
+            span.style.height = fh + 'px';
+            span.style.fontSize = fh + 'px';
+            span.textContent = part;
+            wordsDiv.appendChild(span);
+            words.push({ el: span, text: part });
+          }
+          cx += pw;
+        }
+      }
+    }
+
+    buildSentences();
+    setupNav();
+    post({ type: 'ready', sentences: sentences.map(function (s) { return s.text; }) });
+  }
+
+  // ===== Page navigation (side arrows) =====
+  function setupNav() {
+    var prev = document.getElementById('prevBtn');
+    var next = document.getElementById('nextBtn');
+    if (pageEls.length <= 1) { prev.style.display = 'none'; next.style.display = 'none'; return; }
+    prev.style.display = 'flex';
+    next.style.display = 'flex';
+    prev.onclick = function () { goToPage(currentPage - 1); };
+    next.onclick = function () { goToPage(currentPage + 1); };
+    window.addEventListener('scroll', syncCurrentPage, { passive: true });
+    updateNav();
+  }
+
+  function goToPage(i) {
+    i = Math.max(0, Math.min(pageEls.length - 1, i));
+    currentPage = i;
+    pageEls[i].scrollIntoView({ behavior: 'smooth', block: 'start' });
+    updateNav();
+  }
+
+  function syncCurrentPage() {
+    var best = 0, bestDist = Infinity;
+    for (var i = 0; i < pageEls.length; i++) {
+      var d = Math.abs(pageEls[i].getBoundingClientRect().top - 10);
+      if (d < bestDist) { bestDist = d; best = i; }
+    }
+    currentPage = best;
+    updateNav();
+  }
+
+  function updateNav() {
+    document.getElementById('prevBtn').disabled = currentPage <= 0;
+    document.getElementById('nextBtn').disabled = currentPage >= pageEls.length - 1;
+  }
+
+  function buildSentences() {
+    sentences = [];
+    var first = 0;
+    for (var i = 0; i < words.length; i++) {
+      var isEnd = /[.!?:;]$/.test(words[i].text) || i === words.length - 1;
+      if (isEnd) {
+        sentences.push({
+          text: words.slice(first, i + 1).map(function (w) { return w.text; }).join(' '),
+          first: first, last: i
+        });
+        first = i + 1;
+      }
+    }
+    // Fallback: no sentence punctuation -> chunk into readable groups.
+    if (sentences.length <= 1 && words.length > 16) {
+      sentences = [];
+      for (var j = 0; j < words.length; j += 12) {
+        var last = Math.min(j + 11, words.length - 1);
+        sentences.push({
+          text: words.slice(j, last + 1).map(function (w) { return w.text; }).join(' '),
+          first: j, last: last
+        });
+      }
+    }
+  }
+
+  // ===== Karaoke word highlighting =====
+  var cur = { idx: -1, first: 0, count: 0, times: [], startT: 0, dur: 0, raf: 0 };
+
+  function clearHL() { for (var i = 0; i < words.length; i++) words[i].el.classList.remove('hl'); }
+
+  function highlightWord(gi) {
+    clearHL();
+    if (gi < 0 || gi >= words.length) return;
+    var el = words[gi].el;
+    el.classList.add('hl');
+    el.scrollIntoView({ block: 'center', behavior: 'smooth' });
+  }
+
+  function runTicker() {
+    cancelAnimationFrame(cur.raf);
+    var tick = function () {
+      var el = performance.now() - cur.startT;
+      var k = 0;
+      while (k < cur.count && cur.times[k + 1] <= el) k++;
+      if (k >= cur.count) k = cur.count - 1;
+      highlightWord(cur.first + k);
+      if (el < cur.dur) cur.raf = requestAnimationFrame(tick);
+    };
+    cur.raf = requestAnimationFrame(tick);
+  }
+
+  function playSentence(idx, durationMs) {
+    var s = sentences[idx];
+    if (!s) return;
+    cur.idx = idx;
+    cur.first = s.first;
+    cur.count = s.last - s.first + 1;
+    cur.dur = durationMs;
+
+    var lens = [], tot = 0;
+    for (var i = s.first; i <= s.last; i++) { var L = Math.max(1, words[i].text.length); lens.push(L); tot += L; }
+    cur.times = []; var acc = 0;
+    for (var k = 0; k < cur.count; k++) { cur.times.push(acc); acc += durationMs * (lens[k] / tot); }
+    cur.times.push(durationMs);
+
+    cur.startT = performance.now();
+    runTicker();
+  }
+
+  function pauseHL() { cancelAnimationFrame(cur.raf); cur.pausedAt = performance.now(); }
+  function resumeHL() {
+    if (cur.pausedAt) { cur.startT += performance.now() - cur.pausedAt; cur.pausedAt = 0; runTicker(); }
+  }
+  function stopHL() { cancelAnimationFrame(cur.raf); cur.idx = -1; clearHL(); }
+
+  if (window.chrome && window.chrome.webview) {
+    window.chrome.webview.addEventListener('message', function (ev) {
+      var m; try { m = JSON.parse(ev.data); } catch (e) { return; }
+      if (m.type === 'play') playSentence(m.index, m.duration);
+      else if (m.type === 'pause') pauseHL();
+      else if (m.type === 'resume') resumeHL();
+      else if (m.type === 'stop') stopHL();
+    });
+  }
+
+  render().catch(function (e) {
+    document.getElementById('pages').innerHTML = '<div id="msg">Could not display the document.<br>' + String(e) + '</div>';
+    post({ type: 'error', message: String(e) });
+  });
+</script>
+</body>
+</html>

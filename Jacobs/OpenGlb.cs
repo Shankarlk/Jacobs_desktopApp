@@ -27,6 +27,8 @@ namespace JacobsDesktopApp
 
         private async void OpenGlb_Load(object sender, EventArgs e)
         {
+            Theme.ApplyViewerChrome(this, LessonName, button1_Click, groupBox1);
+
             // --- Phase 1: Extract the GLB file to the temp directory ---
             //string glbFileName = DocName; // e.g., "A_human_brain_3d.glb"
             //string tempDir = Path.GetTempPath(); // The root folder where the file will be

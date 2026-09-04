@@ -31,6 +31,8 @@ namespace JacobsDesktopApp
 
         private void OpenMp4_Load(object sender, EventArgs e)
         {
+            Theme.ApplyViewerChrome(this, LessonName, button1_Click, groupBox2);
+
             if (!File.Exists(DocName))
             {
                 MessageBox.Show("File not found:\n" + DocName);
